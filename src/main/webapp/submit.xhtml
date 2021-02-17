@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Utenti salvati</title>
+</h:head>
+<h:body>
+	<h3>Ecco i tuoi dati</h3>
+	<h:form>
+		<h:panelGrid columns="2" border="0">
+			Nome: 
+			<h:outputText value="#{user.name}"></h:outputText>
+			Cognome: 
+			<h:outputText value="#{user.surname}"></h:outputText>
+			Job Title: 
+			<h:outputText value="#{user.jobTitle}"></h:outputText>
+			Payment Type: 
+			<h:outputText value="#{user.paymentType}"></h:outputText>
+			Sesso: 
+			<h:outputText value="#{user.sex}"></h:outputText>
+			<a href="index.xhtml">Back</a>
+			<a href="index.xhtml">Home</a>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
