@@ -9,17 +9,19 @@
 	<h3>Ecco i tuoi dati</h3>
 	<h:form>
 		<h:panelGrid columns="2" border="0">
+			Id: 
+			<h:outputText value="#{studentBean.id}"></h:outputText>
 			Nome: 
-			<h:outputText value="#{user.name}"></h:outputText>
+			<h:outputText value="#{studentBean.name}"></h:outputText>
 			Cognome: 
-			<h:outputText value="#{user.surname}"></h:outputText>
+			<h:outputText value="#{studentBean.surname}"></h:outputText>
 			Job Title: 
-			<h:outputText value="#{user.jobTitle}"></h:outputText>
+			<h:outputText value="#{studentBean.jobTitle}"></h:outputText>
 			Payment Type: 
-			<h:outputText value="#{user.paymentType}"></h:outputText>
+			<h:outputText value="#{studentBean.paymentType}"></h:outputText>
 			Sesso: 
-			<h:outputText value="#{user.sex}"></h:outputText>
-			<a href="index.xhtml">Back</a>
+			<h:outputText value="#{studentBean.sex}"></h:outputText>
+			<a href="listStudent.xhtml">Back</a>
 			<a href="index.xhtml">Home</a>
 		</h:panelGrid>
 	</h:form>

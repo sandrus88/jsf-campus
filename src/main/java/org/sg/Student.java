@@ -3,15 +3,24 @@ package org.sg;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-@ManagedBean
+@ManagedBean(name = "studentBean")
 @RequestScoped
-public class User {
+public class Student {
+	int id;
 	String name;
 	String surname;
 	String jobTitle;
 	String paymentType;
 	String sex;
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getName() {
 		return name;
 	}

@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Home Student</title>
+</h:head>
+<h:body>
+	<h1>Utenti registrati</h1>
+	<h:form>
+		<table border="2">
+			<tr>
+				<th>Id</th>
+				<th>Nome</th>
+				<th>Cognome</th>
+				<th>Job Title</th>
+				<th>PaymentType</th>
+				<th>Sesso</th>
+				<th>Descrizione</th>
+			</tr>
+			<tr>
+				<td><h:outputText value="#{studentBean.id}" /></td>
+				<td><h:outputText value="#{studentBean.name}" /></td>
+				<td><h:outputText value="#{studentBean.surname}" /></td>
+				<td><h:outputText value="#{studentBean.jobTitle}" /></td>
+				<td><h:outputText value="#{studentBean.paymentType}" /></td>
+				<td><h:outputText value="#{studentBean.sex}" /></td>
+				<td><a href="viewStudent.xhtml">View</a> <a
+					href="editStudent.xhtml">Edit</a></td>
+			</tr>
+		</table>
+		<h:panelGrid id="footer" columns="2" border="0">
+			<h:commandButton id="back" value="Torna indietro"
+				action="index.xhtml" />
+			<h:commandButton id="aggiungi" value="Aggiungi Studente"
+				action="newStudent.xhtml" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

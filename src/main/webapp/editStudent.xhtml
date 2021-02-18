@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Modifica </title>
+</h:head>
+<h:body>
+	<h:form>
+		<h3>Modifica i dati</h3>
+		<h:panelGrid columns="2" border="0">
+			Id:
+			<h:inputText id="modificaId" value="#{studentBean.id}" />
+			Nome:
+			<h:inputText id="modificaName" value="#{studentBean.name}" />
+			Cognome:
+			<h:inputText id="modificaSurname" value="#{studentBean.surname}" />
+			Job Title:
+			<h:inputText id="modificaJobTitle" value="#{studentBean.jobTitle}" />
+			Payment Type:
+			<h:inputText id="modificaPaymentType" value="#{studentBean.paymentType}" />
+			Sesso:
+			<h:inputText id="modificaSex" value="#{studentBean.sex}" />
+			<h:commandButton id="submit-button" value="Salva"
+				action="submit.xhtml" />
+			<h:commandButton value="Reset" type="reset" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

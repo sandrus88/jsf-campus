@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Form campi da riempire</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h3>Aggiungi Studente</h3>
+		<h:panelGrid columns="2" border="0">
+			Id:
+			<h:inputText id="id" value="#{studentBean.id}" required="true"
+				requiredMessage="L'id e' obbligatorio" />
+			Nome:
+			<h:inputText id="name" value="#{studentBean.name}" required="true"
+				requiredMessage="Il nome e' obbligatorio" />
+			Cognome:
+			<h:inputText id="surname" value="#{studentBean.surname}"
+				required="true" requiredMessage="Il cognome e' obbligatorio" />
+			Job Title:
+			<h:inputText id="jobTitle" value="#{studentBean.jobTitle}" />
+			Payment Type:
+			<h:selectOneMenu id="paymentType" value="#{studentBean.paymentType}">
+				<f:selectItem />
+				<f:selectItem itemValue="OK" itemLabel="OK" />
+				<f:selectItem itemValue="NOTOK" itemLabel="NOTOK" />
+				<f:selectItem itemValue="UNKNOWN" itemLabel="UNKNOWN" />
+			</h:selectOneMenu>
+			Sesso:
+			<h:selectOneRadio id="sex" value="#{studentBean.sex}" required="true"
+				requiredMessage="Il sesso e' obbligatorio">
+				<f:selectItem itemValue="Maschio" itemLabel="M" />
+				<f:selectItem itemValue="Femmina" itemLabel="F" />
+			</h:selectOneRadio>
+			<h:commandButton id="submit-button" value="Salva"
+				action="submit.xhtml" />
+			<h:commandButton value="Reset" type="reset" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
+
+
+
+
+
