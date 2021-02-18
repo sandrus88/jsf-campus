@@ -10,31 +10,31 @@
 		<h3>Aggiungi Studente</h3>
 		<h:panelGrid columns="2" border="0">
 			Id:
-			<h:inputText id="id" value="#{studentBean.id}" required="true"
+			<h:inputText id="id" value="#{studentController.newId}" required="true"
 				requiredMessage="L'id e' obbligatorio" />
 			Nome:
-			<h:inputText id="name" value="#{studentBean.name}" required="true"
+			<h:inputText id="name" value="#{studentController.newName}" required="true"
 				requiredMessage="Il nome e' obbligatorio" />
 			Cognome:
-			<h:inputText id="surname" value="#{studentBean.surname}"
+			<h:inputText id="surname" value="#{studentController.newSurname}"
 				required="true" requiredMessage="Il cognome e' obbligatorio" />
 			Job Title:
-			<h:inputText id="jobTitle" value="#{studentBean.jobTitle}" />
+			<h:inputText id="jobTitle" value="#{studentController.newJobTitle}" />
 			Payment Type:
-			<h:selectOneMenu id="paymentType" value="#{studentBean.paymentType}">
+			<h:selectOneMenu id="paymentType" value="#{studentController.newPaymentType}">
 				<f:selectItem />
 				<f:selectItem itemValue="OK" itemLabel="OK" />
 				<f:selectItem itemValue="NOTOK" itemLabel="NOTOK" />
 				<f:selectItem itemValue="UNKNOWN" itemLabel="UNKNOWN" />
 			</h:selectOneMenu>
 			Sesso:
-			<h:selectOneRadio id="sex" value="#{studentBean.sex}" required="true"
+			<h:selectOneRadio id="sex" value="#{studentController.newSex}" required="true"
 				requiredMessage="Il sesso e' obbligatorio">
 				<f:selectItem itemValue="Maschio" itemLabel="M" />
 				<f:selectItem itemValue="Femmina" itemLabel="F" />
 			</h:selectOneRadio>
 			<h:commandButton id="submit-button" value="Salva"
-				action="submit.xhtml" />
+				action="#{studentController.addStudent}" />
 			<h:commandButton value="Reset" type="reset" />
 		</h:panelGrid>
 	</h:form>
