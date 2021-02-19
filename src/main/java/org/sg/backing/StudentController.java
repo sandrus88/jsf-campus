@@ -14,15 +14,15 @@ import org.sg.domain.Student;
 public class StudentController {
 	private List<Student> studentList = new ArrayList<Student>();
 	private Student selectedStudent;
-	
+
 	private int newId;
-	private String newName; 
+	private String newName;
 	private String newSurname;
 	private String newJobTitle;
 	private String newPaymentType;
 	private String newSex;
 
-	public void addStudent() { 
+	public void addStudent() {
 		Student student = new Student();
 		student.setId(newId);
 		student.setName(newName);
@@ -31,14 +31,36 @@ public class StudentController {
 		student.setPaymentType(newPaymentType);
 		student.setSex(newSex);
 		studentList.add(student);
-//		return "/listStudent.xhtml?faces-redirect=true";
+		System.out.println("Student " + student + " added correctly");
 	}
 	
-	public String deleteStudent(Student student) {
+	public String updateSelectedStudent(Student student) {
+		selectedStudent = student;
+		return "/editStudent.xhtml?faces-redirect=true";
+	}
+	
+	public String updateStudent() {
+		selectedStudent.getId();
+		selectedStudent.getName();
+		selectedStudent.getSurname();
+		selectedStudent.getJobTitle();
+		selectedStudent.getPaymentType();
+		selectedStudent.getSex();
+		System.out.println("Student " + selectedStudent + " updated correctly");
+		return "/homeStudent.xhtml?faces-redirect=true";
+	}
+	
+	public String viewStudent(Student student) {
+		selectedStudent = student;
+		System.out.println("Student " + student + " showed correctly");
+		return "/viewStudent.xhtml?faces-redirect=true";
+	}
+
+	public void deleteStudent(Student student) {
 		studentList.remove(student);
-	    return null;
+		System.out.println("Student " + student + " deleted correctly");
 	}
-	
+
 	public void setNewId(int newId) {
 		this.newId = newId;
 	}
@@ -61,8 +83,8 @@ public class StudentController {
 
 	public void setNewSex(String newSex) {
 		this.newSex = newSex;
-	} 
-	
+	}
+
 	public int getNewId() {
 		return newId;
 	}
@@ -89,13 +111,9 @@ public class StudentController {
 
 	public List<Student> getStudentList() {
 		return studentList;
-	}	
-	
-	public Student getSelectedStudent() {
-	    return selectedStudent;
 	}
 
-	public void setSelectedStudent(Student student) {
-		selectedStudent = student;
+	public Student getSelectedStudent() {
+		return selectedStudent;
 	}
 }
