@@ -32,4 +32,32 @@ public class Student {
 		this.sex = sex;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public String getJobTitle() {
+		return jobTitle;
+	}
+
+	public String getPaymentType() {
+		return paymentType;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	@Override
+	public String toString() {
+		return "Studente Id: " + id + ", Nome: " + name + ", Cognome: " + surname + ", Job Title: " + jobTitle + ", Pagamento: " + paymentType + ", Sesso: " + sex;
+	}
 }

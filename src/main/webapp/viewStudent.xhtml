@@ -1,27 +1,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Utenti salvati</title>
 </h:head>
 <h:body>
 	<h3>Ecco i tuoi dati</h3>
 	<h:form>
-		<h:panelGrid columns="2" border="0">
+		<h:panelGrid columns="2" border="0" >
 			Id: 
-			<h:outputText value="#{studentBean.id}"></h:outputText>
+			<h:outputText value="#{studentController.newId}"></h:outputText>
 			Nome: 
-			<h:outputText value="#{studentBean.name}"></h:outputText>
+			<h:outputText value="#{studentController.newName}"></h:outputText>
 			Cognome: 
-			<h:outputText value="#{studentBean.surname}"></h:outputText>
+			<h:outputText value="#{studentController.newSurname}"></h:outputText>
 			Job Title: 
-			<h:outputText value="#{studentBean.jobTitle}"></h:outputText>
+			<h:outputText value="#{studentController.newJobTitle}"></h:outputText>
 			Payment Type: 
-			<h:outputText value="#{studentBean.paymentType}"></h:outputText>
+			<h:outputText value="#{studentController.newPaymentType}"></h:outputText>
 			Sesso: 
-			<h:outputText value="#{studentBean.sex}"></h:outputText>
-			<a href="listStudent.xhtml">Back</a>
+			<h:outputText value="#{studentController.newSex}"></h:outputText>
+			<a href="newStudent.xhtml">Back</a>
 			<a href="index.xhtml">Home</a>
 		</h:panelGrid>
 	</h:form>

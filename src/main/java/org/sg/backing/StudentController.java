@@ -5,13 +5,15 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 import org.sg.domain.Student;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class StudentController {
-	List<Student> studentList = new ArrayList<Student>();
+	private List<Student> studentList = new ArrayList<Student>();
+	private Student selectedStudent;
 	
 	private int newId;
 	private String newName; 
@@ -19,6 +21,23 @@ public class StudentController {
 	private String newJobTitle;
 	private String newPaymentType;
 	private String newSex;
+
+	public void addStudent() { 
+		Student student = new Student();
+		student.setId(newId);
+		student.setName(newName);
+		student.setSurname(newSurname);
+		student.setJobTitle(newJobTitle);
+		student.setPaymentType(newPaymentType);
+		student.setSex(newSex);
+		studentList.add(student);
+//		return "/listStudent.xhtml?faces-redirect=true";
+	}
+	
+	public String deleteStudent(Student student) {
+		studentList.remove(student);
+	    return null;
+	}
 	
 	public void setNewId(int newId) {
 		this.newId = newId;
@@ -44,16 +63,39 @@ public class StudentController {
 		this.newSex = newSex;
 	} 
 	
-	public void addStudent() { 
-		Student student = new Student();
-		student.setId(newId);
-		student.setName(newName);
-		student.setSurname(newSurname);
-		student.setJobTitle(newJobTitle);
-		student.setPaymentType(newPaymentType);
-		student.setSex(newSex);
-		studentList.add(student);
-		// quando vieene cchiamato questo metodo crea uno studente con i valori id, name etc
-		// il nuovo studente aggiungilo alla lista
+	public int getNewId() {
+		return newId;
+	}
+
+	public String getNewName() {
+		return newName;
+	}
+
+	public String getNewSurname() {
+		return newSurname;
+	}
+
+	public String getNewJobTitle() {
+		return newJobTitle;
+	}
+
+	public String getNewPaymentType() {
+		return newPaymentType;
+	}
+
+	public String getNewSex() {
+		return newSex;
+	}
+
+	public List<Student> getStudentList() {
+		return studentList;
+	}	
+	
+	public Student getSelectedStudent() {
+	    return selectedStudent;
+	}
+
+	public void setSelectedStudent(Student student) {
+		selectedStudent = student;
 	}
 }

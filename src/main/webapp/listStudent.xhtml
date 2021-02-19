@@ -18,18 +18,21 @@
 				<th>Sesso</th>
 				<th>Descrizione</th>
 			</tr>
-			<tr>
-				<td><h:outputText value="#{studentController.newId}" /></td>
-				<td><h:outputText value="#{studentController.newName}" /></td>
-				<td><h:outputText value="#{studentController.newSurname}" /></td>
-				<td><h:outputText value="#{studentController.newJobTitle}" /></td>
-				<td><h:outputText value="#{studentController.newPaymentType}" /></td>
-				<td><h:outputText value="#{studentController.newSex}" /></td>
-				<td><a href="viewStudent.xhtml">View</a> <a
-					href="editStudent.xhtml">Edit</a></td>
-			</tr>
+			<ui:repeat value="#{studentController.studentList}" var="item">
+				<tr>
+					<td><h:outputText value="#{item.id}" /></td>
+					<td><h:outputText value="#{item.name}" /></td>
+					<td><h:outputText value="#{item.surname}" /></td>
+					<td><h:outputText value="#{item.jobTitle}" /></td>
+					<td><h:outputText value="#{item.paymentType}" /></td>
+					<td><h:outputText value="#{item.sex}" /></td>
+					<td><h:commandLink value="View" action="viewStudent.xhtml" /> | 
+						<h:commandLink value="Edit" action="editStudent.xhtml" /> | <h:commandLink
+							value="Delete" action="#{studentController.deleteStudent(item)}" /></td>
+				</tr>
+			</ui:repeat>
 		</table>
-		<h:panelGrid id="footer" columns="2" border="0">
+		<h:panelGrid id="footer" columns="3" border="0">
 			<h:commandButton id="back" value="Torna indietro"
 				action="index.xhtml" />
 			<h:commandButton id="aggiungi" value="Aggiungi Studente"

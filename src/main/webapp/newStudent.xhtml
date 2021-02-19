@@ -1,43 +1,125 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Form campi da riempire</title>
 </h:head>
 <h:body>
-	<h:form>
-		<h3>Aggiungi Studente</h3>
-		<h:panelGrid columns="2" border="0">
+	<div id="container">
+		<h:form>
+			<h3>Aggiungi Studente</h3>
+			<h:panelGrid border="0" columns="2">
 			Id:
-			<h:inputText id="id" value="#{studentController.newId}" required="true"
-				requiredMessage="L'id e' obbligatorio" />
+			<h:inputText id="id" value="#{studentController.newId}"
+					required="true" requiredMessage="L'id e' obbligatorio" />
 			Nome:
-			<h:inputText id="name" value="#{studentController.newName}" required="true"
-				requiredMessage="Il nome e' obbligatorio" />
+			<h:inputText id="name" value="#{studentController.newName}"
+					required="true" requiredMessage="Il nome e' obbligatorio" />
 			Cognome:
 			<h:inputText id="surname" value="#{studentController.newSurname}"
-				required="true" requiredMessage="Il cognome e' obbligatorio" />
+					required="true" requiredMessage="Il cognome e' obbligatorio" />
 			Job Title:
 			<h:inputText id="jobTitle" value="#{studentController.newJobTitle}" />
 			Payment Type:
-			<h:selectOneMenu id="paymentType" value="#{studentController.newPaymentType}">
-				<f:selectItem />
-				<f:selectItem itemValue="OK" itemLabel="OK" />
-				<f:selectItem itemValue="NOTOK" itemLabel="NOTOK" />
-				<f:selectItem itemValue="UNKNOWN" itemLabel="UNKNOWN" />
-			</h:selectOneMenu>
+			<h:selectOneMenu id="paymentType"
+					value="#{studentController.newPaymentType}">
+					<f:selectItem />
+					<f:selectItem itemValue="OK" itemLabel="OK" />
+					<f:selectItem itemValue="NOTOK" itemLabel="NOTOK" />
+					<f:selectItem itemValue="UNKNOWN" itemLabel="UNKNOWN" />
+				</h:selectOneMenu>
 			Sesso:
-			<h:selectOneRadio id="sex" value="#{studentController.newSex}" required="true"
-				requiredMessage="Il sesso e' obbligatorio">
-				<f:selectItem itemValue="Maschio" itemLabel="M" />
-				<f:selectItem itemValue="Femmina" itemLabel="F" />
-			</h:selectOneRadio>
-			<h:commandButton id="submit-button" value="Salva"
-				action="#{studentController.addStudent}" />
-			<h:commandButton value="Reset" type="reset" />
-		</h:panelGrid>
-	</h:form>
+			<h:selectOneRadio id="sex" value="#{studentController.newSex}"
+					required="true" requiredMessage="Il sesso e' obbligatorio">
+					<f:selectItem itemValue="Maschio" itemLabel="M" />
+					<f:selectItem itemValue="Femmina" itemLabel="F" />
+				</h:selectOneRadio>
+				<h:commandButton id="submit-button" value="Salva"
+					action="#{studentController.addStudent}" />
+				<h:button value="Reset" />
+				<!-- <h:commandButton value="Reset" type="reset" /> -->
+			</h:panelGrid>
+		</h:form>
+	</div>
+
+	<div id="container">
+		<h:form>
+			<h1>Simple Table Example</h1>
+			<table border="2">
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>Cognome</th>
+					<th>Job Title</th>
+					<th>PaymentType</th>
+					<th>Sesso</th>
+					<th>Descrizione</th>
+				</tr>
+				<ui:repeat value="#{studentController.studentList}" var="item">
+					<tr>
+						<td><h:outputText value="#{item.id}" /></td>
+						<td><h:outputText value="#{item.name}" /></td>
+						<td><h:outputText value="#{item.surname}" /></td>
+						<td><h:outputText value="#{item.jobTitle}" /></td>
+						<td><h:outputText value="#{item.paymentType}" /></td>
+						<td><h:outputText value="#{item.sex}" /></td>
+						<td><h:commandLink value="View" action="viewStudent.xhtml" />
+							| <h:commandLink value="Edit" action="editStudent.xhtml" /> | <h:commandLink
+								value="Delete" action="#{studentController.deleteStudent(item)}" /></td>
+					</tr>
+				</ui:repeat>
+			</table>
+		</h:form>
+	</div>
+
+	<div id="container">
+		<h1>DataTable Example</h1>
+
+		<h:form>
+			<h:dataTable value="#{studentController.studentList}" var="item"
+				border="2">
+
+				<h:column>
+					<f:facet name="header">Id</f:facet>    				
+               #{item.id}
+            </h:column>
+
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+               #{item.name}
+            </h:column>
+
+				<h:column>
+					<f:facet name="header">Cognome</f:facet>
+               #{item.surname}
+            </h:column>
+
+				<h:column>
+					<f:facet name="header">Job Title</f:facet>
+               #{item.jobTitle}
+            </h:column>
+
+				<h:column>
+					<f:facet name="header">PaymentType</f:facet>
+               #{item.paymentType}
+            </h:column>
+
+				<h:column>
+					<f:facet name="header">Sesso</f:facet>
+               #{item.sex}
+            </h:column>
+
+				<h:column>
+					<f:facet name="header">Descrizione</f:facet>
+					<h:commandLink value="View" action="viewStudent.xhtml" />
+							| <h:commandLink value="Edit" action="editStudent.xhtml" /> | <h:commandLink
+						value="Delete" action="#{studentController.deleteStudent(item)}" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</div>
 </h:body>
 </html>
 
