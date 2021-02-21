@@ -1,18 +1,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-	<!-- <h:outputStylesheet library="css" name="style.css" /> -->
 	<title>Modifica</title>
 </h:head>
 <h:body>
 	<h:form>
 		<h3>Modifica Topic</h3>
 		<h:panelGrid columns="2" border="0">
-			Id: <h:inputText id="modificaId" value="#{topicController.selectedTopic.id}" />
-			Nome: <h:inputText id="modificaName" value="#{topicController.selectedTopic.name}" />
-			Description: <h:inputText id="modificaDescription" value="#{topicController.selectedTopic.description}" />
+			<h:outputLabel>Id:</h:outputLabel>
+			<h:inputText id="modificaId" value="#{topicController.selectedTopic.id}" />
+			<h:outputLabel>Nome:</h:outputLabel>
+			<h:inputText id="modificaName" value="#{topicController.selectedTopic.name}" />
+			<h:outputLabel>Description:</h:outputLabel>
+			<h:inputText id="modificaDescription" value="#{topicController.selectedTopic.description}" />
 			<h:commandButton id="change-button" value="Save Changes" action="#{topicController.updateTopic}" />
 			<h:commandButton value="Reset" type="reset" />
 		</h:panelGrid>

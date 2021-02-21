@@ -38,9 +38,6 @@ public class TopicController {
 	}
 	
 	public String updateTopic() {
-		selectedTopic.getId();
-		selectedTopic.getName();
-		selectedTopic.getDescription();
 		System.out.println("Topic " + selectedTopic + " updated correctly");
 		return "/topic/homeTopic.xhtml?faces-redirect=true";
 	}

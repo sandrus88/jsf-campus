@@ -1,20 +1,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-	<!-- <h:outputStylesheet library="css" name="style.css" /> -->
 	<title>Form campi da riempire</title>
 </h:head>
 <h:body>
-	<div id="container">
+	<div id="containerForm">
 		<h:form>
 			<h3>Aggiungi Topic</h3>
 			<h:panelGrid border="0" columns="2">
-			Id: <h:inputText id="id" value="#{topicController.newId}" />
-			Nome: <h:inputText id="name" value="#{topicController.newName}" />
-			Description: <h:inputText id="description" value="#{topicController.newDescription}" />
+			<h:outputLabel>Id:</h:outputLabel> 
+			<h:inputText id="id" value="#{topicController.newId}" />
+			<h:outputLabel>Nome:</h:outputLabel>
+			<h:inputText id="name" value="#{topicController.newName}" />
+			<h:outputLabel>Description:</h:outputLabel>
+			<h:inputText id="description" value="#{topicController.newDescription}" />
 			</h:panelGrid>
 			<h:panelGrid border="0" columns="3">
 				<h:commandButton id="submit-button" value="Salva" action="#{topicController.addTopic}" />
@@ -24,7 +24,7 @@
 		</h:form>
 	</div>
 
-	<div id="container">
+	<div id="containerTable">
 		<h1>Lista dei Topic</h1>
 
 		<h:form>
