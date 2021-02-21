@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 import org.sg.domain.Student;
@@ -36,7 +35,7 @@ public class StudentController {
 	
 	public String updateSelectedStudent(Student student) {
 		selectedStudent = student;
-		return "/editStudent.xhtml?faces-redirect=true";
+		return "/student/editStudent.xhtml?faces-redirect=true";
 	}
 	
 	public String updateStudent() {
@@ -47,13 +46,13 @@ public class StudentController {
 		selectedStudent.getPaymentType();
 		selectedStudent.getSex();
 		System.out.println("Student " + selectedStudent + " updated correctly");
-		return "/homeStudent.xhtml?faces-redirect=true";
+		return "/student/homeStudent.xhtml?faces-redirect=true";
 	}
 	
 	public String viewStudent(Student student) {
 		selectedStudent = student;
 		System.out.println("Student " + student + " showed correctly");
-		return "/viewStudent.xhtml?faces-redirect=true";
+		return "/student/viewStudent.xhtml?faces-redirect=true";
 	}
 
 	public void deleteStudent(Student student) {

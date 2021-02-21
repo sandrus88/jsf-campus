@@ -4,6 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
+	<h:outputStylesheet library="css" name="style.css" />
 	<title>Form campi da riempire</title>
 </h:head>
 <h:body>
@@ -12,15 +13,19 @@
 			<h3>Aggiungi Studente</h3>
 			<h:panelGrid border="0" columns="2">
 			Id:
-			<h:inputText id="id" value="#{studentController.newId}" required="true" requiredMessage="L'id e' obbligatorio" />
+			<h:inputText id="id" value="#{studentController.newId}"
+					required="true" requiredMessage="L'id e' obbligatorio" />
 			Nome:
-			<h:inputText id="name" value="#{studentController.newName}" required="true" requiredMessage="Il nome e' obbligatorio" />
+			<h:inputText id="name" value="#{studentController.newName}"
+					required="true" requiredMessage="Il nome e' obbligatorio" />
 			Cognome:
-			<h:inputText id="surname" value="#{studentController.newSurname}" required="true" requiredMessage="Il cognome e' obbligatorio" />
+			<h:inputText id="surname" value="#{studentController.newSurname}"
+					required="true" requiredMessage="Il cognome e' obbligatorio" />
 			Job Title:
 			<h:inputText id="jobTitle" value="#{studentController.newJobTitle}" />
 			Payment Type:
-			<h:selectOneMenu id="paymentType" value="#{studentController.newPaymentType}">
+			<h:selectOneMenu id="paymentType"
+					value="#{studentController.newPaymentType}">
 					<f:selectItem />
 					<f:selectItem itemValue="OK" itemLabel="OK" />
 					<f:selectItem itemValue="NOTOK" itemLabel="NOTOK" />
@@ -32,9 +37,13 @@
 					<f:selectItem itemValue="Maschio" itemLabel="M" />
 					<f:selectItem itemValue="Femmina" itemLabel="F" />
 				</h:selectOneRadio>
-				<h:commandButton id="submit-button" value="Salva" action="#{studentController.addStudent}" />
+			</h:panelGrid>
+			<h:panelGrid border="0" columns="3">
+				<h:commandButton id="submit-button" value="Salva"
+					action="#{studentController.addStudent}" />
 				<h:button value="Reset" />
-				<!-- <h:commandButton value="Reset" type="reset" /> -->
+				<h:commandButton id="home-button" value="Home"
+					action="../index.xhtml" />
 			</h:panelGrid>
 		</h:form>
 	</div>
@@ -43,7 +52,8 @@
 		<h1>Studenti registrati</h1>
 
 		<h:form>
-			<h:dataTable value="#{studentController.studentList}" var="item" border="2">
+			<h:dataTable value="#{studentController.studentList}" var="item"
+				border="2">
 
 				<h:column>
 					<f:facet name="header">Id</f:facet>    				
@@ -77,9 +87,12 @@
 
 				<h:column>
 					<f:facet name="header">Descrizione</f:facet>
-					<h:commandLink value="View" action="#{studentController.viewStudent(item)}" />
-					| <h:commandLink value="Edit" action="#{studentController.updateSelectedStudent(item)}" /> 
-					| <h:commandLink value="Delete" action="#{studentController.deleteStudent(item)}" />
+					<h:commandLink value="View"
+						action="#{studentController.viewStudent(item)}" />
+					| <h:commandLink value="Edit"
+						action="#{studentController.updateSelectedStudent(item)}" /> 
+					| <h:commandLink value="Delete"
+						action="#{studentController.deleteStudent(item)}" />
 				</h:column>
 			</h:dataTable>
 		</h:form>

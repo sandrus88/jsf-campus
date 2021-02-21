@@ -3,6 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
+	<h:outputStylesheet library="css" name="style.css" />
 	<title>Modifica</title>
 </h:head>
 <h:body>
@@ -10,26 +11,33 @@
 		<h3>Modifica i dati</h3>
 		<h:panelGrid columns="2" border="0">
 			Id:
-			<h:inputText id="modificaId" value="#{studentController.selectedStudent.id}" />
+			<h:inputText id="modificaId"
+				value="#{studentController.selectedStudent.id}" />
 			Nome:
-			<h:inputText id="modificaName" value="#{studentController.selectedStudent.name}" />
+			<h:inputText id="modificaName"
+				value="#{studentController.selectedStudent.name}" />
 			Cognome:
-			<h:inputText id="modificaSurname" value="#{studentController.selectedStudent.surname}" />
+			<h:inputText id="modificaSurname"
+				value="#{studentController.selectedStudent.surname}" />
 			Job Title:
-			<h:inputText id="modificaJobTitle" value="#{studentController.selectedStudent.jobTitle}" />
+			<h:inputText id="modificaJobTitle"
+				value="#{studentController.selectedStudent.jobTitle}" />
 			Payment Type:
-			<h:selectOneMenu id="modificaPaymentType" value="#{studentController.selectedStudent.paymentType}">
+			<h:selectOneMenu id="modificaPaymentType"
+				value="#{studentController.selectedStudent.paymentType}">
 				<f:selectItem />
 				<f:selectItem itemValue="OK" itemLabel="OK" />
 				<f:selectItem itemValue="NOTOK" itemLabel="NOTOK" />
 				<f:selectItem itemValue="UNKNOWN" itemLabel="UNKNOWN" />
 			</h:selectOneMenu>
 			Sesso:
-			<h:selectOneRadio id="modificaSex" value="#{studentController.selectedStudent.sex}">
+			<h:selectOneRadio id="modificaSex"
+				value="#{studentController.selectedStudent.sex}">
 				<f:selectItem itemValue="Maschio" itemLabel="M" />
 				<f:selectItem itemValue="Femmina" itemLabel="F" />
 			</h:selectOneRadio>
-			<h:commandButton id="change-button" value="Save Changes" action="#{studentController.updateStudent}" />
+			<h:commandButton id="change-button" value="Save Changes"
+				action="#{studentController.updateStudent}" />
 			<h:commandButton value="Reset" type="reset" />
 		</h:panelGrid>
 	</h:form>

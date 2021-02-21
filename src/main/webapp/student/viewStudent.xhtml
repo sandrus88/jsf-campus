@@ -4,6 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
+	<h:outputStylesheet library="css" name="style.css" />
 	<title>Utenti salvati</title>
 </h:head>
 <h:body>
@@ -19,11 +20,14 @@
 			Job Title: 
 			<h:outputText value="#{studentController.selectedStudent.jobTitle}"></h:outputText>
 			Payment Type: 
-			<h:outputText value="#{studentController.selectedStudent.paymentType}"></h:outputText>
+			<h:outputText
+				value="#{studentController.selectedStudent.paymentType}"></h:outputText>
 			Sesso: 
 			<h:outputText value="#{studentController.selectedStudent.sex}"></h:outputText>
-			<h:commandButton id="back-button" value="Back" action="homeStudent.xhtml" />
-			<h:commandButton id="home-button" value="Home" action="index.xhtml" />
+			<h:commandButton id="back-button" value="Back"
+				action="homeStudent.xhtml" />
+			<h:commandButton id="home-button" value="Home"
+				action="../index.xhtml" />
 		</h:panelGrid>
 	</h:form>
 </h:body>
