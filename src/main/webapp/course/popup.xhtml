@@ -10,7 +10,7 @@
 	<h:form>
 		<h3>Topic associati al corso</h3>
 		
-		<h:dataTable value="#{topicController.topicList}" var="item" border="2" id="popupTable">
+		<h:dataTable value="#{topicController.topicList}" var="item" border="2">
 
 				<h:column>
 					<f:facet name="header">Id</f:facet>    				
@@ -25,6 +25,11 @@
 				<h:column>
 					<f:facet name="header">Description</f:facet>
                 	#{item.description}
+            	</h:column>
+
+				<h:column>
+					<f:facet name="header">Course</f:facet>
+                	#{item.course}
             	</h:column>
 
 				<h:column>
