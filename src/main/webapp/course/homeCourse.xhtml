@@ -4,7 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<h:outputStylesheet library="css" name="style.css" />
+	<!-- <h:outputStylesheet library="css" name="style.css" /> -->
 	<title>Form campi da riempire</title>
 </h:head>
 <h:body>
@@ -12,22 +12,15 @@
 		<h:form>
 			<h3>Aggiungi Corso</h3>
 			<h:panelGrid border="0" columns="2">
-			Id:
-			<h:inputText id="id" value="#{courseController.newId}" />
-			Nome:
-			<h:inputText id="name" value="#{courseController.newName}" />
-			Description:
-			<h:inputText id="description"
-					value="#{courseController.newDescription}" />
+			Id: <h:inputText id="id" value="#{courseController.newId}" />
+			Nome: <h:inputText id="name" value="#{courseController.newName}" />
+			Description: <h:inputText id="description" value="#{courseController.newDescription}" />
 			</h:panelGrid>
 			<h:panelGrid border="0" columns="4">
-				<h:commandButton id="submit-button" value="Salva"
-					action="#{courseController.addCourse}" />
+				<h:commandButton id="submit-button" value="Salva" action="#{courseController.addCourse}" />
 				<h:button value="Reset" />
-				<h:commandButton value="Topic associati"
-					onclick="window.open('course/popup.xhtml', 'mywindow', 'resizable=no,toolbar=no,scrollbars=yes,height=450,width=530,top=145,left=235')" />
-				<h:commandButton id="home-button" value="Home"
-					action="../index.xhtml" />
+				<h:commandButton value="Topic associati" onclick="window.open('course/popup.xhtml', 'mywindow', 'resizable=no,toolbar=no,scrollbars=yes,height=450,width=530,top=145,left=235')" />
+				<h:commandButton id="home-button" value="Home" action="../index.xhtml" />
 			</h:panelGrid>
 		</h:form>
 	</div>
@@ -36,8 +29,7 @@
 		<h1>Lista dei Corsi</h1>
 
 		<h:form>
-			<h:dataTable value="#{courseController.courseList}" var="item"
-				border="2">
+			<h:dataTable value="#{courseController.courseList}" var="item" border="2" id="courseTable">
 
 				<h:column>
 					<f:facet name="header">Id</f:facet>    				
@@ -56,12 +48,9 @@
 
 				<h:column>
 					<f:facet name="header">Descrizione</f:facet>
-					<h:commandLink value="View"
-						action="#{courseController.viewCourse(item)}" />
-					| <h:commandLink value="Edit"
-						action="#{courseController.updateSelectedCourse(item)}" /> 
-					| <h:commandLink value="Delete"
-						action="#{courseController.deleteCourse(item)}" />
+					<h:commandLink value="View" action="#{courseController.viewCourse(item)}" />
+					| <h:commandLink value="Edit" action="#{courseController.updateSelectedCourse(item)}" /> 
+					| <h:commandLink value="Delete" action="#{courseController.deleteCourse(item)}" />
 				</h:column>
 			</h:dataTable>
 		</h:form>
