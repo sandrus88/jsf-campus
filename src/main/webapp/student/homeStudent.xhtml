@@ -11,25 +11,31 @@
 			<h:panelGrid border="0" columns="2">
 				<h:outputLabel>Id:</h:outputLabel> 
 				<h:inputText id="id" value="#{studentController.newId}" required="true" requiredMessage="L'id e' obbligatorio" />
-				<h:outputLabel>Nome:</h:outputLabel> 
+
+				<h:outputLabel>Nome:</h:outputLabel>
 				<h:inputText id="name" value="#{studentController.newName}" required="true" requiredMessage="Il nome e' obbligatorio" />
-				<h:outputLabel>Cognome:</h:outputLabel> 
+
+				<h:outputLabel>Cognome:</h:outputLabel>
 				<h:inputText id="surname" value="#{studentController.newSurname}" required="true" requiredMessage="Il cognome e' obbligatorio" />
-				<h:outputLabel>Job Title:</h:outputLabel> 
+
+				<h:outputLabel>Job Title:</h:outputLabel>
 				<h:inputText id="jobTitle" value="#{studentController.newJobTitle}" />
-				<h:outputLabel>Payment Type:</h:outputLabel> 
+
+				<h:outputLabel>Payment Type:</h:outputLabel>
 				<h:selectOneMenu id="paymentType" value="#{studentController.newPaymentType}">
 					<f:selectItem />
 					<f:selectItem itemValue="OK" itemLabel="OK" />
 					<f:selectItem itemValue="NOTOK" itemLabel="NOTOK" />
 					<f:selectItem itemValue="UNKNOWN" itemLabel="UNKNOWN" />
 				</h:selectOneMenu>
-				<h:outputLabel>Sesso:</h:outputLabel> 
+
+				<h:outputLabel>Sesso:</h:outputLabel>
 				<h:selectOneRadio id="sex" value="#{studentController.newSex}" required="true" requiredMessage="Il sesso e' obbligatorio">
 					<f:selectItem itemValue="Maschio" itemLabel="M" />
 					<f:selectItem itemValue="Femmina" itemLabel="F" />
 				</h:selectOneRadio>
 			</h:panelGrid>
+
 			<h:panelGrid border="0" columns="3">
 				<h:commandButton id="submit-button" value="Salva" action="#{studentController.addStudent}" />
 				<h:button value="Reset" />

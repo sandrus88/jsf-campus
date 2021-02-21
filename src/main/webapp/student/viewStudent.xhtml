@@ -10,16 +10,22 @@
 		<h:panelGrid columns="2" border="0">
 			<h:outputLabel>Id:</h:outputLabel> 
 			<h:outputText value="#{studentController.selectedStudent.id}"></h:outputText>
+
 			<h:outputLabel>Nome:</h:outputLabel> 
 			<h:outputText value="#{studentController.selectedStudent.name}"></h:outputText>
+
 			<h:outputLabel>Cognome:</h:outputLabel> 
 			<h:outputText value="#{studentController.selectedStudent.surname}"></h:outputText>
+
 			<h:outputLabel>Job Title:</h:outputLabel> 
 			<h:outputText value="#{studentController.selectedStudent.jobTitle}"></h:outputText>
+
 			<h:outputLabel>Payment Type:</h:outputLabel> 
 			<h:outputText value="#{studentController.selectedStudent.paymentType}"></h:outputText>
+
 			<h:outputLabel>Sesso:</h:outputLabel> 
 			<h:outputText value="#{studentController.selectedStudent.sex}"></h:outputText>
+
 			<h:commandButton id="back-button" value="Back" action="homeStudent.xhtml" />
 			<h:commandButton id="home-button" value="Home" action="../index.xhtml" />
 		</h:panelGrid>
