@@ -4,30 +4,21 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<h:outputStylesheet library="css" name="style.css" />
+	<!-- <h:outputStylesheet library="css" name="style.css" /> -->
 	<title>Utenti salvati</title>
 </h:head>
 <h:body>
 	<h3>Ecco i tuoi dati</h3>
 	<h:form>
 		<h:panelGrid columns="2" border="0">
-			Id: 
-			<h:outputText value="#{studentController.selectedStudent.id}"></h:outputText>
-			Nome: 
-			<h:outputText value="#{studentController.selectedStudent.name}"></h:outputText>
-			Cognome: 
-			<h:outputText value="#{studentController.selectedStudent.surname}"></h:outputText>
-			Job Title: 
-			<h:outputText value="#{studentController.selectedStudent.jobTitle}"></h:outputText>
-			Payment Type: 
-			<h:outputText
-				value="#{studentController.selectedStudent.paymentType}"></h:outputText>
-			Sesso: 
-			<h:outputText value="#{studentController.selectedStudent.sex}"></h:outputText>
-			<h:commandButton id="back-button" value="Back"
-				action="homeStudent.xhtml" />
-			<h:commandButton id="home-button" value="Home"
-				action="../index.xhtml" />
+			Id: <h:outputText value="#{studentController.selectedStudent.id}"></h:outputText>
+			Nome: <h:outputText value="#{studentController.selectedStudent.name}"></h:outputText>
+			Cognome: <h:outputText value="#{studentController.selectedStudent.surname}"></h:outputText>
+			Job Title: <h:outputText value="#{studentController.selectedStudent.jobTitle}"></h:outputText>
+			Payment Type: <h:outputText value="#{studentController.selectedStudent.paymentType}"></h:outputText>
+			Sesso: <h:outputText value="#{studentController.selectedStudent.sex}"></h:outputText>
+			<h:commandButton id="back-button" value="Back" action="homeStudent.xhtml" />
+			<h:commandButton id="home-button" value="Home" action="../index.xhtml" />
 		</h:panelGrid>
 	</h:form>
 </h:body>
