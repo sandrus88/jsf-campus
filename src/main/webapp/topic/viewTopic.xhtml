@@ -11,18 +11,11 @@
 	<h3>Topic nello specifico</h3>
 	<h:form>
 		<h:panelGrid columns="2" border="0">
-			Id:
-			<h:outputText value="#{topicController.selectedTopic.id}" />
-			Nome:
-			<h:outputText value="#{topicController.selectedTopic.name}" />
-			Description:
-			<h:outputText value="#{topicController.selectedTopic.description}" />
-			Course:
-			<h:outputText value="#{topicController.selectedTopic.course}" />
-			<h:commandButton id="back-button" value="Back"
-				action="homeTopic.xhtml" />
-			<h:commandButton id="home-button" value="Home"
-				action="../index.xhtml" />
+			Id: <h:outputText value="#{topicController.selectedTopic.id}" />
+			Nome: <h:outputText value="#{topicController.selectedTopic.name}" />
+			Description: <h:outputText value="#{topicController.selectedTopic.description}" />
+			<h:commandButton id="back-button" value="Back" action="homeTopic.xhtml" />
+			<h:commandButton id="home-button" value="Home" action="../index.xhtml" />
 		</h:panelGrid>
 	</h:form>
 </h:body>

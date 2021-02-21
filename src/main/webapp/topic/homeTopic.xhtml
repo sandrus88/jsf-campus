@@ -4,7 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<h:outputStylesheet library="css" name="style.css" />
+	<!-- <h:outputStylesheet library="css" name="style.css" /> -->
 	<title>Form campi da riempire</title>
 </h:head>
 <h:body>
@@ -12,22 +12,14 @@
 		<h:form>
 			<h3>Aggiungi Topic</h3>
 			<h:panelGrid border="0" columns="2">
-			Id:
-			<h:inputText id="id" value="#{topicController.newId}" />
-			Nome:
-			<h:inputText id="name" value="#{topicController.newName}" />
-			Description:
-			<h:inputText id="description"
-					value="#{topicController.newDescription}" />
-			Course:
-			<h:inputText id="course" value="#{topicController.newCourse}" />
+			Id: <h:inputText id="id" value="#{topicController.newId}" />
+			Nome: <h:inputText id="name" value="#{topicController.newName}" />
+			Description: <h:inputText id="description" value="#{topicController.newDescription}" />
 			</h:panelGrid>
 			<h:panelGrid border="0" columns="3">
-				<h:commandButton id="submit-button" value="Salva"
-					action="#{topicController.addTopic}" />
+				<h:commandButton id="submit-button" value="Salva" action="#{topicController.addTopic}" />
 				<h:button value="Reset" />
-				<h:commandButton id="home-button" value="Home"
-					action="../index.xhtml" />
+				<h:commandButton id="home-button" value="Home" action="../index.xhtml" />
 			</h:panelGrid>
 		</h:form>
 	</div>
@@ -36,8 +28,7 @@
 		<h1>Lista dei Topic</h1>
 
 		<h:form>
-			<h:dataTable value="#{topicController.topicList}" var="item"
-				border="2">
+			<h:dataTable value="#{topicController.topicList}" var="item" border="2" id="topicTable">
 
 				<h:column>
 					<f:facet name="header">Id</f:facet>    				
@@ -55,18 +46,10 @@
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Course</f:facet>
-                	#{item.course}
-            	</h:column>
-
-				<h:column>
 					<f:facet name="header">Descrizione</f:facet>
-					<h:commandLink value="View"
-						action="#{topicController.viewTopic(item)}" />
-					| <h:commandLink value="Edit"
-						action="#{topicController.updateSelectedTopic(item)}" /> 
-					| <h:commandLink value="Delete"
-						action="#{topicController.deleteTopic(item)}" />
+					<h:commandLink value="View" action="#{topicController.viewTopic(item)}" />
+					| <h:commandLink value="Edit" action="#{topicController.updateSelectedTopic(item)}" /> 
+					| <h:commandLink value="Delete" action="#{topicController.deleteTopic(item)}" />
 				</h:column>
 			</h:dataTable>
 		</h:form>
