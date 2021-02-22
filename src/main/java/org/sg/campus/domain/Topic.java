@@ -1,4 +1,4 @@
-package org.sg.domain;
+package org.sg.campus.domain;
 
 public class Topic {
 	private int id;
