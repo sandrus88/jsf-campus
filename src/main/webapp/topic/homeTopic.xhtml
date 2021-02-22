@@ -9,12 +9,14 @@
 		<h:form>
 			<h3>Aggiungi Topic</h3>
 			<h:panelGrid border="0" columns="2">
-			<h:outputLabel>Id:</h:outputLabel> 
-			<h:inputText id="id" value="#{topicController.newId}" />
-			<h:outputLabel>Nome:</h:outputLabel>
-			<h:inputText id="name" value="#{topicController.newName}" />
-			<h:outputLabel>Description:</h:outputLabel>
-			<h:inputText id="description" value="#{topicController.newDescription}" />
+				<h:outputLabel>Id:</h:outputLabel> 
+				<h:inputText id="id" value="#{topicController.newId}" />
+			
+				<h:outputLabel>Nome:</h:outputLabel>
+				<h:inputText id="name" value="#{topicController.newName}" />
+			
+				<h:outputLabel>Description:</h:outputLabel>
+				<h:inputText id="description" value="#{topicController.newDescription}" />
 			</h:panelGrid>
 			<h:panelGrid border="0" columns="3">
 				<h:commandButton id="submit-button" value="Salva" action="#{topicController.addTopic}" />

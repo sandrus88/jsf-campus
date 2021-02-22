@@ -10,10 +10,13 @@
 		<h:panelGrid columns="2" border="0">
 			<h:outputLabel>Id:</h:outputLabel>
 			<h:outputText value="#{topicController.selectedTopic.id}" />
+			
 			<h:outputLabel>Nome:</h:outputLabel>
 			<h:outputText value="#{topicController.selectedTopic.name}" />
+			
 			<h:outputLabel>Description:</h:outputLabel>
 			<h:outputText value="#{topicController.selectedTopic.description}" />
+			
 			<h:commandButton id="back-button" value="Back" action="homeTopic.xhtml" />
 			<h:commandButton id="home-button" value="Home" action="../index.xhtml" />
 		</h:panelGrid>
