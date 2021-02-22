@@ -9,19 +9,19 @@
 		<h:form>
 			<h3>Aggiungi Studente</h3>
 			<h:panelGrid border="0" columns="2">
-				<h:outputLabel>Id:</h:outputLabel> 
+				<h:outputLabel value="Id:"/> 
 				<h:inputText id="id" value="#{studentController.newId}" required="true" requiredMessage="L'id e' obbligatorio" />
 
-				<h:outputLabel>Nome:</h:outputLabel>
+				<h:outputLabel value="Nome:"/>
 				<h:inputText id="name" value="#{studentController.newName}" required="true" requiredMessage="Il nome e' obbligatorio" />
 
-				<h:outputLabel>Cognome:</h:outputLabel>
+				<h:outputLabel value="Cognome:"/>
 				<h:inputText id="surname" value="#{studentController.newSurname}" required="true" requiredMessage="Il cognome e' obbligatorio" />
 
-				<h:outputLabel>Job Title:</h:outputLabel>
+				<h:outputLabel value="Job Title:"/>
 				<h:inputText id="jobTitle" value="#{studentController.newJobTitle}" />
 
-				<h:outputLabel>Payment Type:</h:outputLabel>
+				<h:outputLabel value="Payment Type:"/>
 				<h:selectOneMenu id="paymentType" value="#{studentController.newPaymentType}">
 					<f:selectItem />
 					<f:selectItem itemValue="OK" itemLabel="OK" />
@@ -29,7 +29,7 @@
 					<f:selectItem itemValue="UNKNOWN" itemLabel="UNKNOWN" />
 				</h:selectOneMenu>
 
-				<h:outputLabel>Sesso:</h:outputLabel>
+				<h:outputLabel value="Sesso:"/>
 				<h:selectOneRadio id="sex" value="#{studentController.newSex}" required="true" requiredMessage="Il sesso e' obbligatorio">
 					<f:selectItem itemValue="Maschio" itemLabel="M" />
 					<f:selectItem itemValue="Femmina" itemLabel="F" />
@@ -51,32 +51,32 @@
 			<h:dataTable value="#{studentController.studentList}" var="item" border="2" id="studentTable">
 
 				<h:column>
-					<f:facet name="header">Id</f:facet>    				
+					<f:facet name="header" value="Id"/>    				
                 	#{item.id}
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Nome</f:facet>
+					<f:facet name="header" value="Nome"/>
                 	#{item.name}
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Cognome</f:facet>
+					<f:facet name="header" value="Cognome"/>
                 	#{item.surname}
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Job Title</f:facet>
+					<f:facet name="header" value="Job Title"/>
                 	#{item.jobTitle}
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">PaymentType</f:facet>
+					<f:facet name="header" value="PaymentType"/>
                 	#{item.paymentType}
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Sesso</f:facet>
+					<f:facet name="header" value="Sesso"/>
                 	#{item.sex}
             	</h:column>
 

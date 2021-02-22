@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.sg.domain.Course;
+import org.sg.domain.Topic;
 
 
 @ManagedBean
@@ -15,6 +16,9 @@ public class CourseController {
 	private List<Course> courseList = new ArrayList<Course>();
 	private Course selectedCourse;
 	
+	private List<Topic> allTopics = new ArrayList<Topic>();// questa e' la lista di tutti i checkbox, anche non selezionati
+	private List<Topic> selectedTopics = selectedCourse.getTopicList();
+			
 	private int newId;
 	private String newName;
 	private String newDescription;

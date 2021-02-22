@@ -8,22 +8,22 @@
 	<h3>Ecco i tuoi dati</h3>
 	<h:form>
 		<h:panelGrid columns="2" border="0">
-			<h:outputLabel>Id:</h:outputLabel> 
+			<h:outputLabel value="Id:"/> 
 			<h:outputText value="#{studentController.selectedStudent.id}"></h:outputText>
 
-			<h:outputLabel>Nome:</h:outputLabel> 
+			<h:outputLabel value="Nome:"/> 
 			<h:outputText value="#{studentController.selectedStudent.name}"></h:outputText>
 
-			<h:outputLabel>Cognome:</h:outputLabel> 
+			<h:outputLabel value="Cognome:"/> 
 			<h:outputText value="#{studentController.selectedStudent.surname}"></h:outputText>
 
-			<h:outputLabel>Job Title:</h:outputLabel> 
+			<h:outputLabel value="Job Title:"/> 
 			<h:outputText value="#{studentController.selectedStudent.jobTitle}"></h:outputText>
 
-			<h:outputLabel>Payment Type:</h:outputLabel> 
+			<h:outputLabel value="Payment Type:"/> 
 			<h:outputText value="#{studentController.selectedStudent.paymentType}"></h:outputText>
 
-			<h:outputLabel>Sesso:</h:outputLabel> 
+			<h:outputLabel value="Sesso:"/> 
 			<h:outputText value="#{studentController.selectedStudent.sex}"></h:outputText>
 
 			<h:commandButton id="back-button" value="Back" action="homeStudent.xhtml" />

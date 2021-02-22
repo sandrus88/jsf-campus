@@ -1,13 +1,18 @@
 package org.sg.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Course {
 	private int id;
 	private String name;
 	private String description;
+	private List<Topic> topicList = new ArrayList<Topic>();
 	
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -24,8 +29,15 @@ public class Course {
 		this.description = description;
 	}
 	
+	public List<Topic> getTopicList() {
+		return topicList;
+	}
+	public void setTopicList(List<Topic> topicList) {
+		this.topicList = topicList;
+	}
+	
 	@Override
 	public String toString() {
-		return "Course Id: " + id + ", Nome: " + name + ", Description: " + description;
+		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", description: " + description + ", topics: " + topicList + "]";
 	}
 }

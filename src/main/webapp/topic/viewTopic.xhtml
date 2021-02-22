@@ -8,13 +8,13 @@
 	<h3>Topic nello specifico</h3>
 	<h:form>
 		<h:panelGrid columns="2" border="0">
-			<h:outputLabel>Id:</h:outputLabel>
+			<h:outputLabel value="Id:"/>
 			<h:outputText value="#{topicController.selectedTopic.id}" />
 			
-			<h:outputLabel>Nome:</h:outputLabel>
+			<h:outputLabel value="Nome:"/>
 			<h:outputText value="#{topicController.selectedTopic.name}" />
 			
-			<h:outputLabel>Description:</h:outputLabel>
+			<h:outputLabel value="Description:"/>
 			<h:outputText value="#{topicController.selectedTopic.description}" />
 			
 			<h:commandButton id="back-button" value="Back" action="homeTopic.xhtml" />

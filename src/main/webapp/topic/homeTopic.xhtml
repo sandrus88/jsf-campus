@@ -9,13 +9,13 @@
 		<h:form>
 			<h3>Aggiungi Topic</h3>
 			<h:panelGrid border="0" columns="2">
-				<h:outputLabel>Id:</h:outputLabel> 
+				<h:outputLabel value="Id:"/> 
 				<h:inputText id="id" value="#{topicController.newId}" />
 			
-				<h:outputLabel>Nome:</h:outputLabel>
+				<h:outputLabel value="Nome:"/>
 				<h:inputText id="name" value="#{topicController.newName}" />
 			
-				<h:outputLabel>Description:</h:outputLabel>
+				<h:outputLabel value="Description:"/>
 				<h:inputText id="description" value="#{topicController.newDescription}" />
 			</h:panelGrid>
 			<h:panelGrid border="0" columns="3">
@@ -33,17 +33,17 @@
 			<h:dataTable value="#{topicController.topicList}" var="item" border="2" id="topicTable">
 
 				<h:column>
-					<f:facet name="header">Id</f:facet>    				
+					<f:facet name="header" value="Id"/>    				
                 	#{item.id}
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Nome</f:facet>
+					<f:facet name="header" value="Nome"/>
                 	#{item.name}
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Description</f:facet>
+					<f:facet name="header" value="Description"/>
                 	#{item.description}
             	</h:column>
 
