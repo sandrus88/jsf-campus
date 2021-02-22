@@ -1,28 +1,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-	<h:outputStylesheet library="css" name="style.css" />
 	<title>Utenti salvati</title>
 </h:head>
 <h:body>
 	<h3>Topic nello specifico</h3>
 	<h:form>
 		<h:panelGrid columns="2" border="0">
-			Id:
+			<h:outputLabel>Id:</h:outputLabel>
 			<h:outputText value="#{topicController.selectedTopic.id}" />
-			Nome:
+			
+			<h:outputLabel>Nome:</h:outputLabel>
 			<h:outputText value="#{topicController.selectedTopic.name}" />
-			Description:
+			
+			<h:outputLabel>Description:</h:outputLabel>
 			<h:outputText value="#{topicController.selectedTopic.description}" />
-			Course:
-			<h:outputText value="#{topicController.selectedTopic.course}" />
-			<h:commandButton id="back-button" value="Back"
-				action="homeTopic.xhtml" />
-			<h:commandButton id="home-button" value="Home"
-				action="../index.xhtml" />
+			
+			<h:commandButton id="back-button" value="Back" action="homeTopic.xhtml" />
+			<h:commandButton id="home-button" value="Home" action="../index.xhtml" />
 		</h:panelGrid>
 	</h:form>
 </h:body>

@@ -17,14 +17,12 @@ public class TopicController {
 	private int newId;
 	private String newName;
 	private String newDescription;
-	private int newCourse;
 	
 	public void addTopic() {
 		Topic topic = new Topic();
 		topic.setId(newId);
 		topic.setName(newName);
 		topic.setDescription(newDescription);
-		topic.setCourse(newCourse);
 		topicList.add(topic);
 		System.out.println("Topic " + topic + " added correctly");
 	}
@@ -40,10 +38,6 @@ public class TopicController {
 	}
 	
 	public String updateTopic() {
-		selectedTopic.getId();
-		selectedTopic.getName();
-		selectedTopic.getDescription();
-		selectedTopic.getCourse();
 		System.out.println("Topic " + selectedTopic + " updated correctly");
 		return "/topic/homeTopic.xhtml?faces-redirect=true";
 	}
@@ -72,12 +66,7 @@ public class TopicController {
 	public void setNewDescription(String newDescription) {
 		this.newDescription = newDescription;
 	}
-	public int getNewCourse() {
-		return newCourse;
-	}
-	public void setNewCourse(int newCourse) {
-		this.newCourse = newCourse;
-	}
+	
 	public List<Topic> getTopicList() {
 		return topicList;
 	}

@@ -4,7 +4,6 @@ public class Topic {
 	private int id;
 	private String name;
 	private String description;
-	private int course;
 	
 	public int getId() {
 		return id;
@@ -24,15 +23,9 @@ public class Topic {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getCourse() {
-		return course;
-	}
-	public void setCourse(int course) {
-		this.course = course;
-	}
 	
 	@Override
 	public String toString() {
-		return "Topic Id: " + id + ", Nome: " + name + ", Description: " + description + ", Course: " + course;
+		return "Topic Id: " + id + ", Nome: " + name + ", Description: " + description;
 	}
 }

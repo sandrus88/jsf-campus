@@ -1,59 +1,54 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-	<h:outputStylesheet library="css" name="style.css" />
 	<title>Form campi da riempire</title>
 </h:head>
 <h:body>
-	<div id="container">
+	<div id="containerForm">
 		<h:form>
 			<h3>Aggiungi Studente</h3>
 			<h:panelGrid border="0" columns="2">
-			Id:
-			<h:inputText id="id" value="#{studentController.newId}"
-					required="true" requiredMessage="L'id e' obbligatorio" />
-			Nome:
-			<h:inputText id="name" value="#{studentController.newName}"
-					required="true" requiredMessage="Il nome e' obbligatorio" />
-			Cognome:
-			<h:inputText id="surname" value="#{studentController.newSurname}"
-					required="true" requiredMessage="Il cognome e' obbligatorio" />
-			Job Title:
-			<h:inputText id="jobTitle" value="#{studentController.newJobTitle}" />
-			Payment Type:
-			<h:selectOneMenu id="paymentType"
-					value="#{studentController.newPaymentType}">
+				<h:outputLabel>Id:</h:outputLabel> 
+				<h:inputText id="id" value="#{studentController.newId}" required="true" requiredMessage="L'id e' obbligatorio" />
+
+				<h:outputLabel>Nome:</h:outputLabel>
+				<h:inputText id="name" value="#{studentController.newName}" required="true" requiredMessage="Il nome e' obbligatorio" />
+
+				<h:outputLabel>Cognome:</h:outputLabel>
+				<h:inputText id="surname" value="#{studentController.newSurname}" required="true" requiredMessage="Il cognome e' obbligatorio" />
+
+				<h:outputLabel>Job Title:</h:outputLabel>
+				<h:inputText id="jobTitle" value="#{studentController.newJobTitle}" />
+
+				<h:outputLabel>Payment Type:</h:outputLabel>
+				<h:selectOneMenu id="paymentType" value="#{studentController.newPaymentType}">
 					<f:selectItem />
 					<f:selectItem itemValue="OK" itemLabel="OK" />
 					<f:selectItem itemValue="NOTOK" itemLabel="NOTOK" />
 					<f:selectItem itemValue="UNKNOWN" itemLabel="UNKNOWN" />
 				</h:selectOneMenu>
-			Sesso:
-			<h:selectOneRadio id="sex" value="#{studentController.newSex}"
-					required="true" requiredMessage="Il sesso e' obbligatorio">
+
+				<h:outputLabel>Sesso:</h:outputLabel>
+				<h:selectOneRadio id="sex" value="#{studentController.newSex}" required="true" requiredMessage="Il sesso e' obbligatorio">
 					<f:selectItem itemValue="Maschio" itemLabel="M" />
 					<f:selectItem itemValue="Femmina" itemLabel="F" />
 				</h:selectOneRadio>
 			</h:panelGrid>
+
 			<h:panelGrid border="0" columns="3">
-				<h:commandButton id="submit-button" value="Salva"
-					action="#{studentController.addStudent}" />
+				<h:commandButton id="submit-button" value="Salva" action="#{studentController.addStudent}" />
 				<h:button value="Reset" />
-				<h:commandButton id="home-button" value="Home"
-					action="../index.xhtml" />
+				<h:commandButton id="home-button" value="Home" action="../index.xhtml" />
 			</h:panelGrid>
 		</h:form>
 	</div>
 
-	<div id="container">
+	<div id="containerTable">
 		<h1>Studenti registrati</h1>
 
 		<h:form>
-			<h:dataTable value="#{studentController.studentList}" var="item"
-				border="2">
+			<h:dataTable value="#{studentController.studentList}" var="item" border="2" id="studentTable">
 
 				<h:column>
 					<f:facet name="header">Id</f:facet>    				
@@ -87,12 +82,9 @@
 
 				<h:column>
 					<f:facet name="header">Descrizione</f:facet>
-					<h:commandLink value="View"
-						action="#{studentController.viewStudent(item)}" />
-					| <h:commandLink value="Edit"
-						action="#{studentController.updateSelectedStudent(item)}" /> 
-					| <h:commandLink value="Delete"
-						action="#{studentController.deleteStudent(item)}" />
+					<h:commandLink value="View" action="#{studentController.viewStudent(item)}" />
+					| <h:commandLink value="Edit" action="#{studentController.updateSelectedStudent(item)}" /> 
+					| <h:commandLink value="Delete" action="#{studentController.deleteStudent(item)}" />
 				</h:column>
 			</h:dataTable>
 		</h:form>
