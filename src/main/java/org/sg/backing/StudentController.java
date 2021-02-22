@@ -39,12 +39,6 @@ public class StudentController {
 	}
 	
 	public String updateStudent() {
-		selectedStudent.getId();
-		selectedStudent.getName();
-		selectedStudent.getSurname();
-		selectedStudent.getJobTitle();
-		selectedStudent.getPaymentType();
-		selectedStudent.getSex();
 		System.out.println("Student " + selectedStudent + " updated correctly");
 		return "/student/homeStudent.xhtml?faces-redirect=true";
 	}
