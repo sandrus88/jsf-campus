@@ -58,6 +58,6 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Studente Id: " + id + ", Nome: " + name + ", Cognome: " + surname + ", Job Title: " + jobTitle + ", Pagamento: " + paymentType + ", Sesso: " + sex;
+		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", surname: " + surname + ", job title: " + jobTitle + ", payment type: " + paymentType + ", sex: " + sex + "]";
 	}
 }

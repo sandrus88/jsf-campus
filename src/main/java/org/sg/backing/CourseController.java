@@ -17,7 +17,7 @@ public class CourseController {
 	private Course selectedCourse;
 	
 	private List<Topic> allTopics = new ArrayList<Topic>();// questa e' la lista di tutti i checkbox, anche non selezionati
-	private List<Topic> selectedTopics = selectedCourse.getTopicList();
+//	private List<Topic> selectedTopics = selectedCourse.getTopicList();
 			
 	private int newId;
 	private String newName;
@@ -39,7 +39,7 @@ public class CourseController {
 	
 	public String updateSelectedCourse(Course course) {
 		selectedCourse = course;
-		return "/course/editCourse.xhtml?faces-redirect=true";
+		return "/app/course/editCourse.xhtml?faces-redirect=true";
 	}
 	
 	public String updateCourse() {
@@ -47,13 +47,13 @@ public class CourseController {
 		selectedCourse.getName();
 		selectedCourse.getDescription();
 		System.out.println("Course " + selectedCourse + " updated correctly");
-		return "/course/homeCourse.xhtml?faces-redirect=true";
+		return "/app/course/homeCourse.xhtml?faces-redirect=true";
 	}
 	
 	public String viewCourse(Course course) {
 		selectedCourse = course;
 		System.out.println("Course " + course + " showed correctly");
-		return "/course/viewCourse.xhtml?faces-redirect=true";
+		return "/app/course/viewCourse.xhtml?faces-redirect=true";
 	}
 	
 	public int getNewId() {

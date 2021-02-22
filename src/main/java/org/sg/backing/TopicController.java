@@ -34,18 +34,18 @@ public class TopicController {
 	
 	public String updateSelectedTopic(Topic topic) {
 		selectedTopic = topic;
-		return "/topic/editTopic.xhtml?faces-redirect=true";
+		return "/app/topic/editTopic.xhtml?faces-redirect=true";
 	}
 	
 	public String updateTopic() {
 		System.out.println("Topic " + selectedTopic + " updated correctly");
-		return "/topic/homeTopic.xhtml?faces-redirect=true";
+		return "/app/topic/homeTopic.xhtml?faces-redirect=true";
 	}
 	
 	public String viewTopic(Topic topic) {
 		selectedTopic = topic;
 		System.out.println("Topic " + topic + " showed correctly");
-		return "/topic/viewTopic.xhtml?faces-redirect=true";
+		return "/app/topic/viewTopic.xhtml?faces-redirect=true";
 	}
 	
 	public int getNewId() {

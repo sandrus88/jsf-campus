@@ -35,18 +35,18 @@ public class StudentController {
 	
 	public String updateSelectedStudent(Student student) {
 		selectedStudent = student;
-		return "/student/editStudent.xhtml?faces-redirect=true";
+		return "/app/student/editStudent.xhtml?faces-redirect=true";
 	}
 	
 	public String updateStudent() {
 		System.out.println("Student " + selectedStudent + " updated correctly");
-		return "/student/homeStudent.xhtml?faces-redirect=true";
+		return "/app/student/homeStudent.xhtml?faces-redirect=true";
 	}
 	
 	public String viewStudent(Student student) {
 		selectedStudent = student;
 		System.out.println("Student " + student + " showed correctly");
-		return "/student/viewStudent.xhtml?faces-redirect=true";
+		return "/app/student/viewStudent.xhtml?faces-redirect=true";
 	}
 
 	public void deleteStudent(Student student) {

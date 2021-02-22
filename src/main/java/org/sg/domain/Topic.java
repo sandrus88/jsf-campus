@@ -26,6 +26,6 @@ public class Topic {
 	
 	@Override
 	public String toString() {
-		return "Topic Id: " + id + ", Nome: " + name + ", Description: " + description;
+		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", description: " + description + "]";
 	}
 }

@@ -19,10 +19,9 @@
 				<h:inputText id="description" value="#{courseController.newDescription}" />
 			</h:panelGrid>
 			
-			<h:panelGrid border="0" columns="4">
+			<h:panelGrid border="0" columns="3">
 				<h:commandButton id="submit-button" value="Salva" action="#{courseController.addCourse}" />
 				<h:button value="Reset" />
-				<h:commandButton value="Topic associati" onclick="window.open('app/course/courseTopicsList.xhtml', 'mywindow', 'resizable=no,toolbar=no,scrollbars=yes,height=450,width=530,top=145,left=235')" />
 				<h:commandButton id="home-button" value="Home" action="../../index.xhtml" />
 			</h:panelGrid>
 		</h:form>
@@ -49,10 +48,11 @@
             	</h:column>
 
 				<h:column>
-					<f:facet name="header" value="Descrizionei"/>
+					<f:facet name="header">Descrizione</f:facet> 
 					<h:commandLink value="View" action="#{courseController.viewCourse(item)}" />
 					| <h:commandLink value="Edit" action="#{courseController.updateSelectedCourse(item)}" /> 
 					| <h:commandLink value="Delete" action="#{courseController.deleteCourse(item)}" />
+					| <h:commandLink value="Topics" onclick="window.open('courseTopicsList.xhtml', 'mywindow', 'resizable=no,toolbar=no,scrollbars=yes,height=450,width=530,top=145,left=235')" />
 				</h:column>
 			</h:dataTable>
 		</h:form>
