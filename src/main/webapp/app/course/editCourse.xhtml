@@ -1,6 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Modifica</title>
 </h:head>
@@ -10,10 +9,13 @@
 		<h:panelGrid columns="2" border="0">
 			<h:outputLabel value="Id:"/>
 			<h:inputText id="modificaId" value="#{courseController.selectedCourse.id}" />
+			
 			<h:outputLabel value="Nome:"/>
 			<h:inputText id="modificaName" value="#{courseController.selectedCourse.name}" />
+			
 			<h:outputLabel value="Description:"/>
 			<h:inputText id="modificaDescription" value="#{courseController.selectedCourse.description}" />
+			
 			<h:commandButton id="change-button" value="Save Changes" action="#{courseController.updateCourse}" />
 			<h:commandButton value="Reset" type="reset" />
 		</h:panelGrid>

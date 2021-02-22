@@ -1,6 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Utenti salvati</title>
 </h:head>
@@ -9,22 +8,22 @@
 	<h:form>
 		<h:panelGrid columns="2" border="0">
 			<h:outputLabel value="Id:"/> 
-			<h:outputText value="#{studentController.selectedStudent.id}"></h:outputText>
+			<h:outputText value="#{studentController.selectedStudent.id}"/>
 
 			<h:outputLabel value="Nome:"/> 
-			<h:outputText value="#{studentController.selectedStudent.name}"></h:outputText>
+			<h:outputText value="#{studentController.selectedStudent.name}"/>
 
 			<h:outputLabel value="Cognome:"/> 
-			<h:outputText value="#{studentController.selectedStudent.surname}"></h:outputText>
+			<h:outputText value="#{studentController.selectedStudent.surname}"/>
 
 			<h:outputLabel value="Job Title:"/> 
-			<h:outputText value="#{studentController.selectedStudent.jobTitle}"></h:outputText>
+			<h:outputText value="#{studentController.selectedStudent.jobTitle}"/>
 
 			<h:outputLabel value="Payment Type:"/> 
-			<h:outputText value="#{studentController.selectedStudent.paymentType}"></h:outputText>
+			<h:outputText value="#{studentController.selectedStudent.paymentType}"/>
 
 			<h:outputLabel value="Sesso:"/> 
-			<h:outputText value="#{studentController.selectedStudent.sex}"></h:outputText>
+			<h:outputText value="#{studentController.selectedStudent.sex}"/>
 
 			<h:commandButton id="back-button" value="Back" action="homeStudent.xhtml" />
 			<h:commandButton id="home-button" value="Home" action="../../index.xhtml" />

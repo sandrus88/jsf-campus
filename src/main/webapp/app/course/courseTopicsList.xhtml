@@ -8,25 +8,24 @@
 	<h:form>
 		<h3>Topic associati al corso</h3>
 		
-		<h:dataTable value="#{topicController.topicList}" var="item" border="2" id="popupTable">
-
+		<h:dataTable value="#{topicController.topicList}" var="item" border="2" id="courseTopicsTable">
 				<h:column>
-					<f:facet name="header" value="Id"/>    				
+					<f:facet name="header">Id</f:facet>    				
                 	#{item.id}
             	</h:column>
 
 				<h:column>
-					<f:facet name="header" value="Nome"/>
+					<f:facet name="header">Nome</f:facet>
                 	#{item.name}
             	</h:column>
 
 				<h:column>
-					<f:facet name="header" value="Description"/>
+					<f:facet name="header">Description</f:facet>
                 	#{item.description}
             	</h:column>
 
 				<h:column>
-					<f:facet name="header" value="Seleziona"/>
+					<f:facet name="header">Seleziona</f:facet>
 					<h:selectBooleanCheckbox id="selectionTopic">
 					
 					</h:selectBooleanCheckbox>
