@@ -15,12 +15,15 @@
 
 			<h:outputLabel value="Cognome:"/> 
 			<h:outputText value="#{studentController.selectedStudent.surname}"/>
+			
+			<h:outputLabel value="Email:"/>
+			<h:outputText id="email" value="#{studentController.selectedStudent.email}" />
 
 			<h:outputLabel value="Job Title:"/> 
 			<h:outputText value="#{studentController.selectedStudent.jobTitle}"/>
 
 			<h:outputLabel value="Payment Type:"/> 
-			<h:outputText value="#{studentController.selectedStudent.paymentType}"/>
+			<h:outputText value="#{studentController.selectedStudent.paymentType.label}"/>
 
 			<h:outputLabel value="Sesso:"/> 
 			<h:outputText value="#{studentController.selectedStudent.sex}"/>

@@ -20,8 +20,8 @@
 			</h:panelGrid>
 			<h:panelGrid border="0" columns="3">
 				<h:commandButton id="submit-button" value="Salva" action="#{topicController.addTopic}" />
-				<h:button value="Reset" />
-				<h:commandButton id="home-button" value="Home" action="../../index.xhtml" />
+				<h:commandButton id="reset-button" value="Reset" action="#{topicController.reset()}" immediate="true" />
+				<h:commandButton id="home-button" value="Home" action="#{topicController.backHome()}" immediate="true" />
 			</h:panelGrid>
 		</h:form>
 	</div>

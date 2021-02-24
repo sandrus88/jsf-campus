@@ -17,12 +17,15 @@
 			
 				<h:outputLabel value="Description:"/>
 				<h:inputText id="description" value="#{courseController.newDescription}" />
+				
+				<h:outputLabel value="Enabled:"/>
+				<h:selectBooleanCheckbox id="enabledCourse"></h:selectBooleanCheckbox>
 			</h:panelGrid>
 			
 			<h:panelGrid border="0" columns="3">
 				<h:commandButton id="submit-button" value="Salva" action="#{courseController.addCourse}" />
-				<h:button value="Reset" />
-				<h:commandButton id="home-button" value="Home" action="../../index.xhtml" />
+				<h:commandButton id="reset-button" value="Reset" action="#{courseController.reset()}" immediate="true" />
+				<h:commandButton id="home-button" value="Home" action="#{courseController.backHome()}" immediate="true" />
 			</h:panelGrid>
 		</h:form>
 	</div>

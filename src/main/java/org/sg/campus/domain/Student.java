@@ -4,8 +4,9 @@ public class Student {
 	private int id;
 	private String name;
 	private String surname;
+	private String email;	
 	private String jobTitle;
-	private String paymentType;
+	private PaymentType paymentType;
 	private String sex;
 	
 	public void setName(String name) {
@@ -22,10 +23,6 @@ public class Student {
 
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
-	}
-
-	public void setPaymentType(String paymentType) {
-		this.paymentType = paymentType;
 	}
 
 	public void setSex(String sex) {
@@ -48,16 +45,29 @@ public class Student {
 		return jobTitle;
 	}
 
-	public String getPaymentType() {
+	public String getSex() {
+		return sex;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	
+	public PaymentType getPaymentType() {
 		return paymentType;
 	}
 
-	public String getSex() {
-		return sex;
+	public void setPaymentType(PaymentType paymentType) {
+		this.paymentType = paymentType;
 	}
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", surname: " + surname + ", job title: " + jobTitle + ", payment type: " + paymentType + ", sex: " + sex + "]";
+		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", surname: " + surname + ", email: " + email + ", job title: " + jobTitle + ", payment type: " + paymentType + ", sex: " + sex + "]";
 	}
 }

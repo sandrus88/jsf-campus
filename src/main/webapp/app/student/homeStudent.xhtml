@@ -17,16 +17,19 @@
 
 				<h:outputLabel value="Cognome:"/>
 				<h:inputText id="surname" value="#{studentController.newSurname}" required="true" requiredMessage="Il cognome e' obbligatorio" />
-
+				
+				<h:outputLabel value="Email:"/>
+				<h:inputText id="email" value="#{studentController.newEmail}" required="true">
+					<f:validator validatorId="emailValidator" />
+				</h:inputText>
+				
 				<h:outputLabel value="Job Title:"/>
 				<h:inputText id="jobTitle" value="#{studentController.newJobTitle}" />
 
 				<h:outputLabel value="Payment Type:"/>
 				<h:selectOneMenu id="paymentType" value="#{studentController.newPaymentType}">
 					<f:selectItem />
-					<f:selectItem itemValue="OK" itemLabel="OK" />
-					<f:selectItem itemValue="NOTOK" itemLabel="NOTOK" />
-					<f:selectItem itemValue="UNKNOWN" itemLabel="UNKNOWN" />
+					<f:selectItems value="#{studentController.getEnumValues()}" var="item" itemValue="#{item}" itemLabel="#{item.label}" />
 				</h:selectOneMenu>
 
 				<h:outputLabel value="Sesso:"/>
@@ -34,12 +37,15 @@
 					<f:selectItem itemValue="Maschio" itemLabel="M" />
 					<f:selectItem itemValue="Femmina" itemLabel="F" />
 				</h:selectOneRadio>
+				
+				<h:message for="email" style="color:red" />
+				
 			</h:panelGrid>
 
 			<h:panelGrid border="0" columns="3">
-				<h:commandButton id="submit-button" value="Salva" action="#{studentController.addStudent}" />
-				<h:button value="Reset" />
-				<h:commandButton id="home-button" value="Home" action="../../index.xhtml" />
+				<h:commandButton id="submit-button" value="Salva" action="#{studentController.addStudent()}" />
+				<h:commandButton id="reset-button" value="Reset" action="#{studentController.reset()}" immediate="true" />
+				<h:commandButton id="home-button" value="Home" action="#{studentController.backHome()}" immediate="true" />
 			</h:panelGrid>
 		</h:form>
 	</div>
@@ -64,7 +70,12 @@
 					<f:facet name="header">Cognome</f:facet>
                 	#{item.surname}
             	</h:column>
-
+				
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+                	#{item.email}
+            	</h:column>
+            	
 				<h:column>
 					<f:facet name="header">Job Title</f:facet>
                 	#{item.jobTitle}
@@ -72,7 +83,7 @@
 
 				<h:column>
 					<f:facet name="header">PaymentType</f:facet>
-                	#{item.paymentType}
+                	#{item.paymentType.label}
             	</h:column>
 
 				<h:column>

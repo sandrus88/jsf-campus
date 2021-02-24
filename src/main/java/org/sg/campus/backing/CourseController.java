@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.sg.campus.domain.Course;
 import org.sg.campus.domain.Topic;
@@ -21,7 +22,8 @@ public class CourseController {
 	
 	private List<Topic> allTopics = new ArrayList<Topic>();
 	private List<Topic> selectedTopics;
-			
+	
+	private boolean checkedTopics;
 	private int newId;
 	private String newName;
 	private String newDescription;
@@ -29,6 +31,7 @@ public class CourseController {
 	public void courseTopics(Course course) {
 		selectedCourse = course;
 		selectedTopics = selectedCourse.getTopicList();
+		checkedTopics = true;
 	}
 	
 	public void addCourse() {
@@ -97,5 +100,23 @@ public class CourseController {
 	}
 	public List<Topic> getSelectedTopics() {
 		return selectedTopics;
+	}
+
+	public boolean isCheckedTopics() {
+		return checkedTopics;
+	}
+
+	public void setCheckedTopics(boolean checkedTopics) {
+		this.checkedTopics = checkedTopics;
+	}
+	
+	public String reset() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/app/course/homeCourse.xhtml?faces-redirect=true";
+	}
+	
+	public String backHome() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/index.xhtml?faces-redirect=true";
 	}
 }

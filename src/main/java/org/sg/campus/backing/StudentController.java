@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
+import org.sg.campus.domain.PaymentType;
 import org.sg.campus.domain.Student;
 
 @ManagedBean
@@ -17,32 +19,38 @@ public class StudentController {
 	private int newId;
 	private String newName;
 	private String newSurname;
+	private String newEmail;
 	private String newJobTitle;
-	private String newPaymentType;
+	private PaymentType newPaymentType;
 	private String newSex;
+
+	public PaymentType[] getEnumValues() {
+		return PaymentType.values();
+	}
 
 	public void addStudent() {
 		Student student = new Student();
 		student.setId(newId);
 		student.setName(newName);
 		student.setSurname(newSurname);
+		student.setEmail(newEmail);
 		student.setJobTitle(newJobTitle);
 		student.setPaymentType(newPaymentType);
 		student.setSex(newSex);
 		studentList.add(student);
 		System.out.println("Student " + student + " added correctly");
 	}
-	
+
 	public String updateSelectedStudent(Student student) {
 		selectedStudent = student;
 		return "/app/student/editStudent.xhtml?faces-redirect=true";
 	}
-	
+
 	public String updateStudent() {
 		System.out.println("Student " + selectedStudent + " updated correctly");
 		return "/app/student/homeStudent.xhtml?faces-redirect=true";
 	}
-	
+
 	public String viewStudent(Student student) {
 		selectedStudent = student;
 		System.out.println("Student " + student + " showed correctly");
@@ -70,7 +78,7 @@ public class StudentController {
 		this.newJobTitle = newJobTitle;
 	}
 
-	public void setNewPaymentType(String newPaymentType) {
+	public void setNewPaymentType(PaymentType newPaymentType) {
 		this.newPaymentType = newPaymentType;
 	}
 
@@ -94,12 +102,20 @@ public class StudentController {
 		return newJobTitle;
 	}
 
-	public String getNewPaymentType() {
+	public PaymentType getNewPaymentType() {
 		return newPaymentType;
 	}
 
 	public String getNewSex() {
 		return newSex;
+	}
+
+	public String getNewEmail() {
+		return newEmail;
+	}
+
+	public void setNewEmail(String newEmail) {
+		this.newEmail = newEmail;
 	}
 
 	public List<Student> getStudentList() {
@@ -108,5 +124,15 @@ public class StudentController {
 
 	public Student getSelectedStudent() {
 		return selectedStudent;
+	}
+	
+	public String reset() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/app/student/homeStudent.xhtml?faces-redirect=true";
+	}
+	
+	public String backHome() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/index.xhtml?faces-redirect=true";
 	}
 }

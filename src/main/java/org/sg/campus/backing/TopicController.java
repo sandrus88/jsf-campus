@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.sg.campus.domain.Topic;
 
@@ -72,5 +73,15 @@ public class TopicController {
 	}
 	public Topic getSelectedTopic() {
 		return selectedTopic;
+	}
+	
+	public String reset() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/app/topic/homeTopic.xhtml?faces-redirect=true";
+	}
+	
+	public String backHome() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/index.xhtml?faces-redirect=true";
 	}
 }

@@ -10,16 +10,16 @@
 		<h3>Topics del corso #{courseController.selectedCourse.name}</h3>
 
 		<!-- <ui:repeat var="item" value="#{courseController.allTopics}">
-			<h:outputLabel value="Id" />
+			<h:outputText value="Id" />
 			#{item.id}
 
-			<h:outputLabel value="Name" />
+			<h:outputText value="Name" />
 			#{item.name}
 
-			<h:outputLabel value="Description" />
+			<h:outputText value="Description" />
 			#{item.description}
 
-			<h:outputLabel value="Seleziona" />
+			<h:outputText value="Seleziona" />
 			<h:selectBooleanCheckbox id="selectionTopic">
 
 			</h:selectBooleanCheckbox>
@@ -44,7 +44,7 @@
 				<h:column>
 					<f:facet name="header">Seleziona</f:facet>
 					<h:selectBooleanCheckbox id="selectionTopic">
-					
+			
 					</h:selectBooleanCheckbox> 
 		 		</h:column>
 		</h:dataTable> 
