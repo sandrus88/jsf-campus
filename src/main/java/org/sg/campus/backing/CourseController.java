@@ -26,11 +26,14 @@ public class CourseController {
 
 	private String newName;
 	private String newDescription;
+	private boolean newEnabled;
 
 	public void addCourse() {
 		Course course = new Course();
 		course.setId(applicationBean.getNextInt());
+		course.setName(newName);
 		course.setDescription(newDescription);
+		course.setEnabled(newEnabled);
 		courseList.add(course);
 		System.out.println("Course " + course + " added correctly");
 	}
@@ -75,6 +78,14 @@ public class CourseController {
 
 	public void setNewDescription(String newDescription) {
 		this.newDescription = newDescription;
+	}
+
+	public boolean isNewEnabled() {
+		return newEnabled;
+	}
+
+	public void setNewEnabled(boolean newEnabled) {
+		this.newEnabled = newEnabled;
 	}
 
 	public void setApplicationBean(ApplicationBean applicationBean) {

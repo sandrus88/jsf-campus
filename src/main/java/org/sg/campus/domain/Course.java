@@ -7,6 +7,7 @@ public class Course {
 	private int id;
 	private String name;
 	private String description;
+	private boolean enabled;
 	private List<Topic> topicList = new ArrayList<Topic>();
 	
 	public int getId() {
@@ -41,6 +42,14 @@ public class Course {
 		this.topicList = topicList;
 	}
 	
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	@Override
 	public String toString() {
 		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", description: " + description + ", topics: " + topicList + "]";
