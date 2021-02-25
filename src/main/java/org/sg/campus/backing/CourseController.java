@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+import org.sg.campus.beans.ApplicationBean;
 import org.sg.campus.domain.Course;
 import org.sg.campus.domain.Topic;
 import org.sg.campus.util.JsfUtil;
@@ -117,6 +118,7 @@ public class CourseController {
 	private void cleanForm() {
 		setNewName(null);
 		setNewDescription(null);
+		setNewEnabled(false);
 	}
 
 	public String reset() {

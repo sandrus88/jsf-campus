@@ -37,17 +37,17 @@
 				</h:selectOneRadio>
 			</h:panelGrid>	
 			
+			<h:panelGrid id="panelButtonsStudent" border="0" columns="3">
+				<h:commandButton id="submit-button" value="Save" action="#{studentController.addStudent()}" />
+				<h:commandButton id="reset-button" value="Reset" action="#{studentController.reset()}" immediate="true" />
+				<h:commandButton id="home-button" value="Home" action="#{studentController.backHome()}" immediate="true" />
+			</h:panelGrid>
+			
 			<h:panelGrid id="panelErrorMessage" border="0" columns="1">	
 				<h:message for="name" style="color:red" />
 				<h:message for="surname" style="color:red" />
 				<h:message for="email" style="color:red" />
 				<h:message for="sex" style="color:red" />	
-			</h:panelGrid>
-			
-			<h:panelGrid id="panelButtonsStudent" border="0" columns="3">
-				<h:commandButton id="submit-button" value="Save" action="#{studentController.addStudent()}" />
-				<h:commandButton id="reset-button" value="Reset" action="#{studentController.reset()}" immediate="true" />
-				<h:commandButton id="home-button" value="Home" action="#{studentController.backHome()}" immediate="true" />
 			</h:panelGrid>
 		</h:form>
 	</div>

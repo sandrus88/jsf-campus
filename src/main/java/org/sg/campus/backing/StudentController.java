@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+import org.sg.campus.beans.ApplicationBean;
 import org.sg.campus.domain.PaymentType;
 import org.sg.campus.domain.Student;
 

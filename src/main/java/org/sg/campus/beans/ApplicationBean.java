@@ -1,4 +1,4 @@
-package org.sg.campus.backing;
+package org.sg.campus.beans;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;

@@ -8,15 +8,19 @@
 	<h:form id="formChangeStudent">
 		<h3>Change Student</h3>
 		<h:panelGrid id="panelChangeStudent" columns="2" border="0">
-
+			<h:outputLabel for="modificaId" value="Id:"/>
+			<h:inputText id="modificaId" disabled="true" />
+			
 			<h:outputLabel for="modificaName" value="Name:"/>
-			<h:inputText id="modificaName" value="#{studentController.selectedStudent.name}"/>
+			<h:inputText id="modificaName" value="#{studentController.selectedStudent.name}" required="true" requiredMessage="Name is required"/>
 
 			<h:outputLabel for="modificaSurname" value="Surname:"/>
-			<h:inputText id="modificaSurname" value="#{studentController.selectedStudent.surname}"/>
+			<h:inputText id="modificaSurname" value="#{studentController.selectedStudent.surname}" required="true" requiredMessage="Surname is required"/>
 			
 			<h:outputLabel for="modificaEmail" value="Email:"/>
-			<h:inputText id="modificaEmail" value="#{studentController.selectedStudent.email}" />
+			<h:inputText id="modificaEmail" value="#{studentController.selectedStudent.email}">
+				<f:validator validatorId="emailValidator" />
+			</h:inputText>	
 
 			<h:outputLabel for="modificaJobTitle" value="Job Title:"/>
 			<h:inputText id="modificaJobTitle" value="#{studentController.selectedStudent.jobTitle}"/>
@@ -28,13 +32,21 @@
 			</h:selectOneMenu>
 
 			<h:outputLabel for="modificaSex" value="Sex:"/>
-			<h:selectOneRadio id="modificaSex" value="#{studentController.selectedStudent.sex}">
+			<h:selectOneRadio id="modificaSex" value="#{studentController.selectedStudent.sex}" required="true" requiredMessage="Sex is required">
 				<f:selectItem itemValue="Maschio" itemLabel="M"/>
 				<f:selectItem itemValue="Femmina" itemLabel="F"/>
 			</h:selectOneRadio>
 			
-		</h:panelGrid>
 			<h:commandButton id="change-button" value="Save Changes" action="#{studentController.updateStudent}"/>
+			<h:commandButton id="back-button" value="Back" action="homeStudent.xhtml" immediate="true" />
+		</h:panelGrid>
+		
+		<h:panelGrid id="panelErrorMessageChangeStudent" border="0" columns="1">	
+			<h:message for="modificaName" style="color:red" />
+			<h:message for="modificaSurname" style="color:red" />
+			<h:message for="modificaEmail" style="color:red" />
+			<h:message for="modificaSex" style="color:red" />	
+		</h:panelGrid>
 	</h:form>
 </h:body>
 </html>

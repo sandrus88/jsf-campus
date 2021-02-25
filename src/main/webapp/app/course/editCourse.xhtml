@@ -7,14 +7,22 @@
 	<h:form id="formChangeCourse">
 		<h3>Change Course</h3>
 		<h:panelGrid id="panelChangeCourse" columns="2" border="0">
+			<h:outputLabel for="modificaId" value="Id:"/>
+			<h:inputText id="modificaId" disabled="true" />
 			
 			<h:outputLabel for="modificaName" value="Name:"/>
-			<h:inputText id="modificaName" value="#{courseController.selectedCourse.name}" />
+			<h:inputText id="modificaName" value="#{courseController.selectedCourse.name}" required="true" requiredMessage="Name is required"/>
 			
 			<h:outputLabel for="modificaDescription" value="Description:"/>
 			<h:inputText id="modificaDescription" value="#{courseController.selectedCourse.description}" />
-		</h:panelGrid>
+		
 			<h:commandButton id="change-button" value="Save Changes" action="#{courseController.updateCourse}" />
+			<h:commandButton id="back-button" value="Back" action="homeCourse.xhtml" immediate="true"/>
+		</h:panelGrid>	
+		
+		<h:panelGrid id="panelErrorMessageChangeCourse" border="0" columns="1">	
+			<h:message for="modificaName" style="color:red" />	
+		</h:panelGrid>	
 	</h:form>
 </h:body>
 </html>
