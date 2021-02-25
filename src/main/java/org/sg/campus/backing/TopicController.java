@@ -4,24 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 import org.sg.campus.domain.Topic;
 
 @ManagedBean
 @SessionScoped
 public class TopicController {
+	
+	@ManagedProperty(value="#{applicationBean}")
+	private ApplicationBean applicationBean;
 	private List<Topic> topicList = new ArrayList<Topic>();
 	private Topic selectedTopic;
 	
-	private int newId;
 	private String newName;
 	private String newDescription;
 	
 	public void addTopic() {
 		Topic topic = new Topic();
-		topic.setId(newId);
+		topic.setId(applicationBean.getNextInt());
 		topic.setName(newName);
 		topic.setDescription(newDescription);
 		topicList.add(topic);
@@ -49,12 +51,6 @@ public class TopicController {
 		return "/app/topic/viewTopic.xhtml?faces-redirect=true";
 	}
 	
-	public int getNewId() {
-		return newId;
-	}
-	public void setNewId(int newId) {
-		this.newId = newId;
-	}
 	public String getNewName() {
 		return newName;
 	}
@@ -68,20 +64,34 @@ public class TopicController {
 		this.newDescription = newDescription;
 	}
 	
+	public ApplicationBean getApplicationBean() {
+		return applicationBean;
+	}
+
+	public void setApplicationBean(ApplicationBean applicationBean) {
+		this.applicationBean = applicationBean;
+	}
+
 	public List<Topic> getTopicList() {
 		return topicList;
 	}
+	
 	public Topic getSelectedTopic() {
 		return selectedTopic;
 	}
 	
+	private void cleanForm() {
+		setNewName(null);
+		setNewDescription(null);
+	}
+	
 	public String reset() {
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		cleanForm();
 		return "/app/topic/homeTopic.xhtml?faces-redirect=true";
 	}
 	
 	public String backHome() {
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		cleanForm();
 		return "/index.xhtml?faces-redirect=true";
 	}
 }

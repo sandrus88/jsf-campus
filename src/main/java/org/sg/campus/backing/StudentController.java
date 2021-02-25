@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 import org.sg.campus.domain.PaymentType;
 import org.sg.campus.domain.Student;
@@ -13,10 +13,12 @@ import org.sg.campus.domain.Student;
 @ManagedBean
 @SessionScoped
 public class StudentController {
+	
+	@ManagedProperty(value="#{applicationBean}")
+	private ApplicationBean applicationBean;
 	private List<Student> studentList = new ArrayList<Student>();
 	private Student selectedStudent;
 
-	private int newId;
 	private String newName;
 	private String newSurname;
 	private String newEmail;
@@ -30,7 +32,7 @@ public class StudentController {
 
 	public void addStudent() {
 		Student student = new Student();
-		student.setId(newId);
+		student.setId(applicationBean.getNextInt());
 		student.setName(newName);
 		student.setSurname(newSurname);
 		student.setEmail(newEmail);
@@ -62,10 +64,6 @@ public class StudentController {
 		System.out.println("Student " + student + " deleted correctly");
 	}
 
-	public void setNewId(int newId) {
-		this.newId = newId;
-	}
-
 	public void setNewName(String newName) {
 		this.newName = newName;
 	}
@@ -84,10 +82,6 @@ public class StudentController {
 
 	public void setNewSex(String newSex) {
 		this.newSex = newSex;
-	}
-
-	public int getNewId() {
-		return newId;
 	}
 
 	public String getNewName() {
@@ -117,6 +111,14 @@ public class StudentController {
 	public void setNewEmail(String newEmail) {
 		this.newEmail = newEmail;
 	}
+	
+	public ApplicationBean getApplicationBean() {
+		return applicationBean;
+	}
+
+	public void setApplicationBean(ApplicationBean applicationBean) {
+		this.applicationBean = applicationBean;
+	}
 
 	public List<Student> getStudentList() {
 		return studentList;
@@ -126,13 +128,22 @@ public class StudentController {
 		return selectedStudent;
 	}
 	
+	private void cleanForm() {
+		setNewName(null);
+		setNewSurname(null);
+		setNewEmail(null);
+		setNewJobTitle(null);
+		setNewPaymentType(null);
+		setNewSex(null);
+	}
+	
 	public String reset() {
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		cleanForm();
 		return "/app/student/homeStudent.xhtml?faces-redirect=true";
 	}
 	
 	public String backHome() {
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		cleanForm();
 		return "/index.xhtml?faces-redirect=true";
 	}
 }

@@ -6,25 +6,9 @@
 	<title>Topic associati</title>
 </h:head>
 <h:body>
-	<h:form>
-		<h3>Topics del corso #{courseController.selectedCourse.name}</h3>
+	<h:form id="formTopicsOfCourse">
+		<h3>Topics of #{courseController.selectedCourse.name} course</h3>
 
-		<!-- <ui:repeat var="item" value="#{courseController.allTopics}">
-			<h:outputText value="Id" />
-			#{item.id}
-
-			<h:outputText value="Name" />
-			#{item.name}
-
-			<h:outputText value="Description" />
-			#{item.description}
-
-			<h:outputText value="Seleziona" />
-			<h:selectBooleanCheckbox id="selectionTopic">
-
-			</h:selectBooleanCheckbox>
-		</ui:repeat> -->
-		<!-- usa un ui repeat invece di una datatable -->
 		<h:dataTable value="#{courseController.allTopics}" var="item" border="0" id="courseTopicsTable">
 				<h:column>
 					<f:facet name="header">Id</f:facet>    				
@@ -32,7 +16,7 @@
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Nome</f:facet>
+					<f:facet name="header">Name</f:facet>
                 	#{item.name}
             	</h:column>
 
@@ -42,12 +26,13 @@
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Seleziona</f:facet>
+					<f:facet name="header">Selection</f:facet>
 					<h:selectBooleanCheckbox id="selectionTopic">
 			
 					</h:selectBooleanCheckbox> 
 		 		</h:column>
-		</h:dataTable> 
+		</h:dataTable>
+		<h:commandButton id="aggiungiTopic" value="Aggiungi Topic"/> 
 	</h:form>
 </h:body>
 </html>

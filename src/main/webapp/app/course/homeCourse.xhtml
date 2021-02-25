@@ -1,28 +1,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Form campi da riempire</title>
 </h:head>
 <h:body>
 	<div id="formContainer">
-		<h:form>
-			<h3>Aggiungi Corso</h3>
-			<h:panelGrid border="0" columns="2">
-				<h:outputLabel value="Id:"/>
-				<h:inputText id="id" value="#{courseController.newId}" />
+		<h:form id="formCourse">
+			<h3>Add Course</h3>
+			<h:panelGrid id="panelCourse" border="0" columns="2">
 				
-				<h:outputLabel value="Nome:"/>
+				<h:outputLabel for="name" value="Name:"/>
 				<h:inputText id="name" value="#{courseController.newName}" />
 			
-				<h:outputLabel value="Description:"/>
+				<h:outputLabel for="description" value="Description:"/>
 				<h:inputText id="description" value="#{courseController.newDescription}" />
 				
-				<h:outputLabel value="Enabled:"/>
-				<h:selectBooleanCheckbox id="enabledCourse"></h:selectBooleanCheckbox>
+				<h:outputLabel for="enabledCourse" value="Enabled:"/>
+				<p:selectBooleanCheckbox id="enabledCourse"/>
 			</h:panelGrid>
 			
-			<h:panelGrid border="0" columns="3">
+			<h:panelGrid id="panelButtonsCourses" border="0" columns="3">
 				<h:commandButton id="submit-button" value="Salva" action="#{courseController.addCourse}" />
 				<h:commandButton id="reset-button" value="Reset" action="#{courseController.reset()}" immediate="true" />
 				<h:commandButton id="home-button" value="Home" action="#{courseController.backHome()}" immediate="true" />
@@ -31,7 +30,7 @@
 	</div>
 
 	<div id="tableContainer">
-		<h1>Lista dei Corsi</h1>
+		<h1>Course List</h1>
 
 		<h:form>
 			<h:dataTable value="#{courseController.courseList}" var="item" border="2" id="courseTable">
@@ -41,7 +40,7 @@
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Nome</f:facet>
+					<f:facet name="header">Name</f:facet>
                 	#{item.name}
             	</h:column>
 
@@ -49,9 +48,14 @@
 					<f:facet name="header">Description</f:facet>
                 	#{item.description}
             	</h:column>
+            	
+            	<h:column>
+					<f:facet name="header">Enabled</f:facet>
+              		#{item.description}
+            	</h:column>
 
 				<h:column>
-					<f:facet name="header">Descrizione</f:facet> 
+					<f:facet name="header">Action</f:facet> 
 					<h:commandLink value="View" action="#{courseController.viewCourse(item)}" />
 					| <h:commandLink value="Edit" action="#{courseController.updateSelectedCourse(item)}" /> 
 					| <h:commandLink value="Delete" action="#{courseController.deleteCourse(item)}" />

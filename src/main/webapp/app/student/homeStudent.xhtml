@@ -6,44 +6,46 @@
 </h:head>
 <h:body>
 	<div id="containerForm">
-		<h:form>
-			<h3>Aggiungi Studente</h3>
-			<h:panelGrid border="0" columns="2">
-				<h:outputLabel value="Id:"/> 
-				<h:inputText id="id" value="#{studentController.newId}" required="true" requiredMessage="L'id e' obbligatorio" />
+		<h:form id="formStudent">
+			<h3>Add Student</h3>
+			<h:panelGrid id="panelStudent" border="0" columns="2">
 
-				<h:outputLabel value="Nome:"/>
-				<h:inputText id="name" value="#{studentController.newName}" required="true" requiredMessage="Il nome e' obbligatorio" />
+				<h:outputLabel for="name" value="Name:"/>
+				<h:inputText id="name" value="#{studentController.newName}" required="true" requiredMessage="Name is required" />
 
-				<h:outputLabel value="Cognome:"/>
-				<h:inputText id="surname" value="#{studentController.newSurname}" required="true" requiredMessage="Il cognome e' obbligatorio" />
+				<h:outputLabel for="surname" value="Surname:"/>
+				<h:inputText id="surname" value="#{studentController.newSurname}" required="true" requiredMessage="Surname is required" />
 				
-				<h:outputLabel value="Email:"/>
-				<h:inputText id="email" value="#{studentController.newEmail}" required="true">
+				<h:outputLabel for="email" value="Email:"/>
+				<h:inputText id="email" value="#{studentController.newEmail}">
 					<f:validator validatorId="emailValidator" />
 				</h:inputText>
 				
-				<h:outputLabel value="Job Title:"/>
+				<h:outputLabel for="jobTitle" value="Job Title:"/>
 				<h:inputText id="jobTitle" value="#{studentController.newJobTitle}" />
 
-				<h:outputLabel value="Payment Type:"/>
+				<h:outputLabel for="paymentType" value="Payment Type:"/>
 				<h:selectOneMenu id="paymentType" value="#{studentController.newPaymentType}">
 					<f:selectItem />
 					<f:selectItems value="#{studentController.getEnumValues()}" var="item" itemValue="#{item}" itemLabel="#{item.label}" />
 				</h:selectOneMenu>
 
-				<h:outputLabel value="Sesso:"/>
-				<h:selectOneRadio id="sex" value="#{studentController.newSex}" required="true" requiredMessage="Il sesso e' obbligatorio">
+				<h:outputLabel for="sex" value="Sex:"/>
+				<h:selectOneRadio id="sex" value="#{studentController.newSex}" required="true" requiredMessage="Sex is required">
 					<f:selectItem itemValue="Maschio" itemLabel="M" />
 					<f:selectItem itemValue="Femmina" itemLabel="F" />
 				</h:selectOneRadio>
-				
+			</h:panelGrid>	
+			
+			<h:panelGrid id="panelErrorMessage" border="0" columns="1">	
+				<h:message for="name" style="color:red" />
+				<h:message for="surname" style="color:red" />
 				<h:message for="email" style="color:red" />
-				
+				<h:message for="sex" style="color:red" />	
 			</h:panelGrid>
-
-			<h:panelGrid border="0" columns="3">
-				<h:commandButton id="submit-button" value="Salva" action="#{studentController.addStudent()}" />
+			
+			<h:panelGrid id="panelButtonsStudent" border="0" columns="3">
+				<h:commandButton id="submit-button" value="Save" action="#{studentController.addStudent()}" />
 				<h:commandButton id="reset-button" value="Reset" action="#{studentController.reset()}" immediate="true" />
 				<h:commandButton id="home-button" value="Home" action="#{studentController.backHome()}" immediate="true" />
 			</h:panelGrid>
@@ -51,7 +53,7 @@
 	</div>
 
 	<div id="containerTable">
-		<h1>Studenti registrati</h1>
+		<h1>Student List</h1>
 
 		<h:form>
 			<h:dataTable value="#{studentController.studentList}" var="item" border="2" id="studentTable">
@@ -62,12 +64,12 @@
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Nome</f:facet>
+					<f:facet name="header">Name</f:facet>
                 	#{item.name}
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Cognome</f:facet>
+					<f:facet name="header">Surname</f:facet>
                 	#{item.surname}
             	</h:column>
 				
@@ -87,12 +89,12 @@
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Sesso</f:facet>
+					<f:facet name="header">Sex</f:facet>
                 	#{item.sex}
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Descrizione</f:facet>
+					<f:facet name="header">Action</f:facet>
 					<h:commandLink value="View" action="#{studentController.viewStudent(item)}" />
 					| <h:commandLink value="Edit" action="#{studentController.updateSelectedStudent(item)}" /> 
 					| <h:commandLink value="Delete" action="#{studentController.deleteStudent(item)}" />

@@ -1,9 +1,9 @@
 package org.sg.campus.domain;
 
 public enum PaymentType {
-	OK("pagamento effettuato"), 
-	NOTOK("pagamento non effettuato "), 
-	UNKNOWN("da verificare");
+	OK("Pagamento effettuato"), 
+	NOTOK("Pagamento non effettuato "), 
+	UNKNOWN("Da verificare");
 
 	private String label;
 
