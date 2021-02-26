@@ -10,15 +10,15 @@
 			<h3>Add Course</h3>
 			<h:panelGrid id="panelCourse" border="0" columns="3">
 				
-				<h:outputLabel for="name" value="Name:"/>
+				<h:outputLabel for="name" value="Name *"/>
 				<h:inputText id="name" value="#{courseController.newName}" required="true" requiredMessage="Name is required"/>
-				<h:outputText value="*"/>
+				<h:message for="name" style="color:red" />
 				
-				<h:outputLabel for="description" value="Description:"/>
+				<h:outputLabel for="description" value="Description"/>
 				<h:inputText id="description" value="#{courseController.newDescription}" />
 				<h:outputText/>
 				
-				<h:outputLabel for="enabledCourse" value="Enabled:"/>
+				<h:outputLabel for="enabledCourse" value="Enabled"/>
 				<h:selectBooleanCheckbox id="enabledCourse" value="#{courseController.newEnabled}" />
 				<h:outputText/>
 			</h:panelGrid>
@@ -27,10 +27,6 @@
 				<h:commandButton id="submit-button" value="Salva" action="#{courseController.addCourse}" />
 				<h:commandButton id="reset-button" value="Reset" action="#{courseController.reset()}" immediate="true" />
 				<h:commandButton id="home-button" value="Home" action="#{courseController.backHome()}" immediate="true" />
-			</h:panelGrid>
-			
-			<h:panelGrid id="panelErrorMessageCourse" border="0" columns="1">	
-				<h:message for="name" style="color:red" />	
 			</h:panelGrid>
 		</h:form>
 	</div>

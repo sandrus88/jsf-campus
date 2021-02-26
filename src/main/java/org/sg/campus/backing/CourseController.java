@@ -23,11 +23,25 @@ public class CourseController {
 	private Course selectedCourse;
 
 	private List<Topic> allTopics = new ArrayList<Topic>();
-	private List<Topic> selectedTopics;
+//	private List<Topic> selectedTopics;
 
 	private String newName;
 	private String newDescription;
 	private boolean newEnabled;
+
+	public void addTopic(Topic topic) {
+		allTopics.add(topic);
+	}
+
+	public void updateCourseTopics() {
+		topicController = JsfUtil.findBean("topicController");
+		for (int i = 0; i < allTopics.size(); i++) {
+			if (topicController.isNewChecked() == true) {
+				addTopic(allTopics.get(i));
+			}
+		}
+		System.out.println(selectedCourse);
+	}
 
 	public void addCourse() {
 		Course course = new Course();
@@ -51,18 +65,11 @@ public class CourseController {
 	}
 
 	public String updateCourse() {
-		selectedCourse.setName(newName);
-		selectedCourse.setDescription(newDescription);
-		selectedCourse.setEnabled(newEnabled);
-		System.out.println("Course " + selectedCourse + " updated correctly");
 		cleanForm();
+		System.out.println("Course " + selectedCourse + " updated correctly");
 		return "/app/course/homeCourse.xhtml?faces-redirect=true";
 	}
-	
-	public void upDateCourseTopics(Topic topic) {
-		selectedTopics.add(topic);
-	}
-	
+
 	public String viewCourse(Course course) {
 		selectedCourse = course;
 		System.out.println("Course " + course + " showed correctly");
@@ -118,10 +125,6 @@ public class CourseController {
 		topicController = JsfUtil.findBean("topicController");
 		allTopics = topicController.getTopicList();
 		return allTopics;
-	}
-
-	public List<Topic> getSelectedTopics() {
-		return selectedTopics;
 	}
 
 	private void cleanForm() {

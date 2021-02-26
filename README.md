@@ -1,31 +1,35 @@
 # jsf-campus
 
-### MVC
-Il `Model View Controller` e' un'architettura che separa la logica di presentazione dei dati dalla logica di business.
-* Model rappresenta il modello e quindi dove stanno tutti i dati.
-* View rappresenta la parte grafica dell'applicazione.
-* Controller rappresenta la  _business logic_  dell'applicazione. Esso funge da updater del Model e della View.
+### Model View Controller (MVC)
+Il `Model View Controller` e' un'architettura che separa la logica di presentazione, i dati e la logica di business.
+* `Model` rappresenta il modello dati.
+* `View` rappresenta la parte grafica dell'applicazione e l'interazione con il cliente.
+* `Controller` rappresenta la logica dell'applicazione. Esso funge da tramite del `Model` e della `View`.
 
-![MVC Pattern](src/main/doc/mvc-model.jpg)
+![MVC Pattern](src/main/doc/mvc-model.jpg) ![MVC Pattern 2](src/main/doc/mvc-model-2.jpg)
 
-### Java Server Faces 
-`JSF` e' un framework per lo sviluppo di interfacce di applicazioni Web Java che implementa l'architettura `MVC`. 
+### Java Server Faces (JSF)
+`JSF` e' un framework Java che ti permette di creare applicazioni Web seguendo l'architettura `MVC`. Si puoì dire che JSF implementa l'approccio MVC.
+
+JSF mette a disposizione una serie di `@Annotations` per poter sviluppare l'applicazione.
+- `@ManagedBean`
+- `@FacetConverter`
+- `@FacetValidator`
+- etc.
+
 
 ### Dichiarazione del managed bean
 
-Quando utilizzi l'annotazione `@ManagedBean` in una classe java, prima dell'inizio della classe,
-stai dicendo che JSF nel suo `context` individua il managed bean col nome che si utilizza per identiticare il @ManagedBean. 
+Quando utilizzi l'annotazione `@ManagedBean` in una classe java stai dicendo al JSF di registrare questa classe nel suo `context`. 
 
 ```
-package mypackage;
-
-@ManagedBean("bean")
+@ManagedBean("beanController")
 @SessionScoped
-public class Controller {
+public class BeanController {
 	//codice 
 }
 ```
-Il nome nel context jsf sara' `bean`. Se non si assegna nessun nome, di default e' il nome della classe in minuscolo, in questo caso sarebbe `controller`.
+Il nome del bean nel contesto jsf sara' `beanController`. Se non si assegna nessun nome, per deafult jsf mette il nome della classe con la prima lettera in minuscolo.
 Il ciclo di vita del bean può essere di 4 tipi:
 * `@ApplicationScoped`, il bean viene creato una volta per la durata dell'applicazione.
 * `@SessionScoped`, il bean viene creato una volta per la durata della sessione.

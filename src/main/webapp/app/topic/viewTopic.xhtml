@@ -7,13 +7,13 @@
 	<h3>View of #{topicController.selectedTopic.name} topic</h3>
 	<h:form id="formViewTopic">
 		<h:panelGrid id="panelViewTopic" columns="2" border="0">
-			<h:outputLabel value="Id:"/>
+			<h:outputLabel value="Id"/>
 			<h:outputText value="#{topicController.selectedTopic.id}" />
 			
-			<h:outputLabel value="Name:"/>
+			<h:outputLabel value="Name"/>
 			<h:outputText value="#{topicController.selectedTopic.name}" />
 			
-			<h:outputLabel value="Description:"/>
+			<h:outputLabel value="Description"/>
 			<h:outputText value="#{topicController.selectedTopic.description}" />
 			
 			<h:commandButton id="back-button" value="Back" action="homeTopic.xhtml" />

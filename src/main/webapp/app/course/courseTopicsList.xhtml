@@ -9,32 +9,34 @@
 	<h:form id="formTopicsOfCourse">
 		<h3>Topics of #{courseController.selectedCourse.name} course</h3>
 
-		<h:dataTable value="#{courseController.allTopics}" var="item" border="0" id="courseTopicsTable">
+		<h:dataTable value="#{courseController.allTopics}" var="topic" border="0" id="courseTopicsTable">
 				<h:column>
 					<f:facet name="header">Id</f:facet>    				
-                	#{item.id}
+                	#{topic.id}
             	</h:column>
 
 				<h:column>
 					<f:facet name="header">Name</f:facet>
-                	#{item.name}
+                	#{topic.name}
             	</h:column>
 
 				<h:column>
 					<f:facet name="header">Description</f:facet>
-                	#{item.description}
+                	#{topic.description}
             	</h:column>
 
 				<h:column>
 					<f:facet name="header">Selection</f:facet>
-					<h:selectBooleanCheckbox id="selectionTopic">
-						<f:selectItems value="#{item}" var="topic"/>
+					<h:selectBooleanCheckbox id="selectionTopic" value="#{topic.checked}">
+						<f:ajax event="click" execute="@form" render="@form" />
+						<!-- ad ogni click mandare item al backing bean (how to call backing beanwhwen checkobox selected jsf
+						fai finta che devo chiamare selectTopic(topic) -->
 					</h:selectBooleanCheckbox>
 		 		</h:column>
 		</h:dataTable>
 		
 		<h:panelGrid id="panelButtonsUpdateTopic" border="0" columns="1">
-			<h:commandButton id="aggiornaTopic" value="Update Topic" action="#{courseController.upDateCourseTopics(topic)}"/>
+			<h:commandButton id="aggiornaTopic" value="Update Topic" action="#{courseController.updateCourseTopics()}"/>
 		</h:panelGrid> 
 	</h:form>
 </h:body>

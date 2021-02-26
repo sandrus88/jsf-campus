@@ -51,14 +51,8 @@ public class StudentController {
 	}
 
 	public String updateStudent() {
-		selectedStudent.setName(newName);
-		selectedStudent.setSurname(newSurname);
-		selectedStudent.setEmail(newEmail);
-		selectedStudent.setJobTitle(newJobTitle);
-		selectedStudent.setPaymentType(newPaymentType);
-		selectedStudent.setSex(newSex);
-		System.out.println("Student " + selectedStudent + " updated correctly");
 		cleanForm();
+		System.out.println("Student " + selectedStudent + " updated correctly");
 		return "/app/student/homeStudent.xhtml?faces-redirect=true";
 	}
 

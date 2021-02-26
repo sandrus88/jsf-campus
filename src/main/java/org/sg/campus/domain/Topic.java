@@ -4,6 +4,7 @@ public class Topic {
 	private int id;
 	private String name;
 	private String description;
+	private boolean checked;
 	
 	public int getId() {
 		return id;
@@ -24,6 +25,13 @@ public class Topic {
 		this.description = description;
 	}
 	
+	public boolean isChecked() {
+		return checked;
+	}
+	public void setChecked(boolean checked) {
+		this.checked = checked;
+	}
+	    
 	@Override
 	public String toString() {
 		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", description: " + description + "]";
