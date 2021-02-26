@@ -17,7 +17,7 @@
 			<h:outputText value="#{courseController.selectedCourse.description}" />
 			
 			<h:outputLabel value="Enabled:"/>
-			<h:selectBooleanCheckbox disabled="true"/>
+			<h:selectBooleanCheckbox value="#{courseController.selectedCourse.enabled}" disabled="true"/>
 			
 			<h:commandButton id="back-button" value="Back" action="homeCourse.xhtml" />
 			<h:commandButton id="home-button" value="Home" action="../../index.xhtml" />

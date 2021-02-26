@@ -28,13 +28,13 @@
 				<h:column>
 					<f:facet name="header">Selection</f:facet>
 					<h:selectBooleanCheckbox id="selectionTopic">
-			
-					</h:selectBooleanCheckbox> 
+						<f:selectItems value="#{item}" var="topic"/>
+					</h:selectBooleanCheckbox>
 		 		</h:column>
 		</h:dataTable>
 		
 		<h:panelGrid id="panelButtonsUpdateTopic" border="0" columns="1">
-			<h:commandButton id="aggiungiTopic" value="Update Topic"/>
+			<h:commandButton id="aggiornaTopic" value="Update Topic" action="#{courseController.upDateCourseTopics(topic)}"/>
 		</h:panelGrid> 
 	</h:form>
 </h:body>

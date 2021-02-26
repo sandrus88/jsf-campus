@@ -37,6 +37,7 @@ public class CourseController {
 		course.setEnabled(newEnabled);
 		courseList.add(course);
 		System.out.println("Course " + course + " added correctly");
+		cleanForm();
 	}
 
 	public void deleteCourse(Course course) {
@@ -50,10 +51,18 @@ public class CourseController {
 	}
 
 	public String updateCourse() {
+		selectedCourse.setName(newName);
+		selectedCourse.setDescription(newDescription);
+		selectedCourse.setEnabled(newEnabled);
 		System.out.println("Course " + selectedCourse + " updated correctly");
+		cleanForm();
 		return "/app/course/homeCourse.xhtml?faces-redirect=true";
 	}
-
+	
+	public void upDateCourseTopics(Topic topic) {
+		selectedTopics.add(topic);
+	}
+	
 	public String viewCourse(Course course) {
 		selectedCourse = course;
 		System.out.println("Course " + course + " showed correctly");

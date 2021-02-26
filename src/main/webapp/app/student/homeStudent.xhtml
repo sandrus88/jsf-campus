@@ -8,33 +8,39 @@
 	<div id="containerForm">
 		<h:form id="formStudent">
 			<h3>Add Student</h3>
-			<h:panelGrid id="panelStudent" border="0" columns="2">
+			<h:panelGrid id="panelStudent" border="0" columns="3">
 
 				<h:outputLabel for="name" value="Name:"/>
 				<h:inputText id="name" value="#{studentController.newName}" required="true" requiredMessage="Name is required" />
-
+				<h:outputText value="*"/>
+				
 				<h:outputLabel for="surname" value="Surname:"/>
 				<h:inputText id="surname" value="#{studentController.newSurname}" required="true" requiredMessage="Surname is required" />
+				<h:outputText value="*"/>
 				
 				<h:outputLabel for="email" value="Email:"/>
 				<h:inputText id="email" value="#{studentController.newEmail}">
 					<f:validator validatorId="emailValidator" />
 				</h:inputText>
+				<h:outputText/>
 				
 				<h:outputLabel for="jobTitle" value="Job Title:"/>
 				<h:inputText id="jobTitle" value="#{studentController.newJobTitle}" />
-
+				<h:outputText/>
+				
 				<h:outputLabel for="paymentType" value="Payment Type:"/>
 				<h:selectOneMenu id="paymentType" value="#{studentController.newPaymentType}">
 					<f:selectItem />
 					<f:selectItems value="#{studentController.getEnumValues()}" var="item" itemValue="#{item}" itemLabel="#{item.label}" />
 				</h:selectOneMenu>
-
+				<h:outputText/>
+				
 				<h:outputLabel for="sex" value="Sex:"/>
 				<h:selectOneRadio id="sex" value="#{studentController.newSex}" required="true" requiredMessage="Sex is required">
 					<f:selectItem itemValue="Maschio" itemLabel="M" />
 					<f:selectItem itemValue="Femmina" itemLabel="F" />
 				</h:selectOneRadio>
+				<h:outputText value="*"/>
 			</h:panelGrid>	
 			
 			<h:panelGrid id="panelButtonsStudent" border="0" columns="3">

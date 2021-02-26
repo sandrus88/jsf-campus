@@ -29,6 +29,7 @@ public class TopicController {
 		topic.setDescription(newDescription);
 		topicList.add(topic);
 		System.out.println("Topic " + topic + " added correctly");
+		cleanForm();
 	}
 	
 	public void deleteTopic(Topic topic) {
@@ -42,7 +43,10 @@ public class TopicController {
 	}
 	
 	public String updateTopic() {
+		selectedTopic.setName(newName);
+		selectedTopic.setDescription(newDescription);
 		System.out.println("Topic " + selectedTopic + " updated correctly");
+		cleanForm();
 		return "/app/topic/homeTopic.xhtml?faces-redirect=true";
 	}
 	

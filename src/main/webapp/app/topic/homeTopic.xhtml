@@ -8,14 +8,17 @@
 	<div id="containerForm">
 		<h:form id="formTopic">
 			<h3>Add Topic</h3>
-			<h:panelGrid id="panelTopic" border="0" columns="2">
+			<h:panelGrid id="panelTopic" border="0" columns="3">
 			
 				<h:outputLabel for="name" value="Name:"/>
 				<h:inputText id="name" value="#{topicController.newName}" required="true" requiredMessage="Name is required"/>
-			
+				<h:outputText value="*"/>
+				
 				<h:outputLabel for="description" value="Description:"/>
 				<h:inputText id="description" value="#{topicController.newDescription}" />
+				<h:outputText/>
 			</h:panelGrid>
+			
 			<h:panelGrid id="panelButtonsTopics" border="0" columns="3">
 				<h:commandButton id="submit-button" value="Salva" action="#{topicController.addTopic}" />
 				<h:commandButton id="reset-button" value="Reset" action="#{topicController.reset()}" immediate="true" />

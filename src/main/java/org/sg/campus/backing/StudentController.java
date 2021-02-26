@@ -42,6 +42,7 @@ public class StudentController {
 		student.setSex(newSex);
 		studentList.add(student);
 		System.out.println("Student " + student + " added correctly");
+		cleanForm();
 	}
 
 	public String updateSelectedStudent(Student student) {
@@ -50,19 +51,26 @@ public class StudentController {
 	}
 
 	public String updateStudent() {
+		selectedStudent.setName(newName);
+		selectedStudent.setSurname(newSurname);
+		selectedStudent.setEmail(newEmail);
+		selectedStudent.setJobTitle(newJobTitle);
+		selectedStudent.setPaymentType(newPaymentType);
+		selectedStudent.setSex(newSex);
 		System.out.println("Student " + selectedStudent + " updated correctly");
+		cleanForm();
 		return "/app/student/homeStudent.xhtml?faces-redirect=true";
 	}
 
 	public String viewStudent(Student student) {
 		selectedStudent = student;
-		System.out.println("Student " + student + " showed correctly");
+		System.out.println("Student " + selectedStudent + " showed correctly");
 		return "/app/student/viewStudent.xhtml?faces-redirect=true";
 	}
 
 	public void deleteStudent(Student student) {
 		studentList.remove(student);
-		System.out.println("Student " + student + " deleted correctly");
+		System.out.println("Student " + selectedStudent + " deleted correctly");
 	}
 
 	public void setNewName(String newName) {

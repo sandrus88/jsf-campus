@@ -7,38 +7,46 @@
 <h:body>
 	<h:form id="formChangeStudent">
 		<h3>Change Student</h3>
-		<h:panelGrid id="panelChangeStudent" columns="2" border="0">
+		<h:panelGrid id="panelChangeStudent" columns="3" border="0">
 			<h:outputLabel for="modificaId" value="Id:"/>
-			<h:inputText id="modificaId" disabled="true" />
+			<h:inputText id="modificaId" value="#{studentController.selectedStudent.id}" disabled="true" />
+			<h:outputText/>
 			
 			<h:outputLabel for="modificaName" value="Name:"/>
-			<h:inputText id="modificaName" value="#{studentController.selectedStudent.name}" required="true" requiredMessage="Name is required"/>
-
+			<h:inputText id="modificaName" value="#{studentController.newName}" required="true" requiredMessage="Name is required"/>
+			<h:outputText value="*"/>
+			
 			<h:outputLabel for="modificaSurname" value="Surname:"/>
-			<h:inputText id="modificaSurname" value="#{studentController.selectedStudent.surname}" required="true" requiredMessage="Surname is required"/>
+			<h:inputText id="modificaSurname" value="#{studentController.newSurname}" required="true" requiredMessage="Surname is required"/>
+			<h:outputText value="*"/>
 			
 			<h:outputLabel for="modificaEmail" value="Email:"/>
-			<h:inputText id="modificaEmail" value="#{studentController.selectedStudent.email}">
+			<h:inputText id="modificaEmail" value="#{studentController.newEmail}">
 				<f:validator validatorId="emailValidator" />
 			</h:inputText>	
-
+			<h:outputText/>
+			
 			<h:outputLabel for="modificaJobTitle" value="Job Title:"/>
-			<h:inputText id="modificaJobTitle" value="#{studentController.selectedStudent.jobTitle}"/>
-
+			<h:inputText id="modificaJobTitle" value="#{studentController.newJobTitle}" />
+			<h:outputText/>
+			
 			<h:outputLabel for="modificaPaymentType" value="Payment Type:"/>
-			<h:selectOneMenu id="modificaPaymentType" value="#{studentController.selectedStudent.paymentType}">
+			<h:selectOneMenu id="modificaPaymentType" value="#{studentController.newPaymentType}">
 				<f:selectItem />
 				<f:selectItems value="#{studentController.getEnumValues()}" var="item" itemValue="#{item}" itemLabel="#{item.label}" />
 			</h:selectOneMenu>
-
+			<h:outputText/>
+			
 			<h:outputLabel for="modificaSex" value="Sex:"/>
-			<h:selectOneRadio id="modificaSex" value="#{studentController.selectedStudent.sex}" required="true" requiredMessage="Sex is required">
+			<h:selectOneRadio id="modificaSex" value="#{studentController.newSex}" required="true" requiredMessage="Sex is required">
 				<f:selectItem itemValue="Maschio" itemLabel="M"/>
 				<f:selectItem itemValue="Femmina" itemLabel="F"/>
 			</h:selectOneRadio>
+			<h:outputText value="*"/>
 			
-			<h:commandButton id="change-button" value="Save Changes" action="#{studentController.updateStudent}"/>
+			<h:commandButton id="change-button" value="Save Changes" action="#{studentController.updateStudent()}"/>
 			<h:commandButton id="back-button" value="Back" action="homeStudent.xhtml" immediate="true" />
+			<h:outputText/>
 		</h:panelGrid>
 		
 		<h:panelGrid id="panelErrorMessageChangeStudent" border="0" columns="1">	
