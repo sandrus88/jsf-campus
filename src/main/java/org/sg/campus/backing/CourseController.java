@@ -49,13 +49,14 @@ public class CourseController {
 		}
 	}
 	
-	public void cleanTopic(Course course) {
+	public String cleanTopic(Course course) {
 		selectedCourse = course;
 		for (int i = 0; i < allTopics.size(); i++) {
 			final Topic topic = allTopics.get(i);
 			topic.setChecked(false);
 		}
 		System.out.println(selectedCourse);
+		return "/app/course/homeCourse.xhtml?faces-redirect=true";
 	}
 	
 	public void addCourse() {
