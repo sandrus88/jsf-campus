@@ -33,7 +33,7 @@
 		
 		<h:panelGrid id="panelButtonsUpdateTopic" border="0" columns="2">
 			<h:commandButton id="aggiornaTopic" value="Update Topic" action="#{courseController.updateCourseTopics()}" />
-			<h:commandButton id="tornaIndietro" value="Back" action="#{courseController.cleanTopic(selectedCourse)}" />
+			<h:commandButton id="tornaIndietro" value="Back" action="#{courseController.cleanAllTopics()}" />
 		</h:panelGrid> 
 	</h:form>
 </h:body>

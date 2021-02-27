@@ -23,7 +23,6 @@ public class CourseController {
 	private Course selectedCourse;
 
 	private List<Topic> allTopics = new ArrayList<Topic>();
-//	private List<Topic> selectedTopics;
 
 	private String newName;
 	private String newDescription;
@@ -39,7 +38,6 @@ public class CourseController {
 		}
 		selectedCourse.setTopicList(checkedTopics);
 		System.out.println(selectedCourse);
-		cleanCheckboxes();
 	}
 	
 	public void cleanCheckboxes() {
@@ -49,8 +47,7 @@ public class CourseController {
 		}
 	}
 	
-	public String cleanTopic(Course course) {
-		selectedCourse = course;
+	public String cleanAllTopics() {
 		for (int i = 0; i < allTopics.size(); i++) {
 			final Topic topic = allTopics.get(i);
 			topic.setChecked(false);
