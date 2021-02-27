@@ -57,7 +57,7 @@
 		
 		<resources>
             <resource>
-                <directory>src/main/webapp/app/resources</directory>
+                <directory>src/main/resources</directory>
             </resource>
         </resources>
         
