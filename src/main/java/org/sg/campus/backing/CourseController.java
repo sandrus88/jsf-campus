@@ -37,14 +37,7 @@ public class CourseController {
 			}
 		}
 		selectedCourse.setTopicList(checkedTopics);
-		System.out.println(selectedCourse);
-	}
-	
-	public void cleanCheckboxes() {
-		for (int i = 0; i < allTopics.size(); i++) {
-			final Topic topic = allTopics.get(i);
-			topic.setChecked(false);
-		}
+		System.out.println("Topics selected for course id:" + checkedTopics);
 	}
 	
 	public String cleanAllTopics() {
@@ -52,7 +45,7 @@ public class CourseController {
 			final Topic topic = allTopics.get(i);
 			topic.setChecked(false);
 		}
-		System.out.println(selectedCourse);
+		System.out.println("All topics: " + allTopics);
 		return "/app/course/homeCourse.xhtml?faces-redirect=true";
 	}
 	
