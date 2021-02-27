@@ -37,7 +37,7 @@ public class CourseController {
 			}
 		}
 		selectedCourse.setTopicList(checkedTopics);
-		System.out.println("Topics selected for course id:" + checkedTopics);
+		System.out.println("Topics selected for course id" + selectedCourse.getId() + ": " + checkedTopics);
 	}
 	
 	public void cleanAllTopics() {
@@ -82,7 +82,7 @@ public class CourseController {
 
 	public String viewCourse(Course course) {
 		selectedCourse = course;
-		System.out.println("Course " + course + " showed correctly");
+		System.out.println("Course " + selectedCourse + " showed correctly");
 		return "/app/course/viewCourse.xhtml?faces-redirect=true";
 	}
 
