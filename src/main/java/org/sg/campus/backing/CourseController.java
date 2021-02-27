@@ -40,11 +40,15 @@ public class CourseController {
 		System.out.println("Topics selected for course id:" + checkedTopics);
 	}
 	
-	public String cleanAllTopics() {
+	public void cleanAllTopics() {
 		for (int i = 0; i < allTopics.size(); i++) {
 			final Topic topic = allTopics.get(i);
 			topic.setChecked(false);
 		}
+	}
+	
+	public String goBack() {
+		cleanAllTopics();
 		System.out.println("All topics: " + allTopics);
 		return "/app/course/homeCourse.xhtml?faces-redirect=true";
 	}
