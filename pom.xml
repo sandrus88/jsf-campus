@@ -17,6 +17,15 @@
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-7.0</artifactId>
+			<version>1.0.1.Final</version>
+			<type>pom</type>
+			<scope>provided</scope>
+		</dependency>
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -41,8 +50,6 @@
 			<artifactId>primefaces</artifactId>
 			<version>10.0.0-RC1</version>
 		</dependency>
-
-
 	</dependencies>
 
 	<build>

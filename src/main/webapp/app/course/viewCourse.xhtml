@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Utenti salvati</title>
+</h:head>
+<h:body>
+	<h3>View of #{courseController.selectedCourse.name} course</h3>
+	<h:form id="formViewCourse">
+		<h:panelGrid id="panelViewCourse" columns="2" border="0">
+			<h:outputLabel value="Id"/>
+			<h:outputText value="#{courseController.selectedCourse.id}" />
+			
+			<h:outputLabel value="Name"/>
+			<h:outputText value="#{courseController.selectedCourse.name}" />
+			
+			<h:outputLabel value="Description"/>
+			<h:outputText value="#{courseController.selectedCourse.description}" />
+			
+			<h:outputLabel value="Enabled"/>
+			<h:selectBooleanCheckbox value="#{courseController.selectedCourse.enabled}" disabled="true"/>
+			
+			<h:commandButton id="back-button" value="Back" action="homeCourse.xhtml" />
+			<h:commandButton id="home-button" value="Home" action="../../index.xhtml" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

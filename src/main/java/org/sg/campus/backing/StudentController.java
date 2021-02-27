@@ -1,61 +1,70 @@
-package org.sg.backing;
+package org.sg.campus.backing;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import org.sg.domain.Student;
+import org.sg.campus.beans.ApplicationBean;
+import org.sg.campus.domain.PaymentType;
+import org.sg.campus.domain.Student;
 
 @ManagedBean
 @SessionScoped
 public class StudentController {
+	
+	@ManagedProperty(value="#{applicationBean}")
+	private ApplicationBean applicationBean;
 	private List<Student> studentList = new ArrayList<Student>();
 	private Student selectedStudent;
 
-	private int newId;
 	private String newName;
 	private String newSurname;
+	private String newEmail;
 	private String newJobTitle;
-	private String newPaymentType;
+	private PaymentType newPaymentType;
 	private String newSex;
+
+	public PaymentType[] getEnumValues() {
+		return PaymentType.values();
+	}
 
 	public void addStudent() {
 		Student student = new Student();
-		student.setId(newId);
+		student.setId(applicationBean.getNextInt());
 		student.setName(newName);
 		student.setSurname(newSurname);
+		student.setEmail(newEmail);
 		student.setJobTitle(newJobTitle);
 		student.setPaymentType(newPaymentType);
 		student.setSex(newSex);
 		studentList.add(student);
 		System.out.println("Student " + student + " added correctly");
+		cleanForm();
 	}
-	
+
 	public String updateSelectedStudent(Student student) {
 		selectedStudent = student;
-		return "/student/editStudent.xhtml?faces-redirect=true";
+		return "/app/student/editStudent.xhtml?faces-redirect=true";
 	}
-	
+
 	public String updateStudent() {
+		cleanForm();
 		System.out.println("Student " + selectedStudent + " updated correctly");
-		return "/student/homeStudent.xhtml?faces-redirect=true";
+		return "/app/student/homeStudent.xhtml?faces-redirect=true";
 	}
-	
+
 	public String viewStudent(Student student) {
 		selectedStudent = student;
-		System.out.println("Student " + student + " showed correctly");
-		return "/student/viewStudent.xhtml?faces-redirect=true";
+		System.out.println("Student " + selectedStudent + " showed correctly");
+		return "/app/student/viewStudent.xhtml?faces-redirect=true";
 	}
 
 	public void deleteStudent(Student student) {
 		studentList.remove(student);
-		System.out.println("Student " + student + " deleted correctly");
-	}
-
-	public void setNewId(int newId) {
-		this.newId = newId;
+		System.out.println("Student " + selectedStudent + " deleted correctly");
 	}
 
 	public void setNewName(String newName) {
@@ -70,16 +79,12 @@ public class StudentController {
 		this.newJobTitle = newJobTitle;
 	}
 
-	public void setNewPaymentType(String newPaymentType) {
+	public void setNewPaymentType(PaymentType newPaymentType) {
 		this.newPaymentType = newPaymentType;
 	}
 
 	public void setNewSex(String newSex) {
 		this.newSex = newSex;
-	}
-
-	public int getNewId() {
-		return newId;
 	}
 
 	public String getNewName() {
@@ -94,12 +99,28 @@ public class StudentController {
 		return newJobTitle;
 	}
 
-	public String getNewPaymentType() {
+	public PaymentType getNewPaymentType() {
 		return newPaymentType;
 	}
 
 	public String getNewSex() {
 		return newSex;
+	}
+
+	public String getNewEmail() {
+		return newEmail;
+	}
+
+	public void setNewEmail(String newEmail) {
+		this.newEmail = newEmail;
+	}
+	
+	public ApplicationBean getApplicationBean() {
+		return applicationBean;
+	}
+
+	public void setApplicationBean(ApplicationBean applicationBean) {
+		this.applicationBean = applicationBean;
 	}
 
 	public List<Student> getStudentList() {
@@ -108,5 +129,24 @@ public class StudentController {
 
 	public Student getSelectedStudent() {
 		return selectedStudent;
+	}
+	
+	private void cleanForm() {
+		setNewName(null);
+		setNewSurname(null);
+		setNewEmail(null);
+		setNewJobTitle(null);
+		setNewPaymentType(null);
+		setNewSex(null);
+	}
+	
+	public String reset() {
+		cleanForm();
+		return "/app/student/homeStudent.xhtml?faces-redirect=true";
+	}
+	
+	public String backHome() {
+		cleanForm();
+		return "/index.xhtml?faces-redirect=true";
 	}
 }

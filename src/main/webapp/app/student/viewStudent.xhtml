@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Utenti salvati</title>
+</h:head>
+<h:body>
+	<h3>View of #{studentController.selectedStudent.name} #{studentController.selectedStudent.surname} student</h3>
+	<h:form id="formViewStudent">
+		<h:panelGrid id="panelViewStudent" columns="2" border="0">
+			<h:outputLabel value="Id"/> 
+			<h:outputText value="#{studentController.selectedStudent.id}"/>
+
+			<h:outputLabel value="Name"/> 
+			<h:outputText value="#{studentController.selectedStudent.name}"/>
+
+			<h:outputLabel value="Surname"/> 
+			<h:outputText value="#{studentController.selectedStudent.surname}"/>
+			
+			<h:outputLabel value="Email"/>
+			<h:outputText id="email" value="#{studentController.selectedStudent.email}" />
+
+			<h:outputLabel value="Job Title"/> 
+			<h:outputText value="#{studentController.selectedStudent.jobTitle}"/>
+
+			<h:outputLabel value="Payment Type"/> 
+			<h:outputText value="#{studentController.selectedStudent.paymentType.label}"/>
+
+			<h:outputLabel value="Sex"/> 
+			<h:outputText value="#{studentController.selectedStudent.sex}"/>
+
+			<h:commandButton id="back-button" value="Back" action="homeStudent.xhtml" />
+			<h:commandButton id="home-button" value="Home" action="../../index.xhtml" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
