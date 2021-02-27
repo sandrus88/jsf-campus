@@ -11,22 +11,22 @@
 
 		<h:dataTable value="#{courseController.allTopics}" var="topic" border="0" id="courseTopicsTable">
 				<h:column>
-					<f:facet name="header">Id</f:facet>    				
-                	#{topic.id}
+					<f:facet name="header"><h:outputText value="#{msg['id']}"/></f:facet>    				
+                	<h:outputText value="#{topic.id}"/>
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Name</f:facet>
-                	#{topic.name}
+					<f:facet name="header"><h:outputText value="#{msg['name']}"/></f:facet>
+                	<h:outputText value="#{topic.name}"/>
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Description</f:facet>
-                	#{topic.description}
+					<f:facet name="header"><h:outputText value="#{msg['description']}"/></f:facet>
+                	<h:outputText value="##{topic.description}"/>
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Selection</f:facet>
+					<f:facet name="header"><h:outputText value="#{msg['selection']}"/></f:facet>
 					<h:selectBooleanCheckbox id="selectionTopic" value="#{topic.checked}"/>
 		 		</h:column>
 		</h:dataTable>

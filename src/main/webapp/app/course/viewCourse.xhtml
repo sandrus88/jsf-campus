@@ -7,16 +7,16 @@
 	<h3>View of #{courseController.selectedCourse.name} course</h3>
 	<h:form id="formViewCourse">
 		<h:panelGrid id="panelViewCourse" columns="2" border="0">
-			<h:outputLabel value="Id"/>
+			<h:outputLabel value="#{msg['id']}"/>
 			<h:outputText value="#{courseController.selectedCourse.id}" />
 			
-			<h:outputLabel value="Name"/>
+			<h:outputLabel value="#{msg['name']}"/>
 			<h:outputText value="#{courseController.selectedCourse.name}" />
 			
-			<h:outputLabel value="Description"/>
+			<h:outputLabel value="#{msg['description']}"/>
 			<h:outputText value="#{courseController.selectedCourse.description}" />
 			
-			<h:outputLabel value="Enabled"/>
+			<h:outputLabel value="#{msg['enabled']}"/>
 			<h:selectBooleanCheckbox value="#{courseController.selectedCourse.enabled}" disabled="true"/>
 			
 			<h:commandButton id="back-button" value="Back" action="homeCourse.xhtml" />

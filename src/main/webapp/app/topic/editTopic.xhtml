@@ -7,15 +7,15 @@
 	<h:form id="formChangeTopic">
 		<h3>Change Topic</h3>
 		<h:panelGrid id="panelChangeTopic" columns="3" border="0">
-			<h:outputLabel for="modificaId" value="Id"/>
+			<h:outputLabel for="modificaId" value="#{msg['id']}"/>
 			<h:inputText id="modificaId" value="#{topicController.selectedTopic.id}" disabled="true" />
 			<h:outputText/>
 			
-			<h:outputLabel for="modificaName" value="Name *"/>
+			<h:outputLabel for="modificaName" value="#{msg['name']}*"/>
 			<h:inputText id="modificaName" value="#{topicController.selectedTopic.name}" required="true" requiredMessage="Name is required"/>
 			<h:message for="modificaName" style="color:red" />
 			
-			<h:outputLabel for="modificaDescription" value="Description"/>
+			<h:outputLabel for="modificaDescription" value="#{msg['description']}"/>
 			<h:inputText id="modificaDescription" value="#{topicController.selectedTopic.description}" />
 			<h:outputText/>
 			

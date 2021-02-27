@@ -7,19 +7,19 @@
 	<h:form id="formChangeCourse">
 		<h3>Change Course</h3>
 		<h:panelGrid id="panelChangeCourse" columns="3" border="0">
-			<h:outputLabel for="modificaId" value="Id"/>
+			<h:outputLabel for="modificaId" value="#{msg['id']}"/>
 			<h:inputText id="modificaId" value="#{courseController.selectedCourse.id}" disabled="true" />
 			<h:outputText/>
 			
-			<h:outputLabel for="modificaName" value="Name *"/>
+			<h:outputLabel for="modificaName" value="#{msg['name']}*"/>
 			<h:inputText id="modificaName" value="#{courseController.selectedCourse.name}" required="true" requiredMessage="Name is required"/>
 			<h:message for="modificaName" style="color:red" />
 			
-			<h:outputLabel for="modificaDescription" value="Description"/>
+			<h:outputLabel for="modificaDescription" value="#{msg['description']}"/>
 			<h:inputText id="modificaDescription" value="#{courseController.selectedCourse.description}" />
 			<h:outputText/>
 			
-			<h:outputLabel for="modificaEnabled" value="Enabled"/>
+			<h:outputLabel for="modificaEnabled" value="#{msg['enabled']}"/>
 			<h:selectBooleanCheckbox id="modificaEnabled" value="#{courseController.selectedCourse.enabled}" />
 			<h:outputText/>
 			

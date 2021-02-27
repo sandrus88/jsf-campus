@@ -7,25 +7,25 @@
 	<h3>View of #{studentController.selectedStudent.name} #{studentController.selectedStudent.surname} student</h3>
 	<h:form id="formViewStudent">
 		<h:panelGrid id="panelViewStudent" columns="2" border="0">
-			<h:outputLabel value="Id"/> 
+			<h:outputLabel value="#{msg['id']}"/> 
 			<h:outputText value="#{studentController.selectedStudent.id}"/>
 
-			<h:outputLabel value="Name"/> 
+			<h:outputLabel value="#{msg['name']}"/> 
 			<h:outputText value="#{studentController.selectedStudent.name}"/>
 
-			<h:outputLabel value="Surname"/> 
+			<h:outputLabel value="#{msg['surname']}"/> 
 			<h:outputText value="#{studentController.selectedStudent.surname}"/>
 			
-			<h:outputLabel value="Email"/>
+			<h:outputLabel value="#{msg['email']}"/>
 			<h:outputText id="email" value="#{studentController.selectedStudent.email}" />
 
-			<h:outputLabel value="Job Title"/> 
+			<h:outputLabel value="#{msg['jobTitle']}"/> 
 			<h:outputText value="#{studentController.selectedStudent.jobTitle}"/>
 
-			<h:outputLabel value="Payment Type"/> 
+			<h:outputLabel value="#{msg['paymentType']}"/> 
 			<h:outputText value="#{studentController.selectedStudent.paymentType.label}"/>
 
-			<h:outputLabel value="Sex"/> 
+			<h:outputLabel value="#{msg['sex']}"/> 
 			<h:outputText value="#{studentController.selectedStudent.sex}"/>
 
 			<h:commandButton id="back-button" value="Back" action="homeStudent.xhtml" />

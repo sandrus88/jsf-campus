@@ -10,15 +10,15 @@
 			<h3>Add Course</h3>
 			<h:panelGrid id="panelCourse" border="0" columns="3">
 				
-				<h:outputLabel for="name" value="Name *"/>
+				<h:outputLabel for="name" value="#{msg['name']}*"/>
 				<h:inputText id="name" value="#{courseController.newName}" required="true" requiredMessage="Name is required"/>
 				<h:message for="name" style="color:red" />
 				
-				<h:outputLabel for="description" value="Description"/>
+				<h:outputLabel for="description" value="#{msg['description']}"/>
 				<h:inputText id="description" value="#{courseController.newDescription}" />
 				<h:outputText/>
 				
-				<h:outputLabel for="enabledCourse" value="Enabled"/>
+				<h:outputLabel for="enabledCourse" value="#{msg['enabled']}"/>
 				<h:selectBooleanCheckbox id="enabledCourse" value="#{courseController.newEnabled}" />
 				<h:outputText/>
 			</h:panelGrid>
@@ -37,27 +37,27 @@
 		<h:form>
 			<h:dataTable value="#{courseController.courseList}" var="item" border="2" id="courseTable">
 				<h:column>
-					<f:facet name="header">Id</f:facet>   				
+					<f:facet name="header"><h:outputText value="#{msg['id']}"/></f:facet>   				
                 	<h:outputText value="#{item.id}" />
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Name</f:facet>
+					<f:facet name="header"><h:outputText value="#{msg['name']}"/></f:facet>
                 	<h:outputText value="#{item.name}" />
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Description</f:facet>
+					<f:facet name="header"><h:outputText value="#{msg['description']}"/></f:facet>
                 	<h:outputText value="#{item.description}" />
             	</h:column>
             	
             	<h:column>
-					<f:facet name="header">Enabled</f:facet>
+					<f:facet name="header"><h:outputText value="#{msg['enabled']}"/></f:facet>
               		<h:outputText value="#{item.enabled}" converter="booleanToYesNoConverter"/> 
             	</h:column>
 
 				<h:column>
-					<f:facet name="header">Action</f:facet> 
+					<f:facet name="header"><h:outputText value="#{msg['action']}"/></f:facet> 
 					<h:commandLink value="View" action="#{courseController.viewCourse(item)}" />
 					| <h:commandLink value="Edit" action="#{courseController.updateSelectedCourse(item)}" /> 
 					| <h:commandLink value="Delete" action="#{courseController.deleteCourse(item)}" />
