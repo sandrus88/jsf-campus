@@ -21,7 +21,6 @@ public class TopicController {
 
 	private String newName;
 	private String newDescription;
-	private boolean newChecked;
 
 	public void addTopic() {
 		Topic topic = new Topic();
@@ -85,14 +84,6 @@ public class TopicController {
 
 	public Topic getSelectedTopic() {
 		return selectedTopic;
-	}
-
-	public boolean isNewChecked() {
-		return newChecked;
-	}
-
-	public void setNewChecked(boolean newChecked) {
-		this.newChecked = newChecked;
 	}
 
 	private void cleanForm() {

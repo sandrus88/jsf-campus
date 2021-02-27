@@ -28,21 +28,36 @@ public class CourseController {
 	private String newName;
 	private String newDescription;
 	private boolean newEnabled;
-
-	public void addTopic(Topic topic) {
-		allTopics.add(topic);
-	}
-
+	
 	public void updateCourseTopics() {
-		topicController = JsfUtil.findBean("topicController");
+		List<Topic> checkedTopics = new ArrayList<Topic>();
 		for (int i = 0; i < allTopics.size(); i++) {
-			if (topicController.isNewChecked() == true) {
-				addTopic(allTopics.get(i));
+			final Topic topic = allTopics.get(i);
+			if (topic.isChecked()) {
+				checkedTopics.add(topic);
 			}
+		}
+		selectedCourse.setTopicList(checkedTopics);
+		System.out.println(selectedCourse);
+		cleanCheckboxes();
+	}
+	
+	public void cleanCheckboxes() {
+		for (int i = 0; i < allTopics.size(); i++) {
+			final Topic topic = allTopics.get(i);
+			topic.setChecked(false);
+		}
+	}
+	
+	public void cleanTopic(Course course) {
+		selectedCourse = course;
+		for (int i = 0; i < allTopics.size(); i++) {
+			final Topic topic = allTopics.get(i);
+			topic.setChecked(false);
 		}
 		System.out.println(selectedCourse);
 	}
-
+	
 	public void addCourse() {
 		Course course = new Course();
 		course.setId(applicationBean.getNextInt());
@@ -76,9 +91,17 @@ public class CourseController {
 		return "/app/course/viewCourse.xhtml?faces-redirect=true";
 	}
 
-	public void viewTopics(Course course) {
+	public String viewTopics(Course course) {
 		selectedCourse = course;
-		System.out.println("ViewTopic");
+		List<Topic> checkedTopics = selectedCourse.getTopicList();
+		for (int i = 0; i < allTopics.size(); i++) {
+			final Topic topic = allTopics.get(i);
+			if (checkedTopics.contains(topic)) {
+				topic.setChecked(true);
+			}
+		}
+		System.out.println(selectedCourse);
+		return "/app/course/courseTopicsList.xhtml?faces-redirect=true";
 	}
 
 	public String getNewName() {

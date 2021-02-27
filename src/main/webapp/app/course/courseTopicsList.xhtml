@@ -27,16 +27,14 @@
 
 				<h:column>
 					<f:facet name="header">Selection</f:facet>
-					<h:selectBooleanCheckbox id="selectionTopic" value="#{topic.checked}">
-						<f:ajax event="click" execute="@form" render="@form" />
-						<!-- ad ogni click mandare item al backing bean (how to call backing beanwhwen checkobox selected jsf
-						fai finta che devo chiamare selectTopic(topic) -->
-					</h:selectBooleanCheckbox>
+					<h:selectBooleanCheckbox id="selectionTopic" value="#{topic.checked}"/>
 		 		</h:column>
 		</h:dataTable>
 		
-		<h:panelGrid id="panelButtonsUpdateTopic" border="0" columns="1">
-			<h:commandButton id="aggiornaTopic" value="Update Topic" action="#{courseController.updateCourseTopics()}"/>
+		<h:panelGrid id="panelButtonsUpdateTopic" border="0" columns="3">
+			<h:commandButton id="aggiornaTopic" value="Update Topic" action="#{courseController.updateCourseTopics()}" />
+			<h:commandButton id="tornaIndietro" value="Back" action="homeCourse.xhtml" />
+			<h:commandButton id="pulisciTopic" value="Close" action="#{courseController.cleanTopic(selectedCourse)}" />
 		</h:panelGrid> 
 	</h:form>
 </h:body>
