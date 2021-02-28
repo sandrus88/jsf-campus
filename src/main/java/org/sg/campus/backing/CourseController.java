@@ -23,7 +23,6 @@ public class CourseController {
 	private Course selectedCourse;
 
 	private List<Topic> allTopics = new ArrayList<Topic>();
-//	private List<Topic> selectedTopics;
 
 	private String newName;
 	private String newDescription;
@@ -38,24 +37,20 @@ public class CourseController {
 			}
 		}
 		selectedCourse.setTopicList(checkedTopics);
-		System.out.println(selectedCourse);
-		cleanCheckboxes();
+		System.out.println("Topics selected for course id" + selectedCourse.getId() + ": " + checkedTopics);
 	}
 	
-	public void cleanCheckboxes() {
+	public void cleanAllTopics() {
 		for (int i = 0; i < allTopics.size(); i++) {
 			final Topic topic = allTopics.get(i);
 			topic.setChecked(false);
 		}
 	}
 	
-	public void cleanTopic(Course course) {
-		selectedCourse = course;
-		for (int i = 0; i < allTopics.size(); i++) {
-			final Topic topic = allTopics.get(i);
-			topic.setChecked(false);
-		}
-		System.out.println(selectedCourse);
+	public String goBack() {
+		cleanAllTopics();
+		System.out.println("All topics: " + allTopics);
+		return "/app/course/homeCourse.xhtml?faces-redirect=true";
 	}
 	
 	public void addCourse() {
@@ -87,7 +82,7 @@ public class CourseController {
 
 	public String viewCourse(Course course) {
 		selectedCourse = course;
-		System.out.println("Course " + course + " showed correctly");
+		System.out.println("Course " + selectedCourse + " showed correctly");
 		return "/app/course/viewCourse.xhtml?faces-redirect=true";
 	}
 
