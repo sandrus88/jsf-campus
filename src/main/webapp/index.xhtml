@@ -1,17 +1,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Home Page</title>
 </h:head>
 <h:body>
 	<h3>Home Page Campus</h3>
 	<h:form>
-		<h:commandLink value="Gestisci studenti" action="app/student/homeStudent.xhtml" />
+		<h:commandLink value="#{msg['home.manage.student']}" action="app/student/homeStudent.xhtml" />
 		<br></br>
-		<h:commandLink value="Gestisci corsi" action="app/course/homeCourse.xhtml" />
+		<h:commandLink value="#{msg['home.manage.course']}" action="app/course/homeCourse.xhtml" />
 		<br></br>
-		<h:commandLink value="Gestisci topics" action="app/topic/homeTopic.xhtml" />
+		<h:commandLink value="#{msg['home.manage.topic']}" action="app/topic/homeTopic.xhtml" />
 	</h:form>
 </h:body>
 </html>

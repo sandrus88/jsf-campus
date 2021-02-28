@@ -5,8 +5,8 @@
 </h:head>
 <h:body>
 	<h3>Details of #{studentController.selectedStudent.name} #{studentController.selectedStudent.surname} student</h3>
-	<h:form id="#{msg['detailStudent']}">
-		<h:panelGrid id="#{msg['panelData']}" columns="2" border="0">
+	<h:form id="detailStudentForm">
+		<h:panelGrid columns="2" border="0">
 			<h:outputLabel value="#{msg['student.id']}"/>
 			<h:outputText value="#{studentController.selectedStudent.id}"/>
 
@@ -28,8 +28,8 @@
 			<h:outputLabel value="#{msg['student.sex']}"/>
 			<h:outputText value="#{studentController.selectedStudent.sex}"/>
 
-			<h:commandButton id="#{msg['backButtonId']}" value="#{msg['backButtonValue']}" action="homeStudent.xhtml" />
-			<h:commandButton id="#{msg['homeButtonId']}" value="#{msg['homeButtonValue']}" action="../../index.xhtml" />
+			<h:commandButton value="#{msg['back']}" action="homeStudent.xhtml" />
+			<h:commandButton value="#{msg['home']}" action="../../index.xhtml" />
 		</h:panelGrid>
 	</h:form>
 </h:body>

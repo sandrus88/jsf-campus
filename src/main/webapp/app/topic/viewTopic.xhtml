@@ -5,19 +5,19 @@
 </h:head>
 <h:body>
 	<h3>Details of #{topicController.selectedTopic.name} topic</h3>
-	<h:form id="#{msg['detailTopic']}">
-		<h:panelGrid id="#{msg['panelData']}" columns="2" border="0">
+	<h:form id="detailTopicForm">
+		<h:panelGrid columns="2" border="0">
 			<h:outputLabel value="#{msg['topic.id']}"/>
-			<h:outputText value="#{topicController.selectedTopic.id}" />
+			<h:outputText  id="id" value="#{topicController.selectedTopic.id}" />
 
 			<h:outputLabel value="#{msg['topic.name']}"/>
-			<h:outputText value="#{topicController.selectedTopic.name}" />
+			<h:outputText id="name" value="#{topicController.selectedTopic.name}" />
 
 			<h:outputLabel value="#{msg['topic.description']}"/>
-			<h:outputText value="#{topicController.selectedTopic.description}" />
+			<h:outputText id="description" value="#{topicController.selectedTopic.description}" />
 
-			<h:commandButton id="#{msg['backButtonId']}" value="#{msg['backButtonValue']}" action="homeTopic.xhtml" />
-			<h:commandButton id="#{msg['homeButtonId']}" value="#{msg['homeButtonValue']}" action="../../index.xhtml" />
+			<h:commandButton value="#{msg['back']}" action="homeTopic.xhtml" />
+			<h:commandButton value="#{msg['home']}" action="../../index.xhtml" />
 		</h:panelGrid>
 	</h:form>
 </h:body>

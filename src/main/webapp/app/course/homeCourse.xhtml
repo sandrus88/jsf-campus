@@ -1,71 +1,80 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-	<title>Added Courses</title>
+    <title>Added Courses</title>
 </h:head>
 <h:body>
-	<div id="#{msg['containerForm']}">
-		<h:form id="#{msg['addCourse']}">
-			<h3>Add Course</h3>
-			<h:panelGrid id="#{msg['panelData']}" border="0" columns="3">
+    <div>
+        <h:form id="containerForm">
+            <h3>Add Course</h3>
+            <h:panelGrid border="0" columns="3">
+                <h:outputLabel for="name" value="#{msg['course.name']}*"/>
+                <h:inputText id="name" value="#{courseController.newName}" required="true" requiredMessage="Name is required"/>
+                <h:message for="name" style="color:red"/>
 
-				<h:outputLabel for="#{msg['name']}" value="#{msg['course.name']}*"/>
-				<h:inputText id="#{msg['name']}" value="#{courseController.newName}" required="true" requiredMessage="Name is required"/>
-				<h:message for="#{msg['name']}" style="color:red" />
+                <h:outputLabel for="description" value="#{msg['course.description']}"/>
+                <h:inputText id="description" value="#{courseController.newDescription}"/>
+                <h:outputText/>
 
-				<h:outputLabel for="#{msg['description']}" value="#{msg['course.description']}"/>
-				<h:inputText id="#{msg['description']}" value="#{courseController.newDescription}" />
-				<h:outputText/>
+                <h:outputLabel for="enabled" value="#{msg['course.enabled']}"/>
+                <h:selectBooleanCheckbox id="enabled" value="#{courseController.newEnabled}"/>
+                <h:outputText/>
+            </h:panelGrid>
 
-				<h:outputLabel for="#{msg['enabled']}" value="#{msg['course.enabled']}"/>
-				<h:selectBooleanCheckbox id="#{msg['enabled']}" value="#{courseController.newEnabled}" />
-				<h:outputText/>
-			</h:panelGrid>
+            <h:panelGrid border="0" columns="3">
+                <h:commandButton value="#{msg['save']}" action="#{courseController.addCourse}"/>
+                <h:commandButton value="#{msg['reset']}" action="#{courseController.reset()}" immediate="true"/>
+                <h:commandButton value="#{msg['home']}" action="#{courseController.backHome()}" immediate="true"/>
+            </h:panelGrid>
+        </h:form>
+    </div>
 
-			<h:panelGrid id="#{msg['panelButtons']}" border="0" columns="3">
-				<h:commandButton id="#{msg['saveButtonId']}" value="#{msg['saveButtonValue']}" action="#{courseController.addCourse}" />
-				<h:commandButton id="#{msg['resetButtonId']}" value="#{msg['resetButtonValue']}" action="#{courseController.reset()}" immediate="true" />
-				<h:commandButton id="#{msg['homeButtonId']}" value="#{msg['homeButtonValue']}" action="#{courseController.backHome()}" immediate="true" />
-			</h:panelGrid>
-		</h:form>
-	</div>
+    <div>
+        <h1>Courses List</h1>
 
-	<div id="#{msg['containerTable']}">
-		<h1>Courses List</h1>
+        <h:form id="courseListForm">
+            <h:dataTable value="#{courseController.courseList}" var="item" border="2" id="coursesTable">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msg['course.id']}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </h:column>
 
-		<h:form id="#{msg['courseList']}">
-			<h:dataTable value="#{courseController.courseList}" var="item" border="2" id="#{msg['courseTable']}">
-				<h:column>
-					<f:facet name="#{msg['header']}"><h:outputText value="#{msg['course.id']}"/></f:facet>
-					<h:outputText value="#{item.id}" />
-				</h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msg['course.name']}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.name}"/>
+                </h:column>
 
-				<h:column>
-					<f:facet name="#{msg['header']}"><h:outputText value="#{msg['course.name']}"/></f:facet>
-					<h:outputText value="#{item.name}" />
-				</h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msg['course.description']}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.description}"/>
+                </h:column>
 
-				<h:column>
-					<f:facet name="#{msg['header']}"><h:outputText value="#{msg['course.description']}"/></f:facet>
-					<h:outputText value="#{item.description}" />
-				</h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msg['course.enabled']}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.enabled}" converter="booleanToYesNoConverter"/>
+                </h:column>
 
-				<h:column>
-					<f:facet name="#{msg['header']}"><h:outputText value="#{msg['course.enabled']}"/></f:facet>
-					<h:outputText value="#{item.enabled}" converter="booleanToYesNoConverter"/>
-				</h:column>
-
-				<h:column>
-					<f:facet name="#{msg['header']}"><h:outputText value="#{msg['action']}"/></f:facet>
-					<h:commandLink value="#{msg['view']}" action="#{courseController.viewCourse(item)}" />
-					| <h:commandLink value="#{msg['edit']}" action="#{courseController.updateSelectedCourse(item)}" />
-					| <h:commandLink value="#{msg['delete']}" action="#{courseController.deleteCourse(item)}" />
-					| <h:commandLink value="#{msg['topics']}" action="#{courseController.viewTopics(item)}" />
-				</h:column>
-			</h:dataTable>
-		</h:form>
-	</div>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{msg['action.title']}"/>
+                    </f:facet>
+                    <h:commandLink value="#{msg['action.view']}" action="#{courseController.viewCourse(item)}"/>
+                    | <h:commandLink value="#{msg['action.edit']}" action="#{courseController.updateSelectedCourse(item)}"/>
+                    | <h:commandLink value="#{msg['action.delete']}" action="#{courseController.deleteCourse(item)}"/>
+                    | <h:commandLink value="#{msg['course.topics']}" action="#{courseController.viewTopics(item)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </div>
 </h:body>
 </html>
 

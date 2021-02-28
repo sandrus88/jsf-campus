@@ -4,23 +4,23 @@
 	<title>Update Topic</title>
 </h:head>
 <h:body>
-	<h:form id="#{msg['containerForm']}">
+	<h:form id="topicForm">
 		<h3>Update Topic #{topicController.selectedTopic.name}</h3>
-		<h:panelGrid id="#{msg['panelData']}" columns="3" border="0">
-			<h:outputLabel for="#{msg['id']}" value="#{msg['topic.id']}"/>
-			<h:inputText id="#{msg['id']}" value="#{topicController.selectedTopic.id}" disabled="true" />
+		<h:panelGrid columns="3" border="0">
+			<h:outputLabel for="id" value="#{msg['topic.id']}"/>
+			<h:inputText id="id" value="#{topicController.selectedTopic.id}" disabled="true" />
 			<h:outputText/>
 
-			<h:outputLabel for="#{msg['name']}" value="#{msg['topic.name']}*"/>
-			<h:inputText id="#{msg['name']}" value="#{topicController.selectedTopic.name}" required="true" requiredMessage="Name is required"/>
-			<h:message for="#{msg['name']}" style="color:red" />
+			<h:outputLabel for="name" value="#{msg['topic.name']}*"/>
+			<h:inputText id="name" value="#{topicController.selectedTopic.name}" required="true" requiredMessage="Name is required"/>
+			<h:message for="name" style="color:red" />
 
-			<h:outputLabel for="#{msg['description']}" value="#{msg['topic.description']}"/>
-			<h:inputText id="#{msg['description']}" value="#{topicController.selectedTopic.description}" />
+			<h:outputLabel for="description" value="#{msg['topic.description']}"/>
+			<h:inputText id="description" value="#{topicController.selectedTopic.description}" />
 			<h:outputText/>
 
-			<h:commandButton id="#{msg['changeButtonId']}" value="#{msg['changeButtonValue']}" action="#{topicController.updateTopic}" />
-			<h:commandButton id="#{msg['backButtonId']}" value="#{msg['backButtonValue']}" action="homeTopic.xhtml" immediate="true"/>
+			<h:commandButton value="#{msg['save']}" action="#{topicController.updateTopic}" />
+			<h:commandButton value="#{msg['back']}" action="homeTopic.xhtml" immediate="true"/>
 			<h:outputText/>
 		</h:panelGrid>
 	</h:form>

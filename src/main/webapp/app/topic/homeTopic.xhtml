@@ -5,53 +5,54 @@
 	<title>Added Topics</title>
 </h:head>
 <h:body>
-	<div id="#{msg['containerForm']}">
-		<h:form id="#{msg['addStudent']}">
+	<div>
+		<h:form id="newTopicForm">
 			<h3>Add Topic</h3>
-			<h:panelGrid id="#{msg['panelData']}" border="0" columns="3">
+			<h:panelGrid border="0" columns="3">
+				<h:outputLabel for="name" value="#{msg['topic.name']}*"/>
+				<h:inputText id="name" value="#{topicController.newName}" required="true" requiredMessage="Name is required"/>
+				<h:message for="name" style="color:red" />
 
-				<h:outputLabel for="#{msg['name']}" value="#{msg['topic.name']}*"/>
-				<h:inputText id="#{msg['name']}" value="#{topicController.newName}" required="true" requiredMessage="Name is required"/>
-				<h:message for="#{msg['name']}" style="color:red" />
-
-				<h:outputLabel for="#{msg['description']}" value="#{msg['topic.description']}"/>
-				<h:inputText id="#{msg['description']}" value="#{topicController.newDescription}" />
+				<h:outputLabel for="description" value="#{msg['topic.description']}"/>
+				<h:inputText id="description" value="#{topicController.newDescription}" />
 				<h:outputText/>
 			</h:panelGrid>
 
-			<h:panelGrid id="#{msg['panelButtons']}" border="0" columns="3">
-				<h:commandButton id="#{msg['saveButtonId']}" value="#{msg['saveButtonValue']}" action="#{topicController.addTopic}" />
-				<h:commandButton id="#{msg['resetButtonId']}" value="#{msg['resetButtonValue']}" action="#{topicController.reset()}" immediate="true" />
-				<h:commandButton id="#{msg['homeButtonId']}" value="#{msg['homeButtonValue']}" action="#{topicController.backHome()}" immediate="true" />
+			<h:panelGrid border="0" columns="3">
+				<h:commandButton value="#{msg['save']}" action="#{topicController.addTopic}" />
+				<h:commandButton value="#{msg['reset']}" action="#{topicController.reset()}" immediate="true" />
+				<h:commandButton value="#{msg['home']}" action="#{topicController.backHome()}" immediate="true" />
 			</h:panelGrid>
 		</h:form>
 	</div>
 
-	<div id="#{msg['containerTable']}">
+	<div>
 		<h1>Topics List</h1>
 
-		<h:form id="#{msg['topicList']}">
-			<h:dataTable value="#{topicController.topicList}" var="item" border="2" id="#{msg['topicTable']}">
+		<h:form id="topicsListForm">
+			<h:dataTable value="#{topicController.topicList}" var="item" border="2" id="topicsTable">
 				<h:column>
-					<f:facet name="#{msg['header']}"><h:outputText value="#{msg['topic.id']}" /></f:facet>
+					<f:facet name="header"><h:outputText value="#{msg['topic.id']}" /></f:facet>
 					<h:outputText value="#{item.id}" />
 				</h:column>
 
 				<h:column>
-					<f:facet name="#{msg['header']}"><h:outputText value="#{msg['topic.name']}" /></f:facet>
+					<f:facet name="header"><h:outputText value="#{msg['topic.name']}" /></f:facet>
 					<h:outputText value="#{item.name}" />
 				</h:column>
 
 				<h:column>
-					<f:facet name="#{msg['header']}"><h:outputText value="#{msg['topic.description']}" /></f:facet>
+					<f:facet name="header"><h:outputText value="#{msg['topic.description']}" /></f:facet>
 					<h:outputText value="#{item.description}" />
 				</h:column>
 
 				<h:column>
-					<f:facet name="#{msg['header']}"><h:outputText value="#{msg['action']}" /></f:facet>
-					<h:commandLink value="#{msg['view']}" action="#{topicController.viewTopic(item)}" />
-					| <h:commandLink value="#{msg['edit']}" action="#{topicController.updateSelectedTopic(item)}" />
-					| <h:commandLink value="#{msg['delete']}" action="#{topicController.deleteTopic(item)}" />
+					<f:facet name="header">
+						<h:outputText value="#{msg['action.title']}" />
+					</f:facet>
+					<h:commandLink value="#{msg['action.view']}" action="#{topicController.viewTopic(item)}" />
+					| <h:commandLink value="#{msg['action.edit']}" action="#{topicController.updateSelectedTopic(item)}" />
+					| <h:commandLink value="#{msg['action.delete']}" action="#{topicController.deleteTopic(item)}" />
 				</h:column>
 			</h:dataTable>
 		</h:form>

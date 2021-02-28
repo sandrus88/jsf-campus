@@ -5,47 +5,47 @@
 	<title>Update Student</title>
 </h:head>
 <h:body>
-	<h:form id="#{msg['changeStudent']}">
+	<h:form id="updateStudentForm">
 		<h3>Update Student #{studentController.selectedStudent.name}</h3>
-		<h:panelGrid id="#{msg['panelData']}" columns="3" border="0">
-			<h:outputLabel for="#{msg['id']}" value="#{msg['student.id']}"/>
-			<h:inputText id="#{msg['id']}" value="#{studentController.selectedStudent.id}" disabled="true" />
+		<h:panelGrid columns="3" border="0">
+			<h:outputLabel for="id" value="#{msg['student.id']}"/>
+			<h:inputText id="id" value="#{studentController.selectedStudent.id}" disabled="true" />
 			<h:outputText/>
 
-			<h:outputLabel for="#{msg['name']}" value="#{msg['student.name']}*"/>
-			<h:inputText id="#{msg['name']}" value="#{studentController.selectedStudent.name}" required="true" requiredMessage="Name is required"/>
-			<h:message for="#{msg['name']}" style="color:red" />
+			<h:outputLabel for="name" value="#{msg['student.name']}*"/>
+			<h:inputText id="name" value="#{studentController.selectedStudent.name}" required="true" requiredMessage="Name is required"/>
+			<h:message for="name" style="color:red" />
 
-			<h:outputLabel for="#{msg['surname']}" value="#{msg['student.surname']}*"/>
-			<h:inputText id="#{msg['surname']}" value="#{studentController.selectedStudent.surname}" required="true" requiredMessage="Surname is required"/>
-			<h:message for="#{msg['surname']}" style="color:red" />
+			<h:outputLabel for="surname" value="#{msg['student.surname']}*"/>
+			<h:inputText id="surname" value="#{studentController.selectedStudent.surname}" required="true" requiredMessage="Surname is required"/>
+			<h:message for="surname" style="color:red" />
 
-			<h:outputLabel for="#{msg['email']}" value="#{msg['student.email']}"/>
-			<h:inputText id="#{msg['email']}" value="#{studentController.selectedStudent.email}">
+			<h:outputLabel for="email" value="#{msg['student.email']}"/>
+			<h:inputText id="email" value="#{studentController.selectedStudent.email}">
 				<f:validator validatorId="emailValidator" />
 			</h:inputText>
-			<h:message for="#{msg['email']}" style="color:red" />
+			<h:message for="email" style="color:red" />
 
-			<h:outputLabel for="#{msg['jobTitle']}" value="#{msg['student.jobTitle']}"/>
-			<h:inputText id="#{msg['jobTitle']}" value="#{studentController.selectedStudent.jobTitle}" />
+			<h:outputLabel for="jobTitle" value="#{msg['student.jobTitle']}"/>
+			<h:inputText id="jobTitle" value="#{studentController.selectedStudent.jobTitle}" />
 			<h:outputText/>
 
-			<h:outputLabel for="#{msg['paymentType']}" value="#{msg['student.paymentType']}"/>
-			<h:selectOneMenu id="#{msg['paymentType']}" value="#{studentController.selectedStudent.paymentType}">
+			<h:outputLabel for="paymentType" value="#{msg['student.paymentType']}"/>
+			<h:selectOneMenu id="paymentType" value="#{studentController.selectedStudent.paymentType}">
 				<f:selectItem />
 				<f:selectItems value="#{studentController.getEnumValues()}" var="item" itemValue="#{item}" itemLabel="#{item.label}" />
 			</h:selectOneMenu>
 			<h:outputText/>
 
-			<h:outputLabel for="#{msg['sex']}" value="#{msg['student.sex']}*"/>
-			<h:selectOneRadio id="#{msg['sex']}" value="#{studentController.selectedStudent.sex}" required="true" requiredMessage="Sex is required">
-				<f:selectItem itemValue="#{msg['male']}" itemLabel="M"/>
-				<f:selectItem itemValue="#{msg['female']}" itemLabel="F"/>
+			<h:outputLabel for="sex" value="#{msg['student.sex']}*"/>
+			<h:selectOneRadio id="sex" value="#{studentController.selectedStudent.sex}" required="true" requiredMessage="Sex is required">
+				<f:selectItem itemValue="#{msg['student.male']}" itemLabel="M"/>
+				<f:selectItem itemValue="#{msg['student.female']}" itemLabel="F"/>
 			</h:selectOneRadio>
-			<h:message for="#{msg['sex']}" style="color:red" />
+			<h:message for="sex" style="color:red" />
 
-			<h:commandButton id="#{msg['changeButtonId']}" value="#{msg['changeButtonValue']}" action="#{studentController.updateStudent()}"/>
-			<h:commandButton id="#{msg['backButtonId']}" value="#{msg['backButtonValue']}" action="homeStudent.xhtml" immediate="true" />
+			<h:commandButton value="#{msg['save']}" action="#{studentController.updateStudent()}"/>
+			<h:commandButton value="#{msg['back']}" action="homeStudent.xhtml" immediate="true" />
 			<h:outputText/>
 		</h:panelGrid>
 	</h:form>
