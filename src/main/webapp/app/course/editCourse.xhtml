@@ -1,30 +1,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<title>Modifica</title>
+	<title>Update Course</title>
 </h:head>
 <h:body>
-	<h:form id="formChangeCourse">
-		<h3>Change Course</h3>
-		<h:panelGrid id="panelChangeCourse" columns="3" border="0">
-			<h:outputLabel for="modificaId" value="#{msg['id']}"/>
-			<h:inputText id="modificaId" value="#{courseController.selectedCourse.id}" disabled="true" />
+	<h:form id="#{msg['changeStudent']}">
+		<h3>Update Course #{courseController.selectedCourse.name}</h3>
+		<h:panelGrid id="#{msg['panelData']}" columns="3" border="0">
+			<h:outputLabel for="#{msg['id']}" value="#{msg['course.id']}"/>
+			<h:inputText id="#{msg['id']}" value="#{courseController.selectedCourse.id}" disabled="true" />
 			<h:outputText/>
 			
-			<h:outputLabel for="modificaName" value="#{msg['name']}*"/>
-			<h:inputText id="modificaName" value="#{courseController.selectedCourse.name}" required="true" requiredMessage="Name is required"/>
-			<h:message for="modificaName" style="color:red" />
+			<h:outputLabel for="#{msg['name']}" value="#{msg['course.name']}*"/>
+			<h:inputText id="#{msg['name']}" value="#{courseController.selectedCourse.name}" required="true" requiredMessage="Name is required"/>
+			<h:message for="#{msg['name']}" style="color:red" />
 			
-			<h:outputLabel for="modificaDescription" value="#{msg['description']}"/>
-			<h:inputText id="modificaDescription" value="#{courseController.selectedCourse.description}" />
+			<h:outputLabel for="#{msg['description']}" value="#{msg['course.description']}"/>
+			<h:inputText id="#{msg['description']}" value="#{courseController.selectedCourse.description}" />
 			<h:outputText/>
 			
-			<h:outputLabel for="modificaEnabled" value="#{msg['enabled']}"/>
-			<h:selectBooleanCheckbox id="modificaEnabled" value="#{courseController.selectedCourse.enabled}" />
+			<h:outputLabel for="#{msg['enabled']}" value="#{msg['course.enabled']}"/>
+			<h:selectBooleanCheckbox id="#{msg['enabled']}" value="#{courseController.selectedCourse.enabled}" />
 			<h:outputText/>
 			
-			<h:commandButton id="change-button" value="Save Changes" action="#{courseController.updateCourse}" />
-			<h:commandButton id="back-button" value="Back" action="homeCourse.xhtml" immediate="true"/>
+			<h:commandButton id="#{msg['changeButtonId']}" value="#{msg['changeButtonValue']}" action="#{courseController.updateCourse}" />
+			<h:commandButton id="#{msg['backButtonId']}" value="#{msg['backButtonValue']}" action="homeCourse.xhtml" immediate="true"/>
 			<h:outputText/>
 		</h:panelGrid>	
 	</h:form>

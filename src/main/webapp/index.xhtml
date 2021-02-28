@@ -7,11 +7,11 @@
 <h:body>
 	<h3>Home Page Campus</h3>
 	<h:form>
-		<h:commandLink value="Gestisci studenti" action="app/student/homeStudent.xhtml" />
+		<h:commandLink value="#{msg['manageStudents']}" action="app/student/homeStudent.xhtml" />
 		<br></br>
-		<h:commandLink value="Gestisci corsi" action="app/course/homeCourse.xhtml" />
+		<h:commandLink value="#{msg['manageCourses']}" action="app/course/homeCourse.xhtml" />
 		<br></br>
-		<h:commandLink value="Gestisci topics" action="app/topic/homeTopic.xhtml" />
+		<h:commandLink value="#{msg['manageTopics']}" action="app/topic/homeTopic.xhtml" />
 	</h:form>
 </h:body>
 </html>

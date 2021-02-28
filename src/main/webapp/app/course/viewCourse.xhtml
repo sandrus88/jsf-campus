@@ -1,26 +1,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<title>Utenti salvati</title>
+	<title>Course Details</title>
 </h:head>
 <h:body>
-	<h3>View of #{courseController.selectedCourse.name} course</h3>
-	<h:form id="formViewCourse">
-		<h:panelGrid id="panelViewCourse" columns="2" border="0">
-			<h:outputLabel value="#{msg['id']}"/>
+	<h3>Details of #{courseController.selectedCourse.name} course</h3>
+	<h:form id="detailCourse">
+		<h:panelGrid id="panelData" columns="2" border="0">
+			<h:outputLabel value="#{msg['course.id']}"/>
 			<h:outputText value="#{courseController.selectedCourse.id}" />
 			
-			<h:outputLabel value="#{msg['name']}"/>
+			<h:outputLabel value="#{msg['course.name']}"/>
 			<h:outputText value="#{courseController.selectedCourse.name}" />
 			
-			<h:outputLabel value="#{msg['description']}"/>
+			<h:outputLabel value="#{msg['course.description']}"/>
 			<h:outputText value="#{courseController.selectedCourse.description}" />
 			
-			<h:outputLabel value="#{msg['enabled']}"/>
+			<h:outputLabel value="#{msg['course.enabled']}"/>
 			<h:selectBooleanCheckbox value="#{courseController.selectedCourse.enabled}" disabled="true"/>
 			
-			<h:commandButton id="back-button" value="Back" action="homeCourse.xhtml" />
-			<h:commandButton id="home-button" value="Home" action="../../index.xhtml" />
+			<h:commandButton id="#{msg['backButtonId']}" value="#{msg['backButtonValue']}" action="homeCourse.xhtml" />
+			<h:commandButton id="#{msg['homeButtonId']}" value="#{msg['homeButtonValue']}" action="../../index.xhtml" />
 		</h:panelGrid>
 	</h:form>
 </h:body>

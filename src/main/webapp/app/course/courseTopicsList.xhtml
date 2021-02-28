@@ -3,37 +3,37 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
-	<title>Topic associati</title>
+	<title>Topics List</title>
 </h:head>
 <h:body>
-	<h:form id="formTopicsOfCourse">
+	<h:form id="#{msg['courseTopicsList']}">
 		<h3>Topics of #{courseController.selectedCourse.name} course</h3>
 
-		<h:dataTable value="#{courseController.allTopics}" var="topic" border="0" id="courseTopicsTable">
+		<h:dataTable value="#{courseController.allTopics}" var="topic" border="0" id="#{msg['courseTopicsTable']}">
 				<h:column>
-					<f:facet name="header"><h:outputText value="#{msg['id']}"/></f:facet>    				
+					<f:facet name="#{msg['header']}"><h:outputText value="#{msg['topic.id']}"/></f:facet>    				
                 	<h:outputText value="#{topic.id}"/>
             	</h:column>
 
 				<h:column>
-					<f:facet name="header"><h:outputText value="#{msg['name']}"/></f:facet>
+					<f:facet name="#{msg['header']}"><h:outputText value="#{msg['topic.name']}"/></f:facet>
                 	<h:outputText value="#{topic.name}"/>
             	</h:column>
 
 				<h:column>
-					<f:facet name="header"><h:outputText value="#{msg['description']}"/></f:facet>
+					<f:facet name="#{msg['header']}"><h:outputText value="#{msg['topic.description']}"/></f:facet>
                 	<h:outputText value="##{topic.description}"/>
             	</h:column>
 
 				<h:column>
-					<f:facet name="header"><h:outputText value="#{msg['selection']}"/></f:facet>
-					<h:selectBooleanCheckbox id="selectionTopic" value="#{topic.checked}"/>
+					<f:facet name="#{msg['header']}"><h:outputText value="#{msg['selection']}"/></f:facet>
+					<h:selectBooleanCheckbox id="#{msg['selectionTopic']}" value="#{topic.checked}"/>
 		 		</h:column>
 		</h:dataTable>
 		
-		<h:panelGrid id="panelButtonsUpdateTopic" border="0" columns="3">
-			<h:commandButton id="aggiornaTopic" value="Update Topic" action="#{courseController.updateCourseTopics()}" />
-			<h:commandButton id="tornaIndietro" value="Back" action="homeCourse.xhtml" />
+		<h:panelGrid id="#{msg['panelButtons']}" border="0" columns="3">
+			<h:commandButton id="#{msg['updateTopicId']}" value="#{msg['updateTopicValue']}" action="#{courseController.updateCourseTopics()}" />
+			<h:commandButton id="#{msg['backButtonId']}" value="#{msg['backButtonValue']}" action="homeCourse.xhtml" />
 			<h:commandButton id="pulisciTopic" value="Close" action="#{courseController.cleanTopic(selectedCourse)}" />
 		</h:panelGrid> 
 	</h:form>
