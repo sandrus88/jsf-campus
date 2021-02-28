@@ -1,35 +1,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	  xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<title>Utenti salvati</title>
+	<title>Student Details</title>
 </h:head>
 <h:body>
-	<h3>View of #{studentController.selectedStudent.name} #{studentController.selectedStudent.surname} student</h3>
-	<h:form id="formViewStudent">
-		<h:panelGrid id="panelViewStudent" columns="2" border="0">
-			<h:outputLabel value="Id"/> 
+	<h3>Details of #{studentController.selectedStudent.name} #{studentController.selectedStudent.surname} student</h3>
+	<h:form id="#{msg['detailStudent']}">
+		<h:panelGrid id="#{msg['panelData']}" columns="2" border="0">
+			<h:outputLabel value="#{msg['student.id']}"/>
 			<h:outputText value="#{studentController.selectedStudent.id}"/>
 
-			<h:outputLabel value="Name"/> 
+			<h:outputLabel value="#{msg['student.name']}"/>
 			<h:outputText value="#{studentController.selectedStudent.name}"/>
 
-			<h:outputLabel value="Surname"/> 
+			<h:outputLabel value="#{msg['student.surname']}"/>
 			<h:outputText value="#{studentController.selectedStudent.surname}"/>
-			
-			<h:outputLabel value="Email"/>
-			<h:outputText id="email" value="#{studentController.selectedStudent.email}" />
 
-			<h:outputLabel value="Job Title"/> 
+			<h:outputLabel value="#{msg['student.email']}"/>
+			<h:outputText value="#{studentController.selectedStudent.email}" />
+
+			<h:outputLabel value="#{msg['student.jobTitle']}"/>
 			<h:outputText value="#{studentController.selectedStudent.jobTitle}"/>
 
-			<h:outputLabel value="Payment Type"/> 
+			<h:outputLabel value="#{msg['student.paymentType']}"/>
 			<h:outputText value="#{studentController.selectedStudent.paymentType.label}"/>
 
-			<h:outputLabel value="Sex"/> 
+			<h:outputLabel value="#{msg['student.sex']}"/>
 			<h:outputText value="#{studentController.selectedStudent.sex}"/>
 
-			<h:commandButton id="back-button" value="Back" action="homeStudent.xhtml" />
-			<h:commandButton id="home-button" value="Home" action="../../index.xhtml" />
+			<h:commandButton id="#{msg['backButtonId']}" value="#{msg['backButtonValue']}" action="homeStudent.xhtml" />
+			<h:commandButton id="#{msg['homeButtonId']}" value="#{msg['homeButtonValue']}" action="../../index.xhtml" />
 		</h:panelGrid>
 	</h:form>
 </h:body>
