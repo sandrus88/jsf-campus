@@ -11,43 +11,43 @@ import javax.faces.bean.SessionScoped;
 
 import org.sg.campus.beans.ApplicationBean;
 import org.sg.campus.domain.PaymentType;
+import org.sg.campus.domain.PaymentTypeSelectOneMenu;
 import org.sg.campus.domain.Student;
 
 @ManagedBean
 @SessionScoped
 public class StudentController {
-	
-	@ManagedProperty(value="#{applicationBean}")
+
+	@ManagedProperty(value = "#{applicationBean}")
 	private ApplicationBean applicationBean;
-	
+
 	private String newName;
 	private String newSurname;
 	private String newEmail;
 	private String newJobTitle;
-	private PaymentType newPaymentType;
+	private PaymentTypeSelectOneMenu newPaymentTypeSelectOneMenu;
+	private PaymentType paymentTypeSelectedId;
 	private String newSex;
-	
+
 	private List<Student> studentList = new ArrayList<Student>();
 	private Student selectedStudent;
-	private List<PaymentType> paymentTypeList;
-	
+	private List<PaymentTypeSelectOneMenu> paymentTypeSelectOneMenuList;
+
 	@PostConstruct
-	public void init() { 
-		//creare lista con dove per ogni id enum prendere da prperties la sua stringa
-		paymentTypeList = new ArrayList<PaymentType>();
-		PaymentType newId;
-		String newLabel = "";
+	public void init() {
+		paymentTypeSelectOneMenuList = new ArrayList<PaymentTypeSelectOneMenu>();
+		PaymentTypeSelectOneMenu menuValue;
+		PaymentType[] values = PaymentType.values();
 		ResourceBundle bundle = ResourceBundle.getBundle("messages.messages");
-		String[] strings = { "student.paymentType.OK", "student.paymentType.NOTOK", "student.paymentType.UNKNOWN" };
-		for(int i = 0; i < strings.length; i++) {
-			newLabel = bundle.getString(strings[i]);
+		for (int i = 0; i < values.length; i++) {	
+			String label = bundle.getString("student.paymentType." + values[i]);
+			menuValue = new PaymentTypeSelectOneMenu(values[i], label);
+			paymentTypeSelectOneMenuList.add(menuValue);
 		}
-		newId = PaymentType.valueOf(newLabel);
-		paymentTypeList.add(newId);
 	}
-	
-	public List<PaymentType> getPaymentTypeList() {
-		return paymentTypeList;
+
+	public List<PaymentTypeSelectOneMenu> getPaymentTypeSelectOneMenuList() {
+		return paymentTypeSelectOneMenuList;
 	}
 
 	public void addStudent() {
@@ -57,7 +57,7 @@ public class StudentController {
 		student.setSurname(newSurname);
 		student.setEmail(newEmail);
 		student.setJobTitle(newJobTitle);
-		student.setPaymentType(newPaymentType);
+		student.setPaymentTypeSelectOneMenu(newPaymentTypeSelectOneMenu);
 		student.setSex(newSex);
 		studentList.add(student);
 		System.out.println("Student " + student + " added correctly");
@@ -98,8 +98,9 @@ public class StudentController {
 		this.newJobTitle = newJobTitle;
 	}
 
-	public void setNewPaymentType(PaymentType newPaymentType) {
-		this.newPaymentType = newPaymentType;
+	public void setNewPaymentTypeSelectOneMenu(PaymentTypeSelectOneMenu newPaymentTypeSelectOneMenu) {
+		System.out.println("Nuovo valore del select menu " + newPaymentTypeSelectOneMenu);
+		this.newPaymentTypeSelectOneMenu = newPaymentTypeSelectOneMenu;
 	}
 
 	public void setNewSex(String newSex) {
@@ -118,8 +119,8 @@ public class StudentController {
 		return newJobTitle;
 	}
 
-	public PaymentType getNewPaymentType() {
-		return newPaymentType;
+	public PaymentTypeSelectOneMenu getNewPaymentTypeSelectOneMenu() {
+		return newPaymentTypeSelectOneMenu;
 	}
 
 	public String getNewSex() {
@@ -133,7 +134,7 @@ public class StudentController {
 	public void setNewEmail(String newEmail) {
 		this.newEmail = newEmail;
 	}
-	
+
 	public ApplicationBean getApplicationBean() {
 		return applicationBean;
 	}
@@ -149,21 +150,30 @@ public class StudentController {
 	public Student getSelectedStudent() {
 		return selectedStudent;
 	}
-	
+
 	private void cleanForm() {
 		setNewName(null);
 		setNewSurname(null);
 		setNewEmail(null);
 		setNewJobTitle(null);
-		setNewPaymentType(null);
+		setNewPaymentTypeSelectOneMenu(null);
 		setNewSex(null);
 	}
-	
+
+	public PaymentType getPaymentTypeSelectedId() {
+		return paymentTypeSelectedId;
+	}
+
+	public void setPaymentTypeSelectedId(PaymentType paymentTypeSelectedId) {
+		System.out.println("L'id selezionato e' " + paymentTypeSelectedId);
+		this.paymentTypeSelectedId = paymentTypeSelectedId;
+	}
+
 	public String reset() {
 		cleanForm();
 		return "/app/student/homeStudent.xhtml?faces-redirect=true";
 	}
-	
+
 	public String backHome() {
 		cleanForm();
 		return "/index.xhtml?faces-redirect=true";

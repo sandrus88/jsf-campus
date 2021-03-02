@@ -6,7 +6,7 @@ public class Student {
 	private String surname;
 	private String email;	
 	private String jobTitle;
-	private PaymentType paymentType;
+	private PaymentTypeSelectOneMenu paymentTypeSelectOneMenu;
 	private String sex;
 	
 	public void setName(String name) {
@@ -58,16 +58,16 @@ public class Student {
 	}
 
 	
-	public PaymentType getPaymentType() {
-		return paymentType;
+	public PaymentTypeSelectOneMenu getPaymentTypeSelectOneMenu() {
+		return paymentTypeSelectOneMenu;
 	}
 
-	public void setPaymentType(PaymentType paymentType) {
-		this.paymentType = paymentType;
+	public void setPaymentTypeSelectOneMenu(PaymentTypeSelectOneMenu paymentTypeSelectOneMenu) {
+		this.paymentTypeSelectOneMenu = paymentTypeSelectOneMenu;
 	}
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", surname: " + surname + ", email: " + email + ", job title: " + jobTitle + ", payment type: " + paymentType + ", sex: " + sex + "]";
+		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", surname: " + surname + ", email: " + email + ", job title: " + jobTitle + ", payment type: " + paymentTypeSelectOneMenu + ", sex: " + sex + "]";
 	}
 }

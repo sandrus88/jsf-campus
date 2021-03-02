@@ -31,9 +31,9 @@
 				<h:outputText/>
 
 				<h:outputLabel for="paymentType" value="#{msg['student.paymentType']}"/>
-				<h:selectOneMenu id="paymentType" value="#{studentController.newPaymentType}">
+				<h:selectOneMenu id="paymentType" value="#{studentController.paymentTypeSelectedId}">
 					<f:selectItem />
-					<f:selectItems value="#{studentController.getPaymentTypeList()}" var="payment" itemValue="#{payment.id}" itemLabel="#{payment.label}" />
+					<f:selectItems value="#{studentController.getPaymentTypeSelectOneMenuList()}" var="payment" itemValue="#{payment.id}" itemLabel="#{payment.label}" />
 				</h:selectOneMenu> 
 				<h:outputText/>
 
@@ -98,7 +98,7 @@
 					<f:facet name="header">
 						<h:outputText value="#{msg['student.paymentType']}"/>
 					</f:facet>
-					<h:outputText value="#{item.paymentType.label}" />
+					<h:outputText value="#{item.paymentTypeSelectOneMenu.label}" />
 				</h:column>
 
 				<h:column>
