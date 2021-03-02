@@ -1,10 +1,13 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html">
+<html lang="#{localeBean.language}"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{localeBean.locale}"> 	
 <h:head>
-	<title>Student Details</title>
+	<title><h:outputText value="#{msg['student.view.title']}"/> #{studentController.selectedStudent.name} #{studentController.selectedStudent.surname}</title>
 </h:head>
 <h:body>
-	<h3>Details of #{studentController.selectedStudent.name} #{studentController.selectedStudent.surname} student</h3>
+	<h3><h:outputText value="#{msg['student.view.title']}"/> #{studentController.selectedStudent.name} #{studentController.selectedStudent.surname}</h3>
 	<h:form id="detailStudentForm">
 		<h:panelGrid columns="2" border="0">
 			<h:outputLabel value="#{msg['student.id']}"/>
@@ -33,4 +36,5 @@
 		</h:panelGrid>
 	</h:form>
 </h:body>
+</f:view>
 </html>

@@ -1,18 +1,21 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html">
+<html lang="#{localeBean.language}"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{localeBean.locale}"> 	
 <h:head>
-	<title>Update Topic</title>
+	<title><h:outputText value="#{msg['topic.edit.title']}"/> #{topicController.selectedTopic.name}</title>
 </h:head>
 <h:body>
 	<h:form id="topicForm">
-		<h3>Update Topic #{topicController.selectedTopic.name}</h3>
+		<h3><h:outputText value="#{msg['topic.edit.title']}"/> #{topicController.selectedTopic.name}</h3>
 		<h:panelGrid columns="3" border="0">
 			<h:outputLabel for="id" value="#{msg['topic.id']}"/>
 			<h:inputText id="id" value="#{topicController.selectedTopic.id}" disabled="true" />
 			<h:outputText/>
 
 			<h:outputLabel for="name" value="#{msg['topic.name']}*"/>
-			<h:inputText id="name" value="#{topicController.selectedTopic.name}" required="true" requiredMessage="Name is required"/>
+			<h:inputText id="name" value="#{topicController.selectedTopic.name}" required="true" label="#{msg['topic.name']}"/>
 			<h:message for="name" style="color:red" />
 
 			<h:outputLabel for="description" value="#{msg['topic.description']}"/>
@@ -25,4 +28,5 @@
 		</h:panelGrid>
 	</h:form>
 </h:body>
+</f:view>
 </html>

@@ -1,10 +1,13 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html">
+<html lang="#{localeBean.language}"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{localeBean.locale}"> 	
 <h:head>
-	<title>Topic Details</title>
+	<title><h:outputText value="#{msg['topic.view.title']}"/> #{topicController.selectedTopic.name}</title>
 </h:head>
 <h:body>
-	<h3>Details of #{topicController.selectedTopic.name} topic</h3>
+	<h3><h:outputText value="#{msg['topic.view.title']}"/> #{topicController.selectedTopic.name}</h3>
 	<h:form id="detailTopicForm">
 		<h:panelGrid columns="2" border="0">
 			<h:outputLabel value="#{msg['topic.id']}"/>
@@ -21,4 +24,5 @@
 		</h:panelGrid>
 	</h:form>
 </h:body>
+</f:view>
 </html>

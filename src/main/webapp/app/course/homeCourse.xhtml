@@ -1,16 +1,18 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+<html lang="#{localeBean.language}"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{localeBean.locale}">     
 <h:head>
-    <title>Added Courses</title>
+    <title><h:outputText value="#{msg['course.home.title']}"/></title>
 </h:head>
 <h:body>
     <div>
-        <h:form id="containerForm">
-            <h3>Add Course</h3>
+        <h:form id="newCourseForm">
+            <h3><h:outputText value="#{msg['course.home.title']}"/></h3>
             <h:panelGrid border="0" columns="3">
                 <h:outputLabel for="name" value="#{msg['course.name']}*"/>
-                <h:inputText id="name" value="#{courseController.newName}" required="true" requiredMessage="Name is required"/>
+                <h:inputText id="name" value="#{courseController.newName}" required="true" label="#{msg['course.name']}"/>
                 <h:message for="name" style="color:red"/>
 
                 <h:outputLabel for="description" value="#{msg['course.description']}"/>
@@ -31,7 +33,7 @@
     </div>
 
     <div>
-        <h1>Courses List</h1>
+        <h1><h:outputText value="#{msg['course.home.table']}"/></h1>
 
         <h:form id="courseListForm">
             <h:dataTable value="#{courseController.courseList}" var="item" border="2" id="coursesTable">
@@ -76,6 +78,7 @@
         </h:form>
     </div>
 </h:body>
+</f:view>
 </html>
 
 

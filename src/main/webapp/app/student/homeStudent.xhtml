@@ -1,21 +1,23 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core">
+<html lang="#{localeBean.language}"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{localeBean.locale}">	
 <h:head>
-	<title>Added Students</title>
+	<title><h:outputText value="#{msg['student.home.title']}"/></title>
 </h:head>
 <h:body>
 	<div>
 		<h:form id="newStudentForm">
-			<h3>Add Student</h3>
+			<h3><h:outputText value="#{msg['student.home.title']}"/></h3>
 			<h:panelGrid border="0" columns="3">
 
 				<h:outputLabel for="name" value="#{msg['student.name']}*"/>
-				<h:inputText id="name" value="#{studentController.newName}" required="true" requiredMessage="Name is required" />
+				<h:inputText id="name" value="#{studentController.newName}" required="true" label="#{msg['student.name']}" />
 				<h:message for="name" style="color:red" />
 
 				<h:outputLabel for="surname" value="#{msg['student.surname']}*"/>
-				<h:inputText id="surname" value="#{studentController.newSurname}" required="true" requiredMessage="Surname is required" />
+				<h:inputText id="surname" value="#{studentController.newSurname}" required="true" label="#{msg['student.surname']}"/>
 				<h:message for="surname" style="color:red" />
 
 				<h:outputLabel for="email" value="#{msg['student.email']}"/>
@@ -31,14 +33,14 @@
 				<h:outputLabel for="paymentType" value="#{msg['student.paymentType']}"/>
 				<h:selectOneMenu id="paymentType" value="#{studentController.newPaymentType}">
 					<f:selectItem />
-					<f:selectItems value="#{studentController.getEnumValues()}" var="item" itemValue="#{item}" itemLabel="#{item.label}" />
-				</h:selectOneMenu>
+					<f:selectItems value="#{studentController.getPaymentTypeList()}" var="payment" itemValue="#{payment.id}" itemLabel="#{payment.label}" />
+				</h:selectOneMenu> 
 				<h:outputText/>
 
 				<h:outputLabel for="sex" value="#{msg['student.sex']}*"/>
-				<h:selectOneRadio id="sex" value="#{studentController.newSex}" required="true" requiredMessage="Sex is required">
-					<f:selectItem itemValue="#{msg['male']}" itemLabel="M" />
-					<f:selectItem itemValue="#{msg['female']}" itemLabel="F" />
+				<h:selectOneRadio id="sex" value="#{studentController.newSex}" required="true" label="#{msg['student.sex']}">
+					<f:selectItem itemValue="#{msg['student.male']}" itemLabel="M" />
+					<f:selectItem itemValue="#{msg['student.female']}" itemLabel="F" />
 				</h:selectOneRadio>
 				<h:message for="sex" style="color:red" />
 			</h:panelGrid>
@@ -52,7 +54,7 @@
 	</div>
 
 	<div>
-		<h1>Students List</h1>
+		<h1><h:outputText value="#{msg['student.home.table']}"/></h1>
 
 		<h:form id="studentListForm">
 			<h:dataTable value="#{studentController.studentList}" var="item" border="2" id="studentsTable">
@@ -118,6 +120,7 @@
 		</h:form>
 	</div>
 </h:body>
+</f:view>
 </html>
 
 

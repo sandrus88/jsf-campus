@@ -1,16 +1,18 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core">
+<html lang="#{localeBean.language}"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{localeBean.locale}"> 	
 <h:head>
-	<title>Added Topics</title>
+	<title><h:outputText value="#{msg['topic.home.title']}"/></title>
 </h:head>
 <h:body>
 	<div>
 		<h:form id="newTopicForm">
-			<h3>Add Topic</h3>
+			<h3><h:outputText value="#{msg['topic.home.title']}"/></h3>
 			<h:panelGrid border="0" columns="3">
 				<h:outputLabel for="name" value="#{msg['topic.name']}*"/>
-				<h:inputText id="name" value="#{topicController.newName}" required="true" requiredMessage="Name is required"/>
+				<h:inputText id="name" value="#{topicController.newName}" required="true" label="#{msg['topic.name']}"/>
 				<h:message for="name" style="color:red" />
 
 				<h:outputLabel for="description" value="#{msg['topic.description']}"/>
@@ -27,7 +29,7 @@
 	</div>
 
 	<div>
-		<h1>Topics List</h1>
+		<h1><h:outputText value="#{msg['topic.home.table']}"/></h1>
 
 		<h:form id="topicsListForm">
 			<h:dataTable value="#{topicController.topicList}" var="item" border="2" id="topicsTable">
@@ -58,6 +60,7 @@
 		</h:form>
 	</div>
 </h:body>
+</f:view>
 </html>
 
 

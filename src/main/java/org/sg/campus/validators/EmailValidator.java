@@ -1,5 +1,6 @@
 package org.sg.campus.validators;
 
+import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,6 +20,8 @@ public class EmailValidator implements Validator {
 
     private Pattern pattern;
     private Matcher matcher;
+    public ResourceBundle bundle = ResourceBundle.getBundle("messages.messages");
+	public String message = bundle.getString("student.email.error");
     
     public EmailValidator(){
           pattern = Pattern.compile(EMAIL_PATTERN);
@@ -29,7 +32,7 @@ public class EmailValidator implements Validator {
 		matcher = pattern.matcher(value.toString());
         if(!matcher.matches()){
             
-            FacesMessage msg = new FacesMessage("E-mail validation failed.", "Invalid E-mail format.");
+            FacesMessage msg = new FacesMessage("E-mail validation failed.", message);
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(msg);
         }

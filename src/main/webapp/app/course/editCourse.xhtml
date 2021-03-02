@@ -1,18 +1,21 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+<html lang="#{localeBean.language}"
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{localeBean.locale}">    
 <h:head>
-    <title>Update Course</title>
+    <title><h:outputText value="#{msg['course.edit.title']}"/> #{courseController.selectedCourse.name}</title>
 </h:head>
 <h:body>
-    <h:form id="studentForm">
-        <h3>Update Course #{courseController.selectedCourse.name}</h3>
+    <h:form id="courseForm">
+        <h3><h:outputText value="#{msg['course.edit.title']}"/> #{courseController.selectedCourse.name}</h3>
         <h:panelGrid columns="3" border="0">
             <h:outputLabel for="id" value="#{msg['course.id']}"/>
             <h:inputText id="id" value="#{courseController.selectedCourse.id}" disabled="true"/>
             <h:outputText/>
 
             <h:outputLabel for="name" value="#{msg['course.name']}*"/>
-            <h:inputText id="name" value="#{courseController.selectedCourse.name}" required="true" requiredMessage="Name is required"/>
+            <h:inputText id="name" value="#{courseController.selectedCourse.name}" required="true" label="#{msg['course.name']}"/>
             <h:message for="name" style="color:red"/>
 
             <h:outputLabel for="description" value="#{msg['course.description']}"/>
@@ -29,4 +32,5 @@
         </h:panelGrid>
     </h:form>
 </h:body>
+</f:view>
 </html>

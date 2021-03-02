@@ -2,7 +2,9 @@ package org.sg.campus.backing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -17,18 +19,35 @@ public class StudentController {
 	
 	@ManagedProperty(value="#{applicationBean}")
 	private ApplicationBean applicationBean;
-	private List<Student> studentList = new ArrayList<Student>();
-	private Student selectedStudent;
-
+	
 	private String newName;
 	private String newSurname;
 	private String newEmail;
 	private String newJobTitle;
 	private PaymentType newPaymentType;
 	private String newSex;
-
-	public PaymentType[] getEnumValues() {
-		return PaymentType.values();
+	
+	private List<Student> studentList = new ArrayList<Student>();
+	private Student selectedStudent;
+	private List<PaymentType> paymentTypeList;
+	
+	@PostConstruct
+	public void init() { 
+		//creare lista con dove per ogni id enum prendere da prperties la sua stringa
+		paymentTypeList = new ArrayList<PaymentType>();
+		PaymentType newId;
+		String newLabel = "";
+		ResourceBundle bundle = ResourceBundle.getBundle("messages.messages");
+		String[] strings = { "student.paymentType.OK", "student.paymentType.NOTOK", "student.paymentType.UNKNOWN" };
+		for(int i = 0; i < strings.length; i++) {
+			newLabel = bundle.getString(strings[i]);
+		}
+		newId = PaymentType.valueOf(newLabel);
+		paymentTypeList.add(newId);
+	}
+	
+	public List<PaymentType> getPaymentTypeList() {
+		return paymentTypeList;
 	}
 
 	public void addStudent() {
