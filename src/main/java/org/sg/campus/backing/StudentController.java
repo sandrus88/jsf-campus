@@ -2,12 +2,14 @@ package org.sg.campus.backing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.sg.campus.beans.ApplicationBean;
 import org.sg.campus.domain.PaymentType;
@@ -25,7 +27,6 @@ public class StudentController {
 	private String newSurname;
 	private String newEmail;
 	private String newJobTitle;
-	private PaymentTypeSelectOneMenu newPaymentTypeSelectOneMenu;
 	private PaymentType paymentTypeSelectedId;
 	private String newSex;
 
@@ -35,11 +36,12 @@ public class StudentController {
 
 	@PostConstruct
 	public void init() {
+		Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
 		paymentTypeSelectOneMenuList = new ArrayList<PaymentTypeSelectOneMenu>();
 		PaymentTypeSelectOneMenu menuValue;
 		PaymentType[] values = PaymentType.values();
-		ResourceBundle bundle = ResourceBundle.getBundle("messages.messages");
-		for (int i = 0; i < values.length; i++) {	
+		ResourceBundle bundle = ResourceBundle.getBundle("messages.messages", locale);
+		for (int i = 0; i < values.length; i++) {
 			String label = bundle.getString("student.paymentType." + values[i]);
 			menuValue = new PaymentTypeSelectOneMenu(values[i], label);
 			paymentTypeSelectOneMenuList.add(menuValue);
@@ -57,19 +59,31 @@ public class StudentController {
 		student.setSurname(newSurname);
 		student.setEmail(newEmail);
 		student.setJobTitle(newJobTitle);
-		student.setPaymentTypeSelectOneMenu(newPaymentTypeSelectOneMenu);
+		student.setPaymentType(paymentTypeSelectedId);
 		student.setSex(newSex);
 		studentList.add(student);
 		System.out.println("Student " + student + " added correctly");
 		cleanForm();
 	}
 
+	public String showPaymentType(PaymentType paymentType) {
+		Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
+		String label = "";
+		if (paymentType != null) {
+			ResourceBundle bundle = ResourceBundle.getBundle("messages.messages", locale);
+			label = bundle.getString("student.paymentType." + paymentType);
+		}
+		return label;
+	}
+
 	public String updateSelectedStudent(Student student) {
 		selectedStudent = student;
+		paymentTypeSelectedId = selectedStudent.getPaymentType();
 		return "/app/student/editStudent.xhtml?faces-redirect=true";
 	}
 
 	public String updateStudent() {
+		selectedStudent.setPaymentType(paymentTypeSelectedId);
 		cleanForm();
 		System.out.println("Student " + selectedStudent + " updated correctly");
 		return "/app/student/homeStudent.xhtml?faces-redirect=true";
@@ -77,6 +91,7 @@ public class StudentController {
 
 	public String viewStudent(Student student) {
 		selectedStudent = student;
+		paymentTypeSelectedId = selectedStudent.getPaymentType();
 		System.out.println("Student " + selectedStudent + " showed correctly");
 		return "/app/student/viewStudent.xhtml?faces-redirect=true";
 	}
@@ -98,9 +113,9 @@ public class StudentController {
 		this.newJobTitle = newJobTitle;
 	}
 
-	public void setNewPaymentTypeSelectOneMenu(PaymentTypeSelectOneMenu newPaymentTypeSelectOneMenu) {
-		System.out.println("Nuovo valore del select menu " + newPaymentTypeSelectOneMenu);
-		this.newPaymentTypeSelectOneMenu = newPaymentTypeSelectOneMenu;
+	public void setPaymentTypeSelectedId(PaymentType paymentTypeSelectedId) {
+		System.out.println("Nuovo valore del select menu " + paymentTypeSelectedId);
+		this.paymentTypeSelectedId = paymentTypeSelectedId;
 	}
 
 	public void setNewSex(String newSex) {
@@ -117,10 +132,6 @@ public class StudentController {
 
 	public String getNewJobTitle() {
 		return newJobTitle;
-	}
-
-	public PaymentTypeSelectOneMenu getNewPaymentTypeSelectOneMenu() {
-		return newPaymentTypeSelectOneMenu;
 	}
 
 	public String getNewSex() {
@@ -156,17 +167,12 @@ public class StudentController {
 		setNewSurname(null);
 		setNewEmail(null);
 		setNewJobTitle(null);
-		setNewPaymentTypeSelectOneMenu(null);
+		setPaymentTypeSelectedId(null);
 		setNewSex(null);
 	}
 
 	public PaymentType getPaymentTypeSelectedId() {
 		return paymentTypeSelectedId;
-	}
-
-	public void setPaymentTypeSelectedId(PaymentType paymentTypeSelectedId) {
-		System.out.println("L'id selezionato e' " + paymentTypeSelectedId);
-		this.paymentTypeSelectedId = paymentTypeSelectedId;
 	}
 
 	public String reset() {

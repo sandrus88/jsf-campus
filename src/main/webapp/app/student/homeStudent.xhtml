@@ -98,7 +98,7 @@
 					<f:facet name="header">
 						<h:outputText value="#{msg['student.paymentType']}"/>
 					</f:facet>
-					<h:outputText value="#{item.paymentTypeSelectOneMenu.label}" />
+					<h:outputText value="#{studentController.showPaymentType(item.paymentType)}" />
 				</h:column>
 
 				<h:column>

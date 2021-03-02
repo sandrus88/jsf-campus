@@ -33,7 +33,7 @@
 			<h:outputText/>
 
 			<h:outputLabel for="paymentType" value="#{msg['student.paymentType']}"/>
-			<h:selectOneMenu id="paymentType" value="#{studentController.selectedStudent.paymentTypeSelectOneMenu}">
+			<h:selectOneMenu id="paymentType" value="#{studentController.paymentTypeSelectedId}">
 				<f:selectItem />
 				<f:selectItems value="#{studentController.getPaymentTypeSelectOneMenuList()}" var="payment" itemValue="#{payment.id}" itemLabel="#{payment.label}" />
 			</h:selectOneMenu>
@@ -47,7 +47,7 @@
 			<h:message for="sex" style="color:red" />
 
 			<h:commandButton value="#{msg['save']}" action="#{studentController.updateStudent()}"/>
-			<h:commandButton value="#{msg['back']}" action="homeStudent.xhtml" immediate="true" />
+			<h:commandButton value="#{msg['back']}" action="#{studentController.reset()}" immediate="true" />
 			<h:outputText/>
 		</h:panelGrid>
 	</h:form>

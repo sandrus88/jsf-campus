@@ -26,12 +26,12 @@
 			<h:outputText value="#{studentController.selectedStudent.jobTitle}"/>
 
 			<h:outputLabel value="#{msg['student.paymentType']}"/>
-			<h:outputText value="#{studentController.selectedStudent.paymentTypeSelectOneMenu.label}"/>
+			<h:outputText value="#{studentController.showPaymentType(studentController.paymentTypeSelectedId)}"/>
 
 			<h:outputLabel value="#{msg['student.sex']}"/>
 			<h:outputText value="#{studentController.selectedStudent.sex}"/>
 
-			<h:commandButton value="#{msg['back']}" action="homeStudent.xhtml" />
+			<h:commandButton value="#{msg['back']}" action="#{studentController.reset()}" />
 			<h:commandButton value="#{msg['home']}" action="../../index.xhtml" />
 		</h:panelGrid>
 	</h:form>
