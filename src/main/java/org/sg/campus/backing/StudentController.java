@@ -2,33 +2,54 @@ package org.sg.campus.backing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.sg.campus.beans.ApplicationBean;
 import org.sg.campus.domain.PaymentType;
+import org.sg.campus.domain.PaymentTypeSelectOneMenu;
 import org.sg.campus.domain.Student;
 
 @ManagedBean
 @SessionScoped
 public class StudentController {
-	
-	@ManagedProperty(value="#{applicationBean}")
+
+	@ManagedProperty(value = "#{applicationBean}")
 	private ApplicationBean applicationBean;
-	private List<Student> studentList = new ArrayList<Student>();
-	private Student selectedStudent;
 
 	private String newName;
 	private String newSurname;
 	private String newEmail;
 	private String newJobTitle;
-	private PaymentType newPaymentType;
+	private PaymentType paymentTypeSelectedId;
 	private String newSex;
 
-	public PaymentType[] getEnumValues() {
-		return PaymentType.values();
+	private List<Student> studentList = new ArrayList<Student>();
+	private Student selectedStudent;
+	private List<PaymentTypeSelectOneMenu> paymentTypeSelectOneMenuList;
+
+	@PostConstruct
+	public void init() {
+		Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
+		paymentTypeSelectOneMenuList = new ArrayList<PaymentTypeSelectOneMenu>();
+		PaymentTypeSelectOneMenu menuValue;
+		PaymentType[] values = PaymentType.values();
+		ResourceBundle bundle = ResourceBundle.getBundle("messages.messages", locale);
+		for (int i = 0; i < values.length; i++) {
+			String label = bundle.getString("student.paymentType." + values[i]);
+			menuValue = new PaymentTypeSelectOneMenu(values[i], label);
+			paymentTypeSelectOneMenuList.add(menuValue);
+		}
+	}
+
+	public List<PaymentTypeSelectOneMenu> getPaymentTypeSelectOneMenuList() {
+		return paymentTypeSelectOneMenuList;
 	}
 
 	public void addStudent() {
@@ -38,19 +59,31 @@ public class StudentController {
 		student.setSurname(newSurname);
 		student.setEmail(newEmail);
 		student.setJobTitle(newJobTitle);
-		student.setPaymentType(newPaymentType);
+		student.setPaymentType(paymentTypeSelectedId);
 		student.setSex(newSex);
 		studentList.add(student);
 		System.out.println("Student " + student + " added correctly");
 		cleanForm();
 	}
 
+	public String showPaymentType(PaymentType paymentType) {
+		Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
+		String label = "";
+		if (paymentType != null) {
+			ResourceBundle bundle = ResourceBundle.getBundle("messages.messages", locale);
+			label = bundle.getString("student.paymentType." + paymentType);
+		}
+		return label;
+	}
+
 	public String updateSelectedStudent(Student student) {
 		selectedStudent = student;
+		paymentTypeSelectedId = selectedStudent.getPaymentType();
 		return "/app/student/editStudent.xhtml?faces-redirect=true";
 	}
 
 	public String updateStudent() {
+		selectedStudent.setPaymentType(paymentTypeSelectedId);
 		cleanForm();
 		System.out.println("Student " + selectedStudent + " updated correctly");
 		return "/app/student/homeStudent.xhtml?faces-redirect=true";
@@ -58,6 +91,7 @@ public class StudentController {
 
 	public String viewStudent(Student student) {
 		selectedStudent = student;
+		paymentTypeSelectedId = selectedStudent.getPaymentType();
 		System.out.println("Student " + selectedStudent + " showed correctly");
 		return "/app/student/viewStudent.xhtml?faces-redirect=true";
 	}
@@ -79,8 +113,9 @@ public class StudentController {
 		this.newJobTitle = newJobTitle;
 	}
 
-	public void setNewPaymentType(PaymentType newPaymentType) {
-		this.newPaymentType = newPaymentType;
+	public void setPaymentTypeSelectedId(PaymentType paymentTypeSelectedId) {
+		System.out.println("Nuovo valore del select menu " + paymentTypeSelectedId);
+		this.paymentTypeSelectedId = paymentTypeSelectedId;
 	}
 
 	public void setNewSex(String newSex) {
@@ -99,10 +134,6 @@ public class StudentController {
 		return newJobTitle;
 	}
 
-	public PaymentType getNewPaymentType() {
-		return newPaymentType;
-	}
-
 	public String getNewSex() {
 		return newSex;
 	}
@@ -114,7 +145,7 @@ public class StudentController {
 	public void setNewEmail(String newEmail) {
 		this.newEmail = newEmail;
 	}
-	
+
 	public ApplicationBean getApplicationBean() {
 		return applicationBean;
 	}
@@ -130,21 +161,25 @@ public class StudentController {
 	public Student getSelectedStudent() {
 		return selectedStudent;
 	}
-	
+
 	private void cleanForm() {
 		setNewName(null);
 		setNewSurname(null);
 		setNewEmail(null);
 		setNewJobTitle(null);
-		setNewPaymentType(null);
+		setPaymentTypeSelectedId(null);
 		setNewSex(null);
 	}
-	
+
+	public PaymentType getPaymentTypeSelectedId() {
+		return paymentTypeSelectedId;
+	}
+
 	public String reset() {
 		cleanForm();
 		return "/app/student/homeStudent.xhtml?faces-redirect=true";
 	}
-	
+
 	public String backHome() {
 		cleanForm();
 		return "/index.xhtml?faces-redirect=true";

@@ -1,28 +1,32 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+<html lang="#{localeBean.language}"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{localeBean.locale}"> 	
 <h:head>
-	<title>Modifica</title>
+	<title><h:outputText value="#{msg['topic.edit.title']}"/> #{topicController.selectedTopic.name}</title>
 </h:head>
 <h:body>
-	<h:form id="formChangeTopic">
-		<h3>Change Topic</h3>
-		<h:panelGrid id="panelChangeTopic" columns="3" border="0">
-			<h:outputLabel for="modificaId" value="Id"/>
-			<h:inputText id="modificaId" value="#{topicController.selectedTopic.id}" disabled="true" />
+	<h:form id="topicForm">
+		<h3><h:outputText value="#{msg['topic.edit.title']}"/> #{topicController.selectedTopic.name}</h3>
+		<h:panelGrid columns="3" border="0">
+			<h:outputLabel for="id" value="#{msg['topic.id']}"/>
+			<h:inputText id="id" value="#{topicController.selectedTopic.id}" disabled="true" />
 			<h:outputText/>
-			
-			<h:outputLabel for="modificaName" value="Name *"/>
-			<h:inputText id="modificaName" value="#{topicController.selectedTopic.name}" required="true" requiredMessage="Name is required"/>
-			<h:message for="modificaName" style="color:red" />
-			
-			<h:outputLabel for="modificaDescription" value="Description"/>
-			<h:inputText id="modificaDescription" value="#{topicController.selectedTopic.description}" />
+
+			<h:outputLabel for="name" value="#{msg['topic.name']}*"/>
+			<h:inputText id="name" value="#{topicController.selectedTopic.name}" required="true" label="#{msg['topic.name']}"/>
+			<h:message for="name" style="color:red" />
+
+			<h:outputLabel for="description" value="#{msg['topic.description']}"/>
+			<h:inputText id="description" value="#{topicController.selectedTopic.description}" />
 			<h:outputText/>
-			
-			<h:commandButton id="change-button" value="Save Changes" action="#{topicController.updateTopic}" />
-			<h:commandButton id="back-button" value="Back" action="homeTopic.xhtml" immediate="true"/>
+
+			<h:commandButton value="#{msg['save']}" action="#{topicController.updateTopic}" />
+			<h:commandButton value="#{msg['back']}" action="homeTopic.xhtml" immediate="true"/>
 			<h:outputText/>
 		</h:panelGrid>
 	</h:form>
 </h:body>
+</f:view>
 </html>

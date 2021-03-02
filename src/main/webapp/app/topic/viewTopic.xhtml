@@ -1,24 +1,28 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+<html lang="#{localeBean.language}"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{localeBean.locale}"> 	
 <h:head>
-	<title>Utenti salvati</title>
+	<title><h:outputText value="#{msg['topic.view.title']}"/> #{topicController.selectedTopic.name}</title>
 </h:head>
 <h:body>
-	<h3>View of #{topicController.selectedTopic.name} topic</h3>
-	<h:form id="formViewTopic">
-		<h:panelGrid id="panelViewTopic" columns="2" border="0">
-			<h:outputLabel value="Id"/>
-			<h:outputText value="#{topicController.selectedTopic.id}" />
-			
-			<h:outputLabel value="Name"/>
-			<h:outputText value="#{topicController.selectedTopic.name}" />
-			
-			<h:outputLabel value="Description"/>
-			<h:outputText value="#{topicController.selectedTopic.description}" />
-			
-			<h:commandButton id="back-button" value="Back" action="homeTopic.xhtml" />
-			<h:commandButton id="home-button" value="Home" action="../../index.xhtml" />
+	<h3><h:outputText value="#{msg['topic.view.title']}"/> #{topicController.selectedTopic.name}</h3>
+	<h:form id="detailTopicForm">
+		<h:panelGrid columns="2" border="0">
+			<h:outputLabel value="#{msg['topic.id']}"/>
+			<h:outputText  id="id" value="#{topicController.selectedTopic.id}" />
+
+			<h:outputLabel value="#{msg['topic.name']}"/>
+			<h:outputText id="name" value="#{topicController.selectedTopic.name}" />
+
+			<h:outputLabel value="#{msg['topic.description']}"/>
+			<h:outputText id="description" value="#{topicController.selectedTopic.description}" />
+
+			<h:commandButton value="#{msg['back']}" action="homeTopic.xhtml" />
+			<h:commandButton value="#{msg['home']}" action="../../index.xhtml" />
 		</h:panelGrid>
 	</h:form>
 </h:body>
+</f:view>
 </html>

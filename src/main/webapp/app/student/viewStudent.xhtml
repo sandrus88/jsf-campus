@@ -1,36 +1,40 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+<html lang="#{localeBean.language}"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{localeBean.locale}"> 	
 <h:head>
-	<title>Utenti salvati</title>
+	<title><h:outputText value="#{msg['student.view.title']}"/> #{studentController.selectedStudent.name} #{studentController.selectedStudent.surname}</title>
 </h:head>
 <h:body>
-	<h3>View of #{studentController.selectedStudent.name} #{studentController.selectedStudent.surname} student</h3>
-	<h:form id="formViewStudent">
-		<h:panelGrid id="panelViewStudent" columns="2" border="0">
-			<h:outputLabel value="Id"/> 
+	<h3><h:outputText value="#{msg['student.view.title']}"/> #{studentController.selectedStudent.name} #{studentController.selectedStudent.surname}</h3>
+	<h:form id="detailStudentForm">
+		<h:panelGrid columns="2" border="0">
+			<h:outputLabel value="#{msg['student.id']}"/>
 			<h:outputText value="#{studentController.selectedStudent.id}"/>
 
-			<h:outputLabel value="Name"/> 
+			<h:outputLabel value="#{msg['student.name']}"/>
 			<h:outputText value="#{studentController.selectedStudent.name}"/>
 
-			<h:outputLabel value="Surname"/> 
+			<h:outputLabel value="#{msg['student.surname']}"/>
 			<h:outputText value="#{studentController.selectedStudent.surname}"/>
-			
-			<h:outputLabel value="Email"/>
-			<h:outputText id="email" value="#{studentController.selectedStudent.email}" />
 
-			<h:outputLabel value="Job Title"/> 
+			<h:outputLabel value="#{msg['student.email']}"/>
+			<h:outputText value="#{studentController.selectedStudent.email}" />
+
+			<h:outputLabel value="#{msg['student.jobTitle']}"/>
 			<h:outputText value="#{studentController.selectedStudent.jobTitle}"/>
 
-			<h:outputLabel value="Payment Type"/> 
-			<h:outputText value="#{studentController.selectedStudent.paymentType.label}"/>
+			<h:outputLabel value="#{msg['student.paymentType']}"/>
+			<h:outputText value="#{studentController.showPaymentType(studentController.paymentTypeSelectedId)}"/>
 
-			<h:outputLabel value="Sex"/> 
+			<h:outputLabel value="#{msg['student.sex']}"/>
 			<h:outputText value="#{studentController.selectedStudent.sex}"/>
 
-			<h:commandButton id="back-button" value="Back" action="homeStudent.xhtml" />
-			<h:commandButton id="home-button" value="Home" action="../../index.xhtml" />
+			<h:commandButton value="#{msg['back']}" action="#{studentController.reset()}" />
+			<h:commandButton value="#{msg['home']}" action="../../index.xhtml" />
 		</h:panelGrid>
 	</h:form>
 </h:body>
+</f:view>
 </html>
