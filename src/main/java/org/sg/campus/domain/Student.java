@@ -57,7 +57,6 @@ public class Student {
 		this.email = email;
 	}
 
-	
 	public PaymentType getPaymentType() {
 		return paymentType;
 	}
@@ -68,6 +67,6 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", surname: " + surname + ", email: " + email + ", job title: " + jobTitle + ", payment type: " + paymentType + ", sex: " + sex + "]";
+		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", surname: " + surname + ", email: " + email + ", job title: " + jobTitle + ", paymentType: " + paymentType + ", sex: " + sex + "]";
 	}
 }

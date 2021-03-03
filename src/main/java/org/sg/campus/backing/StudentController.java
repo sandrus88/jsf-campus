@@ -2,10 +2,13 @@ package org.sg.campus.backing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.sg.campus.beans.ApplicationBean;
 import org.sg.campus.domain.PaymentType;
@@ -14,11 +17,9 @@ import org.sg.campus.domain.Student;
 @ManagedBean
 @SessionScoped
 public class StudentController {
-	
-	@ManagedProperty(value="#{applicationBean}")
+
+	@ManagedProperty(value = "#{applicationBean}")
 	private ApplicationBean applicationBean;
-	private List<Student> studentList = new ArrayList<Student>();
-	private Student selectedStudent;
 
 	private String newName;
 	private String newSurname;
@@ -27,9 +28,8 @@ public class StudentController {
 	private PaymentType newPaymentType;
 	private String newSex;
 
-	public PaymentType[] getEnumValues() {
-		return PaymentType.values();
-	}
+	private List<Student> studentList = new ArrayList<Student>();
+	private Student selectedStudent;
 
 	public void addStudent() {
 		Student student = new Student();
@@ -41,30 +41,65 @@ public class StudentController {
 		student.setPaymentType(newPaymentType);
 		student.setSex(newSex);
 		studentList.add(student);
-		System.out.println("Student " + student + " added correctly");
+		System.out.println("Added student: " + student);
 		cleanForm();
+	}
+	
+	private void cleanForm() {
+		setNewName(null);
+		setNewSurname(null);
+		setNewEmail(null);
+		setNewJobTitle(null);
+		setNewPaymentType(null);
+		setNewSex(null);
+	}
+
+	public String reset() {
+		cleanForm();
+		return "/app/student/homeStudent.xhtml?faces-redirect=true";
+	}
+
+	public String backHome() {
+		cleanForm();
+		return "/index.xhtml?faces-redirect=true";
+	}
+
+	public PaymentType[] getEnumValues() {
+		PaymentType[] values = PaymentType.values();
+		return values;
+	}
+
+	public String showPaymentType(PaymentType paymentType) {
+		Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
+		ResourceBundle bundle = ResourceBundle.getBundle("messages.messages", locale);
+		String label = "";
+		if (paymentType != null) {
+			label = bundle.getString("student.paymentType." + paymentType);
+		}
+		return label;
 	}
 
 	public String updateSelectedStudent(Student student) {
 		selectedStudent = student;
+		System.out.println("Going in edit mode for student: " + selectedStudent);
 		return "/app/student/editStudent.xhtml?faces-redirect=true";
 	}
 
 	public String updateStudent() {
 		cleanForm();
-		System.out.println("Student " + selectedStudent + " updated correctly");
+		System.out.println("Updated student: " + selectedStudent);
 		return "/app/student/homeStudent.xhtml?faces-redirect=true";
 	}
 
 	public String viewStudent(Student student) {
 		selectedStudent = student;
-		System.out.println("Student " + selectedStudent + " showed correctly");
+		System.out.println("View student: " + selectedStudent);
 		return "/app/student/viewStudent.xhtml?faces-redirect=true";
 	}
 
 	public void deleteStudent(Student student) {
 		studentList.remove(student);
-		System.out.println("Student " + selectedStudent + " deleted correctly");
+		System.out.println("Deleted student: " + selectedStudent.getId());
 	}
 
 	public void setNewName(String newName) {
@@ -77,10 +112,6 @@ public class StudentController {
 
 	public void setNewJobTitle(String newJobTitle) {
 		this.newJobTitle = newJobTitle;
-	}
-
-	public void setNewPaymentType(PaymentType newPaymentType) {
-		this.newPaymentType = newPaymentType;
 	}
 
 	public void setNewSex(String newSex) {
@@ -99,10 +130,6 @@ public class StudentController {
 		return newJobTitle;
 	}
 
-	public PaymentType getNewPaymentType() {
-		return newPaymentType;
-	}
-
 	public String getNewSex() {
 		return newSex;
 	}
@@ -114,7 +141,7 @@ public class StudentController {
 	public void setNewEmail(String newEmail) {
 		this.newEmail = newEmail;
 	}
-	
+
 	public ApplicationBean getApplicationBean() {
 		return applicationBean;
 	}
@@ -130,23 +157,12 @@ public class StudentController {
 	public Student getSelectedStudent() {
 		return selectedStudent;
 	}
-	
-	private void cleanForm() {
-		setNewName(null);
-		setNewSurname(null);
-		setNewEmail(null);
-		setNewJobTitle(null);
-		setNewPaymentType(null);
-		setNewSex(null);
+
+	public PaymentType getNewPaymentType() {
+		return newPaymentType;
 	}
-	
-	public String reset() {
-		cleanForm();
-		return "/app/student/homeStudent.xhtml?faces-redirect=true";
-	}
-	
-	public String backHome() {
-		cleanForm();
-		return "/index.xhtml?faces-redirect=true";
+
+	public void setNewPaymentType(PaymentType newPaymentType) {
+		this.newPaymentType = newPaymentType;
 	}
 }

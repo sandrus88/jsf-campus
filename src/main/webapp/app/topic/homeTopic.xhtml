@@ -1,62 +1,66 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="#{localeBean.language}"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{localeBean.locale}"> 	
 <h:head>
-	<title>Form campi da riempire</title>
+	<title><h:outputText value="#{msg['topic.home.title']}"/></title>
 </h:head>
 <h:body>
-	<div id="containerForm">
-		<h:form id="formTopic">
-			<h3>Add Topic</h3>
-			<h:panelGrid id="panelTopic" border="0" columns="3">
-			
-				<h:outputLabel for="name" value="Name *"/>
-				<h:inputText id="name" value="#{topicController.newName}" required="true" requiredMessage="Name is required"/>
+	<div>
+		<h:form id="newTopicForm">
+			<h3><h:outputText value="#{msg['topic.home.title']}"/></h3>
+			<h:panelGrid border="0" columns="3">
+				<h:outputLabel for="name" value="#{msg['topic.name']}*"/>
+				<h:inputText id="name" value="#{topicController.newName}" required="true" label="#{msg['topic.name']}"/>
 				<h:message for="name" style="color:red" />
-				
-				<h:outputLabel for="description" value="Description"/>
+
+				<h:outputLabel for="description" value="#{msg['topic.description']}"/>
 				<h:inputText id="description" value="#{topicController.newDescription}" />
 				<h:outputText/>
 			</h:panelGrid>
-			
-			<h:panelGrid id="panelButtonsTopics" border="0" columns="3">
-				<h:commandButton id="submit-button" value="Salva" action="#{topicController.addTopic}" />
-				<h:commandButton id="reset-button" value="Reset" action="#{topicController.reset()}" immediate="true" />
-				<h:commandButton id="home-button" value="Home" action="#{topicController.backHome()}" immediate="true" />
+
+			<h:panelGrid border="0" columns="3">
+				<h:commandButton value="#{msg['save']}" action="#{topicController.addTopic}" />
+				<h:commandButton value="#{msg['reset']}" action="#{topicController.reset()}" immediate="true" />
+				<h:commandButton value="#{msg['home']}" action="#{topicController.backHome()}" immediate="true" />
 			</h:panelGrid>
 		</h:form>
 	</div>
 
-	<div id="containerTable">
-		<h1>Topics List</h1>
+	<div>
+		<h1><h:outputText value="#{msg['topic.home.table']}"/></h1>
 
-		<h:form>
-			<h:dataTable value="#{topicController.topicList}" var="item" border="2" id="topicTable">
+		<h:form id="topicsListForm">
+			<h:dataTable value="#{topicController.topicList}" var="item" border="2" id="topicsTable">
 				<h:column>
-					<f:facet name="header">Id</f:facet>    				
-                	<h:outputText value="#{item.id}" />
-            	</h:column>
-
-				<h:column>
-					<f:facet name="header">Name</f:facet>
-                	<h:outputText value="#{item.name}" />
-            	</h:column>
+					<f:facet name="header"><h:outputText value="#{msg['topic.id']}" /></f:facet>
+					<h:outputText value="#{item.id}" />
+				</h:column>
 
 				<h:column>
-					<f:facet name="header">Description</f:facet>
-                	<h:outputText value="#{item.description}" />
-            	</h:column>
+					<f:facet name="header"><h:outputText value="#{msg['topic.name']}" /></f:facet>
+					<h:outputText value="#{item.name}" />
+				</h:column>
 
 				<h:column>
-					<f:facet name="header">Action</f:facet>
-					<h:commandLink value="View" action="#{topicController.viewTopic(item)}" />
-					| <h:commandLink value="Edit" action="#{topicController.updateSelectedTopic(item)}" /> 
-					| <h:commandLink value="Delete" action="#{topicController.deleteTopic(item)}" />
+					<f:facet name="header"><h:outputText value="#{msg['topic.description']}" /></f:facet>
+					<h:outputText value="#{item.description}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['action.title']}" />
+					</f:facet>
+					<h:commandLink value="#{msg['action.view']}" action="#{topicController.viewTopic(item)}" />
+					| <h:commandLink value="#{msg['action.edit']}" action="#{topicController.updateSelectedTopic(item)}" />
+					| <h:commandLink value="#{msg['action.delete']}" action="#{topicController.deleteTopic(item)}" />
 				</h:column>
 			</h:dataTable>
 		</h:form>
 	</div>
 </h:body>
+</f:view>
 </html>
 
 

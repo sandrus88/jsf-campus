@@ -1,107 +1,126 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="#{localeBean.language}"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{localeBean.locale}">	
 <h:head>
-	<title>Form campi da riempire</title>
+	<title><h:outputText value="#{msg['student.home.title']}"/></title>
 </h:head>
 <h:body>
-	<div id="containerForm">
-		<h:form id="formStudent">
-			<h3>Add Student</h3>
-			<h:panelGrid id="panelStudent" border="0" columns="3">
+	<div>
+		<h:form id="newStudentForm">
+			<h3><h:outputText value="#{msg['student.home.title']}"/></h3>
+			<h:panelGrid border="0" columns="3">
 
-				<h:outputLabel for="name" value="Name *"/>
-				<h:inputText id="name" value="#{studentController.newName}" required="true" requiredMessage="Name is required" />
+				<h:outputLabel for="name" value="#{msg['student.name']}*"/>
+				<h:inputText id="name" value="#{studentController.newName}" required="true" label="#{msg['student.name']}" />
 				<h:message for="name" style="color:red" />
-				
-				<h:outputLabel for="surname" value="Surname *"/>
-				<h:inputText id="surname" value="#{studentController.newSurname}" required="true" requiredMessage="Surname is required" />
+
+				<h:outputLabel for="surname" value="#{msg['student.surname']}*"/>
+				<h:inputText id="surname" value="#{studentController.newSurname}" required="true" label="#{msg['student.surname']}"/>
 				<h:message for="surname" style="color:red" />
-				
-				<h:outputLabel for="email" value="Email"/>
+
+				<h:outputLabel for="email" value="#{msg['student.email']}"/>
 				<h:inputText id="email" value="#{studentController.newEmail}">
 					<f:validator validatorId="emailValidator" />
 				</h:inputText>
 				<h:message for="email" style="color:red" />
-				
-				<h:outputLabel for="jobTitle" value="Job Title"/>
+
+				<h:outputLabel for="jobTitle" value="#{msg['student.jobTitle']}"/>
 				<h:inputText id="jobTitle" value="#{studentController.newJobTitle}" />
 				<h:outputText/>
-				
-				<h:outputLabel for="paymentType" value="Payment Type"/>
+
+				<h:outputLabel for="paymentType" value="#{msg['student.paymentType']}"/>
 				<h:selectOneMenu id="paymentType" value="#{studentController.newPaymentType}">
 					<f:selectItem />
-					<f:selectItems value="#{studentController.getEnumValues()}" var="item" itemValue="#{item}" itemLabel="#{item.label}" />
-				</h:selectOneMenu>
+					<f:selectItems value="#{studentController.getEnumValues()}" var="payment" itemValue="#{payment}" itemLabel="#{studentController.showPaymentType(payment)}" />
+				</h:selectOneMenu> 
 				<h:outputText/>
-				
-				<h:outputLabel for="sex" value="Sex *"/>
-				<h:selectOneRadio id="sex" value="#{studentController.newSex}" required="true" requiredMessage="Sex is required">
-					<f:selectItem itemValue="Maschio" itemLabel="M" />
-					<f:selectItem itemValue="Femmina" itemLabel="F" />
+
+				<h:outputLabel for="sex" value="#{msg['student.sex']}*"/>
+				<h:selectOneRadio id="sex" value="#{studentController.newSex}" required="true" label="#{msg['student.sex']}">
+					<f:selectItem itemValue="#{msg['student.male']}" itemLabel="M" />
+					<f:selectItem itemValue="#{msg['student.female']}" itemLabel="F" />
 				</h:selectOneRadio>
 				<h:message for="sex" style="color:red" />
-			</h:panelGrid>	
-			
-			<h:panelGrid id="panelButtonsStudent" border="0" columns="3">
-				<h:commandButton id="submit-button" value="Save" action="#{studentController.addStudent()}" />
-				<h:commandButton id="reset-button" value="Reset" action="#{studentController.reset()}" immediate="true" />
-				<h:commandButton id="home-button" value="Home" action="#{studentController.backHome()}" immediate="true" />
+			</h:panelGrid>
+
+			<h:panelGrid border="0" columns="3">
+				<h:commandButton value="#{msg['save']}" action="#{studentController.addStudent()}" />
+				<h:commandButton value="#{msg['reset']}" action="#{studentController.reset()}" immediate="true" />
+				<h:commandButton value="#{msg['home']}" action="#{studentController.backHome()}" immediate="true" />
 			</h:panelGrid>
 		</h:form>
 	</div>
 
-	<div id="containerTable">
-		<h1>Student List</h1>
+	<div>
+		<h1><h:outputText value="#{msg['student.home.table']}"/></h1>
 
-		<h:form>
-			<h:dataTable value="#{studentController.studentList}" var="item" border="2" id="studentTable">
-
-				<h:column>
-					<f:facet name="header">Id</f:facet>    				
-                	<h:outputText value="#{item.id}" />
-            	</h:column>
+		<h:form id="studentListForm">
+			<h:dataTable value="#{studentController.studentList}" var="item" border="2" id="studentsTable">
 
 				<h:column>
-					<f:facet name="header">Name</f:facet>
-                	<h:outputText value="#{item.name}" />
-            	</h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['student.id']}"/>
+					</f:facet>
+					<h:outputText value="#{item.id}" />
+				</h:column>
 
 				<h:column>
-					<f:facet name="header">Surname</f:facet>
-                	<h:outputText value="#{item.surname}" />
-            	</h:column>
-				
-				<h:column>
-					<f:facet name="header">Email</f:facet>
-                	<h:outputText value="#{item.email}" />
-            	</h:column>
-            	
-				<h:column>
-					<f:facet name="header">Job Title</f:facet>
-                	<h:outputText value="#{item.jobTitle}" />
-            	</h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['student.name']}"/>
+					</f:facet>
+					<h:outputText value="#{item.name}" />
+				</h:column>
 
 				<h:column>
-					<f:facet name="header">PaymentType</f:facet>
-                	<h:outputText value="#{item.paymentType.label}" />
-            	</h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['student.surname']}"/>
+					</f:facet>
+					<h:outputText value="#{item.surname}" />
+				</h:column>
 
 				<h:column>
-					<f:facet name="header">Sex</f:facet>
-                	<h:outputText value="#{item.sex}" />
-            	</h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['student.email']}"/>
+					</f:facet>
+					<h:outputText value="#{item.email}" />
+				</h:column>
 
 				<h:column>
-					<f:facet name="header">Action</f:facet>
-					<h:commandLink value="View" action="#{studentController.viewStudent(item)}" />
-					| <h:commandLink value="Edit" action="#{studentController.updateSelectedStudent(item)}" /> 
-					| <h:commandLink value="Delete" action="#{studentController.deleteStudent(item)}" />
+					<f:facet name="header">
+						<h:outputText value="#{msg['student.jobTitle']}"/>
+					</f:facet>
+					<h:outputText value="#{item.jobTitle}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['student.paymentType']}"/>
+					</f:facet>
+					<h:outputText value="#{studentController.showPaymentType(item.paymentType)}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['student.sex']}"/>
+					</f:facet>
+					<h:outputText value="#{item.sex}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['action.title']}"/>
+					</f:facet>
+					<h:commandLink value="#{msg['action.view']}" action="#{studentController.viewStudent(item)}" />
+					| <h:commandLink value="#{msg['action.edit']}" action="#{studentController.updateSelectedStudent(item)}" />
+					| <h:commandLink value="#{msg['action.delete']}" action="#{studentController.deleteStudent(item)}" />
 				</h:column>
 			</h:dataTable>
 		</h:form>
 	</div>
 </h:body>
+</f:view>
 </html>
 
 

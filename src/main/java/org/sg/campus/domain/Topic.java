@@ -34,6 +34,6 @@ public class Topic {
 	    
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", description: " + description + ", c: " + checked + "]";
+		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", description: " + description + ", checked: " + checked + "]";
 	}
 }
