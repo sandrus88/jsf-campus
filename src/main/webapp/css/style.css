@@ -27,3 +27,17 @@ h5 {
 }
 h6 {
 }
+
+
+
+#header{
+  background-color: #969696;
+}
+
+#content{
+    background-color: #d3d3d3;
+}
+
+#footer{
+    background-color: pink;
+}

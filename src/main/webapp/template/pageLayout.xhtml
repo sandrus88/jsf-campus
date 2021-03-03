@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+
+    <title>
+        <ui:insert name="title">
+            Campus
+        </ui:insert>
+    </title>
+</h:head>
+
+<h:body>
+
+    <div id="header">
+        <ui:insert name="header">
+            <ui:include src="/template/header.xhtml"/>
+        </ui:insert>
+    </div>
+
+    <div id="content">
+        <table width="100%">
+            <tr class="left_content">
+                <td valign="top" width="180px">
+                    <ui:insert name="menu">
+                        <ui:include src="/template/menu.xhtml"/>
+                    </ui:insert>
+                </td>
+                <td valign="top">
+                    <ui:insert name="content">
+                        <ui:include src="/template/content.xhtml"/>
+                    </ui:insert>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="footer">
+        <ui:insert name="footer">
+            <ui:include src="/template/footer.xhtml"/>
+        </ui:insert>
+    </div>
+</h:body>
+
+</html>
