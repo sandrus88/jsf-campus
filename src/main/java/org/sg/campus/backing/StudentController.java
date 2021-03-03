@@ -41,8 +41,27 @@ public class StudentController {
 		student.setPaymentType(newPaymentType);
 		student.setSex(newSex);
 		studentList.add(student);
-		System.out.println("Student " + student + " added correctly");
+		System.out.println("Added student: " + student);
 		cleanForm();
+	}
+	
+	private void cleanForm() {
+		setNewName(null);
+		setNewSurname(null);
+		setNewEmail(null);
+		setNewJobTitle(null);
+		setNewPaymentType(null);
+		setNewSex(null);
+	}
+
+	public String reset() {
+		cleanForm();
+		return "/app/student/homeStudent.xhtml?faces-redirect=true";
+	}
+
+	public String backHome() {
+		cleanForm();
+		return "/index.xhtml?faces-redirect=true";
 	}
 
 	public PaymentType[] getEnumValues() {
@@ -52,36 +71,35 @@ public class StudentController {
 
 	public String showPaymentType(PaymentType paymentType) {
 		Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
+		ResourceBundle bundle = ResourceBundle.getBundle("messages.messages", locale);
 		String label = "";
 		if (paymentType != null) {
-			ResourceBundle bundle = ResourceBundle.getBundle("messages.messages", locale);
-			String stringEnum = paymentType.toString();
-			String myStringEnum = stringEnum.replace(stringEnum, "student.paymentType.");
-			label = bundle.getString(myStringEnum + paymentType);
+			label = bundle.getString("student.paymentType." + paymentType);
 		}
 		return label;
 	}
 
 	public String updateSelectedStudent(Student student) {
 		selectedStudent = student;
+		System.out.println("Going in edit mode for student: " + selectedStudent);
 		return "/app/student/editStudent.xhtml?faces-redirect=true";
 	}
 
 	public String updateStudent() {
 		cleanForm();
-		System.out.println("Student " + selectedStudent + " updated correctly");
+		System.out.println("Updated student: " + selectedStudent);
 		return "/app/student/homeStudent.xhtml?faces-redirect=true";
 	}
 
 	public String viewStudent(Student student) {
 		selectedStudent = student;
-		System.out.println("Student " + selectedStudent + " showed correctly");
+		System.out.println("View student: " + selectedStudent);
 		return "/app/student/viewStudent.xhtml?faces-redirect=true";
 	}
 
 	public void deleteStudent(Student student) {
 		studentList.remove(student);
-		System.out.println("Student " + selectedStudent + " deleted correctly");
+		System.out.println("Deleted student: " + selectedStudent.getId());
 	}
 
 	public void setNewName(String newName) {
@@ -146,24 +164,5 @@ public class StudentController {
 
 	public void setNewPaymentType(PaymentType newPaymentType) {
 		this.newPaymentType = newPaymentType;
-	}
-
-	private void cleanForm() {
-		setNewName(null);
-		setNewSurname(null);
-		setNewEmail(null);
-		setNewJobTitle(null);
-		setNewPaymentType(null);
-		setNewSex(null);
-	}
-
-	public String reset() {
-		cleanForm();
-		return "/app/student/homeStudent.xhtml?faces-redirect=true";
-	}
-
-	public String backHome() {
-		cleanForm();
-		return "/index.xhtml?faces-redirect=true";
 	}
 }
