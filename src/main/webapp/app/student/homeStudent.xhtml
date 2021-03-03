@@ -31,9 +31,9 @@
 				<h:outputText/>
 
 				<h:outputLabel for="paymentType" value="#{msg['student.paymentType']}"/>
-				<h:selectOneMenu id="paymentType" value="#{studentController.paymentTypeSelectedId}">
+				<h:selectOneMenu id="paymentType" value="#{studentController.newPaymentType}">
 					<f:selectItem />
-					<f:selectItems value="#{studentController.getPaymentTypeSelectOneMenuList()}" var="payment" itemValue="#{payment.id}" itemLabel="#{payment.label}" />
+					<f:selectItems value="#{studentController.getEnumValues()}" var="payment" itemValue="#{payment}" itemLabel="#{studentController.showPaymentType(payment)}" />
 				</h:selectOneMenu> 
 				<h:outputText/>
 

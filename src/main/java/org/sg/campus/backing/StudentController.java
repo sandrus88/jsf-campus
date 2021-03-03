@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
@@ -13,7 +12,6 @@ import javax.faces.context.FacesContext;
 
 import org.sg.campus.beans.ApplicationBean;
 import org.sg.campus.domain.PaymentType;
-import org.sg.campus.domain.PaymentTypeSelectOneMenu;
 import org.sg.campus.domain.Student;
 
 @ManagedBean
@@ -27,30 +25,11 @@ public class StudentController {
 	private String newSurname;
 	private String newEmail;
 	private String newJobTitle;
-	private PaymentType paymentTypeSelectedId;
+	private PaymentType newPaymentType;
 	private String newSex;
 
 	private List<Student> studentList = new ArrayList<Student>();
 	private Student selectedStudent;
-	private List<PaymentTypeSelectOneMenu> paymentTypeSelectOneMenuList;
-
-	@PostConstruct
-	public void init() {
-		Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
-		paymentTypeSelectOneMenuList = new ArrayList<PaymentTypeSelectOneMenu>();
-		PaymentTypeSelectOneMenu menuValue;
-		PaymentType[] values = PaymentType.values();
-		ResourceBundle bundle = ResourceBundle.getBundle("messages.messages", locale);
-		for (int i = 0; i < values.length; i++) {
-			String label = bundle.getString("student.paymentType." + values[i]);
-			menuValue = new PaymentTypeSelectOneMenu(values[i], label);
-			paymentTypeSelectOneMenuList.add(menuValue);
-		}
-	}
-
-	public List<PaymentTypeSelectOneMenu> getPaymentTypeSelectOneMenuList() {
-		return paymentTypeSelectOneMenuList;
-	}
 
 	public void addStudent() {
 		Student student = new Student();
@@ -59,11 +38,16 @@ public class StudentController {
 		student.setSurname(newSurname);
 		student.setEmail(newEmail);
 		student.setJobTitle(newJobTitle);
-		student.setPaymentType(paymentTypeSelectedId);
+		student.setPaymentType(newPaymentType);
 		student.setSex(newSex);
 		studentList.add(student);
 		System.out.println("Student " + student + " added correctly");
 		cleanForm();
+	}
+
+	public PaymentType[] getEnumValues() {
+		PaymentType[] values = PaymentType.values();
+		return values;
 	}
 
 	public String showPaymentType(PaymentType paymentType) {
@@ -71,19 +55,19 @@ public class StudentController {
 		String label = "";
 		if (paymentType != null) {
 			ResourceBundle bundle = ResourceBundle.getBundle("messages.messages", locale);
-			label = bundle.getString("student.paymentType." + paymentType);
+			String stringEnum = paymentType.toString();
+			String myStringEnum = stringEnum.replace(stringEnum, "student.paymentType.");
+			label = bundle.getString(myStringEnum + paymentType);
 		}
 		return label;
 	}
 
 	public String updateSelectedStudent(Student student) {
 		selectedStudent = student;
-		paymentTypeSelectedId = selectedStudent.getPaymentType();
 		return "/app/student/editStudent.xhtml?faces-redirect=true";
 	}
 
 	public String updateStudent() {
-		selectedStudent.setPaymentType(paymentTypeSelectedId);
 		cleanForm();
 		System.out.println("Student " + selectedStudent + " updated correctly");
 		return "/app/student/homeStudent.xhtml?faces-redirect=true";
@@ -91,7 +75,6 @@ public class StudentController {
 
 	public String viewStudent(Student student) {
 		selectedStudent = student;
-		paymentTypeSelectedId = selectedStudent.getPaymentType();
 		System.out.println("Student " + selectedStudent + " showed correctly");
 		return "/app/student/viewStudent.xhtml?faces-redirect=true";
 	}
@@ -111,11 +94,6 @@ public class StudentController {
 
 	public void setNewJobTitle(String newJobTitle) {
 		this.newJobTitle = newJobTitle;
-	}
-
-	public void setPaymentTypeSelectedId(PaymentType paymentTypeSelectedId) {
-		System.out.println("Nuovo valore del select menu " + paymentTypeSelectedId);
-		this.paymentTypeSelectedId = paymentTypeSelectedId;
 	}
 
 	public void setNewSex(String newSex) {
@@ -162,17 +140,21 @@ public class StudentController {
 		return selectedStudent;
 	}
 
+	public PaymentType getNewPaymentType() {
+		return newPaymentType;
+	}
+
+	public void setNewPaymentType(PaymentType newPaymentType) {
+		this.newPaymentType = newPaymentType;
+	}
+
 	private void cleanForm() {
 		setNewName(null);
 		setNewSurname(null);
 		setNewEmail(null);
 		setNewJobTitle(null);
-		setPaymentTypeSelectedId(null);
+		setNewPaymentType(null);
 		setNewSex(null);
-	}
-
-	public PaymentType getPaymentTypeSelectedId() {
-		return paymentTypeSelectedId;
 	}
 
 	public String reset() {
