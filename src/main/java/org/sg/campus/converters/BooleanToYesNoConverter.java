@@ -1,5 +1,6 @@
 package org.sg.campus.converters;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.faces.component.UIComponent;
@@ -11,7 +12,8 @@ import javax.faces.convert.FacesConverter;
 @FacesConverter("booleanToYesNoConverter")
 public class BooleanToYesNoConverter implements Converter {
 	
-	public ResourceBundle bundle = ResourceBundle.getBundle("messages.messages");
+	Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
+	public ResourceBundle bundle = ResourceBundle.getBundle("messages.messages", locale);
 	public String message;
 	
     public BooleanToYesNoConverter() {
