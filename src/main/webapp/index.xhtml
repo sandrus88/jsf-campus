@@ -1,27 +1,7 @@
-<html lang="#{localeBean.language}" xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
-<f:view locale="#{localeBean.locale}">
-	<h:head>
-		<title><h:outputText value="#{msg['home.manage.title']}" /></title>
-	</h:head>
-	<h:body>
-		<h3>
-			<h:outputText value="#{msg['home.manage.title']}" />
-		</h3>
-		<h:form>
-			<h:selectOneMenu value="#{localeBean.language}" onchange="submit()">
-				<f:selectItem itemValue="en" itemLabel="English" />
-				<f:selectItem itemValue="it" itemLabel="Italian" />
-			</h:selectOneMenu>
-			<br></br>
-			<br></br>
-			<h:commandLink value="#{msg['home.manage.student']}" action="app/student/homeStudent.xhtml" />
-			<br></br>
-			<h:commandLink value="#{msg['home.manage.course']}" action="app/course/homeCourse.xhtml" />
-			<br></br>
-			<h:commandLink value="#{msg['home.manage.topic']}" action="app/topic/homeTopic.xhtml" />
-		</h:form>
-	</h:body>
-</f:view>
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/template/pageLayout.xhtml">
+</ui:composition>
 </html>
