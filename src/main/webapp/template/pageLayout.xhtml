@@ -13,7 +13,7 @@
 
         <title>
             <ui:insert name="title">
-                Campus
+                <h:outputText value="#{msg['home.manage.homePageTitle']}"/>
             </ui:insert>
         </title>
     </h:head>
@@ -28,10 +28,13 @@
                         </h3>
 
                         <h:form>
+                        <h:panelGrid columns="2" border="0">
+                        	<h:outputLabel value="#{msg['home.manage.selectLanguage']}"/>
                             <h:selectOneMenu value="#{localeBean.language}" onchange="submit()">
-                                <f:selectItem itemValue="en" itemLabel="English"/>
-                                <f:selectItem itemValue="it" itemLabel="Italian"/>
+                                <f:selectItem itemValue="en" itemLabel="#{msg['home.manage.selectedLanguage.en']}"/>
+                                <f:selectItem itemValue="it" itemLabel="#{msg['home.manage.selectedLanguage.it']}"/>
                             </h:selectOneMenu>
+                        </h:panelGrid> 
                             <br></br>
                             <br></br>
                         </h:form>
@@ -49,9 +52,7 @@
                                 </h:form>
                             </td>
                             <td valign="top" align="center">
-                                <ui:insert name="content">
-                                    Default common. Querste sono le pagine. StundetHome, CourseHome, etc....
-                                </ui:insert>
+                                <ui:insert name="content"/>
                             </td>
                         </tr>
                     </table>

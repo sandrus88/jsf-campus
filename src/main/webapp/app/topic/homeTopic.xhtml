@@ -1,65 +1,73 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:composition template="/template/pageLayout.xhtml">
-    <ui:define name="title">
-        <h:outputText value="#{msg['topic.home.title']}"/>
-    </ui:define>
+	<ui:define name="title">
+		<h:outputText value="#{msg['topic.home.title']}" />
+	</ui:define>
 
-    <ui:define name="content">
-        <h:form id="newTopicForm">
-            <h3><h:outputText value="#{msg['topic.home.title']}"/></h3>
-            <h:panelGrid border="0" columns="3">
-                <h:outputLabel for="name" value="#{msg['topic.name']}*"/>
-                <h:inputText id="name" value="#{topicController.newName}" required="true" label="#{msg['topic.name']}"/>
-                <h:message for="name" style="color:red"/>
+	<ui:define name="content">
+		<h:form id="newTopicForm">
+			<h3>
+				<h:outputText value="#{msg['topic.home.title']}" />
+			</h3>
+			<h:panelGrid border="0" columns="3">
+				<h:outputLabel for="name" value="#{msg['topic.name']}*" />
+				<h:inputText id="name" value="#{topicController.newName}" required="true" label="#{msg['topic.name']}" />
+				<h:message for="name" style="color:red" />
 
-                <h:outputLabel for="description" value="#{msg['topic.description']}"/>
-                <h:inputText id="description" value="#{topicController.newDescription}"/>
-                <h:outputText/>
-            </h:panelGrid>
+				<h:outputLabel for="description" value="#{msg['topic.description']}" />
+				<h:inputText id="description" value="#{topicController.newDescription}" />
+				<h:outputText />
+			</h:panelGrid>
 
-            <h:panelGrid border="0" columns="3">
-                <h:commandButton value="#{msg['save']}" action="#{topicController.addTopic}"/>
-                <h:commandButton value="#{msg['reset']}" action="#{topicController.reset()}" immediate="true"/>
-                <h:commandButton value="#{msg['home']}" action="#{topicController.backHome()}" immediate="true"/>
-            </h:panelGrid>
-        </h:form>
+			<h:panelGrid border="0" columns="3">
+				<h:commandButton value="#{msg['save']}" action="#{topicController.addTopic}" />
+				<h:commandButton value="#{msg['reset']}" action="#{topicController.reset()}" immediate="true" />
+				<h:commandButton value="#{msg['home']}" action="#{topicController.backHome()}" immediate="true" />
+			</h:panelGrid>
+		</h:form>
+		<div>
+			<h1>
+				<h:outputText value="#{msg['topic.home.table']}" />
+			</h1>
 
-        <div>
-            <h1><h:outputText value="#{msg['topic.home.table']}"/></h1>
+			<h:form id="topicsListForm">
+				<h:dataTable value="#{topicController.topicList}" var="item" border="2" id="topicsTable">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msg['topic.id']}" />
+						</f:facet>
+						<h:outputText value="#{item.id}" />
+					</h:column>
 
-            <h:form id="topicsListForm">
-                <h:dataTable value="#{topicController.topicList}" var="item" border="2" id="topicsTable">
-                    <h:column>
-                        <f:facet name="header"><h:outputText value="#{msg['topic.id']}"/></f:facet>
-                        <h:outputText value="#{item.id}"/>
-                    </h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msg['topic.name']}" />
+						</f:facet>
+						<h:outputText value="#{item.name}" />
+					</h:column>
 
-                    <h:column>
-                        <f:facet name="header"><h:outputText value="#{msg['topic.name']}"/></f:facet>
-                        <h:outputText value="#{item.name}"/>
-                    </h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msg['topic.description']}" />
+						</f:facet>
+						<h:outputText value="#{item.description}" />
+					</h:column>
 
-                    <h:column>
-                        <f:facet name="header"><h:outputText value="#{msg['topic.description']}"/></f:facet>
-                        <h:outputText value="#{item.description}"/>
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="#{msg['action.title']}"/>
-                        </f:facet>
-                        <h:commandLink value="#{msg['action.view']}" action="#{topicController.viewTopic(item)}"/> |
-                        <h:commandLink value="#{msg['action.edit']}" action="#{topicController.updateSelectedTopic(item)}"/> |
-                        <h:commandLink value="#{msg['action.delete']}" action="#{topicController.deleteTopic(item)}"/>
-                    </h:column>
-                </h:dataTable>
-            </h:form>
-        </div>
-    </ui:define>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="#{msg['action.title']}" />
+						</f:facet>
+						<h:commandLink value="#{msg['action.view']}" action="#{topicController.viewTopic(item)}" /> |
+                        <h:commandLink value="#{msg['action.edit']}" action="#{topicController.updateSelectedTopic(item)}" /> |
+                        <h:commandLink value="#{msg['action.delete']}" action="#{topicController.deleteTopic(item)}" />
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</div>
+	</ui:define>
 </ui:composition>
 </html>
 

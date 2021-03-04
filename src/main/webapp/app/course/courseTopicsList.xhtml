@@ -1,59 +1,53 @@
-<html lang="#{localeBean.language}" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<f:view locale="#{localeBean.locale}">
-	<ui:composition template="/template/pageLayout.xhtml">
-		<ui:define name="title">
-			<h:outputText value="#{msg['course.topics.title']}" /> #{courseController.selectedCourse.name}
+
+<ui:composition template="/template/pageLayout.xhtml">
+	<ui:define name="title">
+		<h:outputText value="#{msg['course.topics.title']}" /> #{courseController.selectedCourse.name}
 		</ui:define>
-		<ui:define name="content">
-			<h:form id="courseTopicsList">
-				<h3>
-					<h:outputText value="#{msg['course.topics.title']}" />
-					#{courseController.selectedCourse.name}
-				</h3>
+	<ui:define name="content">
+		<h:form id="courseTopicsList">
+			<h3>
+				<h:outputText value="#{msg['course.topics.title']}" /> #{courseController.selectedCourse.name}
+			</h3>
 
-				<h:dataTable value="#{courseController.allTopics}" var="topic"
-					border="0" id="courseTopicsTable">
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="#{msg['topic.id']}" />
-						</f:facet>
-						<h:outputText value="#{topic.id}" />
-					</h:column>
+			<h:dataTable value="#{courseController.allTopics}" var="topic" border="0" id="courseTopicsTable">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['topic.id']}" />
+					</f:facet>
+					<h:outputText value="#{topic.id}" />
+				</h:column>
 
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="#{msg['topic.name']}" />
-						</f:facet>
-						<h:outputText value="#{topic.name}" />
-					</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['topic.name']}" />
+					</f:facet>
+					<h:outputText value="#{topic.name}" />
+				</h:column>
 
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="#{msg['topic.description']}" />
-						</f:facet>
-						<h:outputText value="#{topic.description}" />
-					</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['topic.description']}" />
+					</f:facet>
+					<h:outputText value="#{topic.description}" />
+				</h:column>
 
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="#{msg['action.selection']}" />
-						</f:facet>
-						<h:selectBooleanCheckbox id="selectionTopic"
-							value="#{topic.checked}" />
-					</h:column>
-				</h:dataTable>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['action.selection']}" />
+					</f:facet>
+					<h:selectBooleanCheckbox id="selectionTopic" value="#{topic.checked}" />
+				</h:column>
+			</h:dataTable>
 
-				<h:panelGrid border="0" columns="2">
-					<h:commandButton value="#{msg['save']}"
-						action="#{courseController.updateCourseTopics()}" />
-					<h:commandButton value="#{msg['back']}"
-						action="#{courseController.goBack()}" />
-				</h:panelGrid>
-			</h:form>
-		</ui:define>
-	</ui:composition>
-</f:view>
+			<h:panelGrid border="0" columns="2">
+				<h:commandButton value="#{msg['save']}" action="#{courseController.updateCourseTopics()}" />
+				<h:commandButton value="#{msg['back']}" action="#{courseController.goBack()}" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
 </html>

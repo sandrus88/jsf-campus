@@ -1,39 +1,7 @@
-<html lang="#{localeBean.language}" xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
-<f:view locale="#{localeBean.locale}">
-	<h:head>
-		<link href="css/style.css" rel="stylesheet" type="text/css" />
-		<title><h:outputText
-				value="#{msg['home.manage.homePageTitle']}" /></title>
-	</h:head>
-	<h:body>
-		<div class="home-page">
-			<h3 align="center">
-				<h:outputText value="#{msg['home.manage.homePageTitle']}" />
-			</h3>
-			<h:form>
-				<h:panelGrid border="0" columns="2">
-					<h:outputLabel for="selectLanguage"
-						value="#{msg['home.manage.selectLanguage']}" />
-					<h:selectOneMenu id="selectLanguage" value="#{localeBean.language}"
-						onchange="submit()">
-						<f:selectItem itemValue="en" itemLabel="English" />
-						<f:selectItem itemValue="it" itemLabel="Italian" />
-					</h:selectOneMenu>
-				</h:panelGrid>
-				<br></br>
-				<br></br>
-				<h:commandLink value="#{msg['home.manage.student']}"
-					action="app/student/homeStudent.xhtml" />
-				<br></br>
-				<h:commandLink value="#{msg['home.manage.course']}"
-					action="app/course/homeCourse.xhtml" />
-				<br></br>
-				<h:commandLink value="#{msg['home.manage.topic']}"
-					action="app/topic/homeTopic.xhtml" />
-			</h:form>
-		</div>
-	</h:body>
-</f:view>
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/template/pageLayout.xhtml">
+</ui:composition>
 </html>
