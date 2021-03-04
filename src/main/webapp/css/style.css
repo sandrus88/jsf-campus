@@ -28,6 +28,9 @@ h5 {
 h6 {
 }
 
+body {
+	background-image: url("../doc/campus_img.jpg");
+}
 
 
 #header{
