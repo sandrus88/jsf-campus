@@ -52,10 +52,9 @@
                         <f:facet name="header">
                             <h:outputText value="#{msg['action.title']}"/>
                         </f:facet>
-                        <h:commandLink value="#{msg['action.view']}" action="#{topicController.viewTopic(item)}"/>
-                        | <h:commandLink value="#{msg['action.edit']}"
-                                         action="#{topicController.updateSelectedTopic(item)}"/>
-                        | <h:commandLink value="#{msg['action.delete']}" action="#{topicController.deleteTopic(item)}"/>
+                        <h:commandLink value="#{msg['action.view']}" action="#{topicController.viewTopic(item)}"/> |
+                        <h:commandLink value="#{msg['action.edit']}" action="#{topicController.updateSelectedTopic(item)}"/> |
+                        <h:commandLink value="#{msg['action.delete']}" action="#{topicController.deleteTopic(item)}"/>
                     </h:column>
                 </h:dataTable>
             </h:form>

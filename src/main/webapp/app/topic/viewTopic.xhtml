@@ -2,7 +2,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<f:view locale="#{localeBean.locale}">
+<!--<f:view locale="#{localeBean.locale}">-->
 	<ui:composition template="/template/pageLayout.xhtml">
 		<ui:define name="title">
 			<h:outputText value="#{msg['topic.view.title']}" /> #{topicController.selectedTopic.name}
@@ -18,12 +18,10 @@
 					<h:outputText id="id" value="#{topicController.selectedTopic.id}" />
 
 					<h:outputLabel value="#{msg['topic.name']}" />
-					<h:outputText id="name"
-						value="#{topicController.selectedTopic.name}" />
+					<h:outputText id="name" value="#{topicController.selectedTopic.name}" />
 
 					<h:outputLabel value="#{msg['topic.description']}" />
-					<h:outputText id="description"
-						value="#{topicController.selectedTopic.description}" />
+					<h:outputText id="description" value="#{topicController.selectedTopic.description}" />
 
 					<h:commandButton value="#{msg['back']}" action="homeTopic.xhtml" />
 					<h:commandButton value="#{msg['home']}" action="../../index.xhtml" />
@@ -31,5 +29,5 @@
 			</h:form>
 		</ui:define>
 	</ui:composition>
-</f:view>
+<!--</f:view>-->
 </html>
