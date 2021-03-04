@@ -44,7 +44,7 @@ public class StudentController {
 		System.out.println("Added student: " + student);
 		cleanForm();
 	}
-	
+
 	private void cleanForm() {
 		setNewName(null);
 		setNewSurname(null);
