@@ -7,7 +7,7 @@ import javax.faces.bean.ManagedBean;
 @ApplicationScoped
 public class ApplicationBean {
 	private int num;
-	
+
 	public int getNextInt() {
 		return num++;
 	}

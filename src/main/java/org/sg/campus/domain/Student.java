@@ -4,11 +4,11 @@ public class Student {
 	private int id;
 	private String name;
 	private String surname;
-	private String email;	
+	private String email;
 	private String jobTitle;
 	private PaymentType paymentType;
 	private String sex;
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -28,7 +28,7 @@ public class Student {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -48,7 +48,7 @@ public class Student {
 	public String getSex() {
 		return sex;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -67,6 +67,8 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", surname: " + surname + ", email: " + email + ", job title: " + jobTitle + ", paymentType: " + paymentType + ", sex: " + sex + "]";
+		return this.getClass().getSimpleName() + " [id: " + id + ", name: " + name + ", surname: " + surname
+				+ ", email: " + email + ", job title: " + jobTitle + ", paymentType: " + paymentType + ", sex: " + sex
+				+ "]";
 	}
 }
